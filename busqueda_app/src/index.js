@@ -1,20 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import {
-  SearchBox,
-  RefinementListFilter,
-  Hits,
-  HitsStats,
-  SearchkitComponent,
-  SelectedFilters,
-  MenuFilter,
-  HierarchicalMenuFilter,
-  Pagination,
-  ResetFilters
-  } from "searchkit";
   
 ReactDOM.render(
   <React.StrictMode>
