@@ -18,6 +18,9 @@ import {
   LayoutResults,
   ActionBar,
   ActionBarRow,
+  SortingSelector,
+  ViewSwitcherHits,
+  ViewSwitcherToggle
 } from "searchkit";
   
 import Samples from './Samples';
@@ -30,10 +33,13 @@ class App extends SearchkitComponent {
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
           <TopBar>
+          <div className="my-logo">Orders Search Engine</div>
+          <div>
             <SearchBox
             autofocus={true}
             searchOnChange={true}
             prefixQueryFields={["ORDER_ID","ORDER_NUMBER","LNF_SITE_CITY","POOL_ID"]}/>
+          </div>
           </TopBar>
           <LayoutBody>
             <SideBar>
@@ -52,6 +58,12 @@ class App extends SearchkitComponent {
               <ActionBar>
                 <ActionBarRow>
                   <HitsStats/>
+                  <ViewSwitcherToggle/>
+                  <SortingSelector options={[
+                    {label:"Actual Delivery Date", field:"_score", order:"desc"},
+                    {label:"Latest Releases", field:"released", order:"desc"},
+                    {label:"Earliest Releases", field:"released", order:"asc"}
+                  ]}/>
                 </ActionBarRow>
                 <ActionBarRow>
                   <SelectedFilters/>

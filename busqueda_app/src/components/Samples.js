@@ -10,7 +10,7 @@ import {
   ViewSwitcherToggle 
 } from "searchkit";
 
-/*const OrderHitsGridItem = (props) => {
+const OrderHitsGridItem = (props) => {
 const {result, bemBlocks} = props
 return (
   <div className={bemBlocks.item().mix(bemBlocks.container("item"))}>
@@ -40,18 +40,18 @@ return (
     <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
       <thead>
         <tr>
+          <th>Actual Delivery Date</th>
           <th>ORDER_ID</th>
           <th>Shipping Point</th>
-          <th>Transport Distance</th>
         </tr>
       </thead>
       <tbody>
         {hits.map((hit) => {
           return (
             <tr key={hit._id}>
+               <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>
               <td>{hit._source.ORDER_ID}</td>
               <td>{hit._source.SHIPPINGPOINT_ID}</td>
-              <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
             </tr>
           )
           })
@@ -60,33 +60,22 @@ return (
     </table>
   </div>
 )  
-}*/
-
-const HitItem = (props) => (
-    <div className={props.bemBlocks.item().mix(props.bemBlocks.container("item"))}>
-      <div className={props.bemBlocks.item("ORDER_ID")} dangerouslySetInnerHTML={{__html: get(props.result,"highlight.ORDER_ID",props.result._source.ORDER_ID)}}></div>
-      <div className={props.bemBlocks.item("SHIPPINGPOINT_ID")} dangerouslySetInnerHTML={{__html: get(props.result, props.result._source.SHIPPINGPOINT_ID)}}></div>
-    </div>
-  )
+}
 
 class Samples extends SearchkitComponent {
   render(){
     return (
       <div>
-          <Hits hitsPerPage={20} highlightFields={["ORDER_ID"]} sourceFilter={["ORDER_ID", "SHIPPINGPOINT_ID", "LNF_SITE_CITY"]}
-                mod="sk-hits-grid" itemComponent={HitItem}>
-              {/*<ViewSwitcherToggle/>
-                  <ViewSwitcherHits
-                      hitsPerPage={10}
-                      sourceFilter={["ORDER_ID", "ORDER_NUMBER", "SHIPPINGPOINT_ID", "LNF_SITE_CITY"]}
-                      hitComponents = {[
-                          {key:"grid", title:"grid", itemComponent: OrderHitsGridItem, defaultOption:true},
-                          {key:"list", title:"List", itemComponent: OrderHitsListItem},
-                          {key:"table", title:"Table", listComponent: OrderHitsTable}
-                      ]}
-                      scrollTo="body"
-                  />*/}
-          </Hits>
+          <ViewSwitcherHits
+                hitsPerPage={20} 
+                hitComponents={[
+                  {key:"grid", title:"Grid", itemComponent: OrderHitsGridItem, defaultOption:true},
+                  {key:"list", title:"List", itemComponent: OrderHitsListItem},
+                  {key:"table", title:"Table", listComponent: OrderHitsTable}
+                ]}
+                scrollTo="body"
+            />
+
           <NoHits />
       </div> 
     )
