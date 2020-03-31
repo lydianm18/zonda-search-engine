@@ -67,14 +67,14 @@ class Samples extends SearchkitComponent {
     return (
       <div>
           <ViewSwitcherHits
-                hitsPerPage={20} 
-                hitComponents={[
-                  {key:"grid", title:"Grid", itemComponent: OrderHitsGridItem, defaultOption:true},
-                  {key:"list", title:"List", itemComponent: OrderHitsListItem},
-                  {key:"table", title:"Table", listComponent: OrderHitsTable}
-                ]}
-                scrollTo="body"
-            />
+            hitsPerPage={20} 
+            hitComponents={[
+              {key:"grid", title:"Grid", itemComponent: OrderHitsGridItem, defaultOption:true},
+              {key:"list", title:"List", itemComponent: OrderHitsListItem},
+              {key:"table", title:"Table", listComponent: OrderHitsTable}
+            ]}
+            scrollTo="body"
+          />
 
           <NoHits />
       </div> 

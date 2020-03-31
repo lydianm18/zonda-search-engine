@@ -60,9 +60,8 @@ class App extends SearchkitComponent {
                   <HitsStats/>
                   <ViewSwitcherToggle/>
                   <SortingSelector options={[
-                    {label:"Actual Delivery Date", field:"_score", order:"desc"},
-                    {label:"Latest Releases", field:"released", order:"desc"},
-                    {label:"Earliest Releases", field:"released", order:"asc"}
+                    {label:"Latest Delivery Date", field:"ACTUAL_DELIVERY_DAT", order:"desc"},
+                    {label:"Earliest Delivery Date", field:"ACTUAL_DELIVERY_DAT", order:"asc"}
                   ]}/>
                 </ActionBarRow>
                 <ActionBarRow>
