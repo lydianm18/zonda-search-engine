@@ -14,6 +14,7 @@ const OrderHitsGridItem = (props) => {
 const {result, bemBlocks} = props
 return (
   <div className={bemBlocks.item().mix(bemBlocks.container("item"))}>
+    <h3>Order Details:</h3>
     <div className={bemBlocks.item("ORDER_ID")}>Order ID: {result._source.ORDER_ID}</div>
     <div className={bemBlocks.item("SHIPPINGPOINT_ID")}>Shipping Point: {result._source.SHIPPINGPOINT_ID}</div>
   </div>
@@ -26,8 +27,10 @@ const source = result._source
 return (
   <div className={bemBlocks.item().mix(bemBlocks.container("item"))} data-qa="hit">
     <div className={bemBlocks.item("details")}>
-      <h2 className={bemBlocks.item("ORDER_ID")}>Order ID: {source.ORDER_ID}</h2>       
-      <h3 className={bemBlocks.item("SHIPPINGPOINT_ID")}>Shipping Point: {source.SHIPPINGPOINT_ID}</h3>        
+      <ul> <h3>Order Details:</h3>
+        <li className={bemBlocks.item("ORDER_ID")}>Order ID: {source.ORDER_ID}</li>       
+        <li className={bemBlocks.item("SHIPPINGPOINT_ID")}>Shipping Point: {source.SHIPPINGPOINT_ID}</li>   
+      </ul>     
     </div>
   </div>
 )
@@ -49,7 +52,7 @@ return (
         {hits.map((hit) => {
           return (
             <tr key={hit._id}>
-               <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>
+              <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>
               <td>{hit._source.ORDER_ID}</td>
               <td>{hit._source.SHIPPINGPOINT_ID}</td>
             </tr>

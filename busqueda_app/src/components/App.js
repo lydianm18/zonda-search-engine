@@ -20,6 +20,7 @@ import {
   ActionBarRow,
   SortingSelector,
   ViewSwitcherHits,
+  InputFilter,
   ViewSwitcherToggle
 } from "searchkit";
   
@@ -38,7 +39,7 @@ class App extends SearchkitComponent {
             <SearchBox
             autofocus={true}
             searchOnChange={true}
-            prefixQueryFields={["ORDER_ID","ORDER_NUMBER","LNF_SITE_CITY","POOL_ID"]}/>
+            queryFields={["ORDER_ID","SHIPPINGPOINT_ID","ORDER_NUMBER","LNF_SITE_CITY","POOL_ID"]}/>
           </div>
           </TopBar>
           <LayoutBody>
@@ -47,9 +48,17 @@ class App extends SearchkitComponent {
                 fields={["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID"]}
                 title="Cities"
                 id="cities"/>
+              <InputFilter
+                id="more_cities"
+                title="More cities"
+                placeholder="Search cities"
+                searchOnChange={true}
+                prefixQueryFields={["LNF_SITE_CITY"]}
+                queryFields={["LNF_SITE_CITY"]}
+               />
               <RefinementListFilter
                 id="deliver_date"
-                title="Deliver date"
+                title="Delivery date"
                 field="ACTUAL_DELIVERY_DAT"
                 operator="AND"
                 size={10}/>
