@@ -7,11 +7,20 @@ import {
 
 const OrderHitsGridItem = (props) => {
 const {result, bemBlocks} = props
+const source = result._source
 return (
   <div className={bemBlocks.item().mix(bemBlocks.container("item"))}>
-    <h3>Order Details:</h3>
-    <div className={bemBlocks.item("ORDER_ID")}>Order ID: {result._source.ORDER_ID}</div>
-    <div className={bemBlocks.item("SHIPPINGPOINT_ID")}>Shipping Point: {result._source.SHIPPINGPOINT_ID}</div>
+    <ul> <h3>Order Details:</h3>
+      <li className={bemBlocks.item("ACTUAL_DELIVERY_DAT")}>Actual Delivery Date: {source.ACTUAL_DELIVERY_DAT}</li>       
+      <li className={bemBlocks.item("ORDER_ID")}>Order ID: {source.ORDER_ID}</li>       
+      <li className={bemBlocks.item("LNF_SITE_CITY")}>City: {source.LNF_SITE_CITY}</li>        
+      <li className={bemBlocks.item("SHIPPINGPOINT_ID")}>Shipping Point: {source.SHIPPINGPOINT_ID}</li>   
+      <li className={bemBlocks.item("CONTACT_PERSON_SIGNATURE_TXT")}>Contact Person Signature: {source.CONTACT_PERSON_SIGNATURE_TXT}</li>   
+      <li className={bemBlocks.item("COMMERCIAL_DISTANCE_M")} spacing={4}>Commercial Distance: {source.COMMERCIAL_DISTANCE_M}</li>   
+      <li className={bemBlocks.item("DELIVERY_TYPE_CD")}>Delivery Type: {source.DELIVERY_TYPE_CD}</li>   
+      <li className={bemBlocks.item("TRANSPORT_DISTANCE_M")}>Transport Distance: {source.TRANSPORT_DISTANCE_M}</li>   
+      <li className={bemBlocks.item("TRANSPORT_DURATION_MIN")}>Transport Duration Min: {source.TRANSPORT_DURATION_MIN}</li>   
+      </ul>
   </div>
 )
 }
@@ -23,8 +32,15 @@ return (
   <div className={bemBlocks.item().mix(bemBlocks.container("item"))} data-qa="hit">
     <div className={bemBlocks.item("details")}>
       <ul> <h3>Order Details:</h3>
+        <li className={bemBlocks.item("ACTUAL_DELIVERY_DAT")}>Actual Delivery Date: {source.ACTUAL_DELIVERY_DAT}</li>       
         <li className={bemBlocks.item("ORDER_ID")}>Order ID: {source.ORDER_ID}</li>       
-        <li className={bemBlocks.item("SHIPPINGPOINT_ID")}>Shipping Point: {source.SHIPPINGPOINT_ID}</li>   
+        <li className={bemBlocks.item("LNF_SITE_CITY")}>City: {source.LNF_SITE_CITY}</li>       
+        <li className={bemBlocks.item("SHIPPINGPOINT_ID")}>Shipping Point: {source.SHIPPINGPOINT_ID}</li>
+        <li className={bemBlocks.item("DELIVERY_TYPE_CD")}>Delivery Type: {source.DELIVERY_TYPE_CD}</li>   
+        <li className={bemBlocks.item("CONTACT_PERSON_SIGNATURE_TXT")}>Contact Person Signature: {source.CONTACT_PERSON_SIGNATURE_TXT}</li>   
+        <li className={bemBlocks.item("COMMERCIAL_DISTANCE_M")}>Commercial Distance: {source.COMMERCIAL_DISTANCE_M}</li>   
+        <li className={bemBlocks.item("TRANSPORT_DISTANCE_M")}>Transport Distance: {source.TRANSPORT_DISTANCE_M}</li>   
+        <li className={bemBlocks.item("TRANSPORT_DURATION_MIN")}>Transport Duration Minutes: {source.TRANSPORT_DURATION_MIN}</li>    
       </ul>     
     </div>
   </div>
@@ -40,7 +56,13 @@ return (
         <tr>
           <th>Actual Delivery Date</th>
           <th>ORDER_ID</th>
+          <th>City</th>
           <th>Shipping Point</th>
+          <th>Delivery Type</th>
+          <th>Contact Person Signature</th>
+          <th>Commercial Distance</th>
+          <th>Transport Distance</th>
+          <th>Transport Duration Minutes</th>
         </tr>
       </thead>
       <tbody>
@@ -49,7 +71,13 @@ return (
             <tr key={hit._id}>
               <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>
               <td>{hit._source.ORDER_ID}</td>
+              <td>{hit._source.LNF_SITE_CITY}</td>
               <td>{hit._source.SHIPPINGPOINT_ID}</td>
+              <td>{hit._source.DELIVERY_TYPE_CD}</td>
+              <td>{hit._source.CONTACT_PERSON_SIGNATURE_TXT}</td>
+              <td>{hit._source.COMMERCIAL_DISTANCE_M}</td>
+              <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
+              <td>{hit._source.TRANSPORT_DURATION_MIN}</td>
             </tr>
           )
           })
@@ -65,7 +93,7 @@ class Samples extends SearchkitComponent {
     return (
       <div>
           <ViewSwitcherHits
-            hitsPerPage={24} 
+            hitsPerPage={16} 
             hitComponents={[
               {key:"grid", title:"Grid", itemComponent: OrderHitsGridItem, defaultOption:true},
               {key:"list", title:"List", itemComponent: OrderHitsListItem},

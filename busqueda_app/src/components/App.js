@@ -19,7 +19,7 @@ import {
   ActionBarRow,
   SortingSelector,
   InputFilter,
-  ViewSwitcherToggle
+  ViewSwitcherToggle,
 } from "searchkit";
   
 import Samples from './Samples';
@@ -55,11 +55,12 @@ class App extends SearchkitComponent {
                 queryFields={["LNF_SITE_CITY"]}
                />
               <RefinementListFilter
-                id="deliver_date"
+                id="delivery_date"
                 title="Delivery date"
                 field="ACTUAL_DELIVERY_DAT"
                 operator="AND"
-                size={10}/>
+                size={10}
+                />
             </SideBar>
             <LayoutResults>
               <ActionBar>
