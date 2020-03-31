@@ -1,13 +1,8 @@
 import React from 'react';
-import { get } from "lodash";
 import {
-  Hits,
-  HitItemProps,
   SearchkitComponent,
-  SearchkitManager,
   NoHits,
   ViewSwitcherHits,
-  ViewSwitcherToggle 
 } from "searchkit";
 
 const OrderHitsGridItem = (props) => {
@@ -70,7 +65,7 @@ class Samples extends SearchkitComponent {
     return (
       <div>
           <ViewSwitcherHits
-            hitsPerPage={20} 
+            hitsPerPage={24} 
             hitComponents={[
               {key:"grid", title:"Grid", itemComponent: OrderHitsGridItem, defaultOption:true},
               {key:"list", title:"List", itemComponent: OrderHitsListItem},

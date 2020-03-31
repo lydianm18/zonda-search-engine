@@ -5,7 +5,6 @@ import {
   HitsStats,
   SearchkitComponent,
   SelectedFilters,
-  MenuFilter,
   HierarchicalMenuFilter,
   Pagination,
   ResetFilters,
@@ -19,7 +18,6 @@ import {
   ActionBar,
   ActionBarRow,
   SortingSelector,
-  ViewSwitcherHits,
   InputFilter,
   ViewSwitcherToggle
 } from "searchkit";
