@@ -1,4 +1,5 @@
 import React from 'react';
+import { get } from 'lodash';
 import {
   SearchkitComponent,
   NoHits,
@@ -16,7 +17,7 @@ return (
       <li className={bemBlocks.item("LNF_SITE_CITY")}>City: {source.LNF_SITE_CITY}</li>        
       <li className={bemBlocks.item("SHIPPINGPOINT_ID")}>Shipping Point: {source.SHIPPINGPOINT_ID}</li>   
       <li className={bemBlocks.item("CONTACT_PERSON_SIGNATURE_TXT")}>Contact Person Signature: {source.CONTACT_PERSON_SIGNATURE_TXT}</li>   
-      <li className={bemBlocks.item("COMMERCIAL_DISTANCE_M")} spacing={4}>Commercial Distance: {source.COMMERCIAL_DISTANCE_M}</li>   
+      <li className={bemBlocks.item("COMMERCIAL_DISTANCE_M")}>Commercial Distance: {source.COMMERCIAL_DISTANCE_M}</li>   
       <li className={bemBlocks.item("DELIVERY_TYPE_CD")}>Delivery Type: {source.DELIVERY_TYPE_CD}</li>   
       <li className={bemBlocks.item("TRANSPORT_DISTANCE_M")}>Transport Distance: {source.TRANSPORT_DISTANCE_M}</li>   
       <li className={bemBlocks.item("TRANSPORT_DURATION_MIN")}>Transport Duration Min: {source.TRANSPORT_DURATION_MIN}</li>   
@@ -101,7 +102,6 @@ class Samples extends SearchkitComponent {
             ]}
             scrollTo="body"
           />
-
           <NoHits />
       </div> 
     )

@@ -37,6 +37,7 @@ class App extends SearchkitComponent {
             <SearchBox
             autofocus={true}
             searchOnChange={true}
+            placeholder="Order ID or Shipping Point"
             queryFields={["ORDER_ID","SHIPPINGPOINT_ID","ORDER_NUMBER","LNF_SITE_CITY","POOL_ID"]}/>
           </div>
           </TopBar>
@@ -45,7 +46,8 @@ class App extends SearchkitComponent {
               <HierarchicalMenuFilter
                 fields={["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID"]}
                 title="Cities"
-                id="cities"/>
+                id="cities"
+                size={10}/>
               <InputFilter
                 id="more_cities"
                 title="More cities"
@@ -53,6 +55,14 @@ class App extends SearchkitComponent {
                 searchOnChange={true}
                 prefixQueryFields={["LNF_SITE_CITY"]}
                 queryFields={["LNF_SITE_CITY"]}
+               />
+               <InputFilter
+                id="person"
+                title="Contact Person Signature"
+                placeholder="Contact person"
+                searchOnChange={true}
+                prefixQueryFields={["CONTACT_PERSON_SIGNATURE_TXT"]}
+                queryFields={["CONTACT_PERSON_SIGNATURE_TXT"]}
                />
               <RefinementListFilter
                 id="delivery_date"
