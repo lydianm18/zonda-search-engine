@@ -102,7 +102,11 @@ class Samples extends SearchkitComponent {
             ]}
             scrollTo="body"
           />
-          <NoHits />
+          <NoHits 
+            translations={{
+              "NoHits.NoResultsFound":"No movies neither shipping points were found for {query}",
+            }}
+          />
       </div> 
     )
   } 
