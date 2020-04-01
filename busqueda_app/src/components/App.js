@@ -23,10 +23,18 @@ import {
 } from "searchkit";
   
 import Samples from './Samples';
+import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 
 const searchkit = new SearchkitManager("https://search-pedidos-dev-4rtoq2jtrckjskj25rghj3t5fy.eu-west-1.es.amazonaws.com/pedidos");
 
 class App extends SearchkitComponent {
+
+  state = {
+    date: [new Date(), new Date()]
+  }
+
+  onChange = date => this.setState({ date })
+
   render(){
     return (
       <SearchkitProvider searchkit={searchkit}>
@@ -43,6 +51,10 @@ class App extends SearchkitComponent {
           </TopBar>
           <LayoutBody>
             <SideBar>
+              <DateRangePicker
+                onChange={this.onChange}
+                value={this.state.date}
+              />
               <HierarchicalMenuFilter
                 fields={["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID"]}
                 title="Cities"
