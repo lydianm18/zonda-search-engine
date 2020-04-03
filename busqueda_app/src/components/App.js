@@ -20,10 +20,11 @@ import {
   SortingSelector,
   InputFilter,
   ViewSwitcherToggle,
+  RangeFilter
 } from "searchkit";
-  
+import DateRangeFilter from './DateRangeFilter'
 import Samples from './Samples';
-import DateRangePicker from '@wojtekmaj/react-daterange-picker';
+
 
 const searchkit = new SearchkitManager("https://search-pedidos-dev-4rtoq2jtrckjskj25rghj3t5fy.eu-west-1.es.amazonaws.com/pedidos");
 
@@ -51,10 +52,6 @@ class App extends SearchkitComponent {
           </TopBar>
           <LayoutBody>
             <SideBar>
-              <DateRangePicker
-                onChange={this.onChange}
-                value={this.state.date}
-              />
               <HierarchicalMenuFilter
                 fields={["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID"]}
                 title="Cities"
@@ -82,6 +79,14 @@ class App extends SearchkitComponent {
                 field="ACTUAL_DELIVERY_DAT"
                 operator="AND"
                 size={10}
+                />
+                <RangeFilter
+                  id='event_date_filter'
+                  title='Event Date Filter'
+                  field={ 'ACTUAL_DELIVERY_DAT' }
+                  rangeComponent={ DateRangeFilter }
+                  min={ 946684800000 }
+                  max={ new Date().getTime() }
                 />
             </SideBar>
             <LayoutResults>
