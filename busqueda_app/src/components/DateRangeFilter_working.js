@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
-import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -11,45 +10,66 @@ class DateRangeFilter extends Component {
     super(props)
     this.state = {
       startDate: null,
-      endDate: null,
-      open: true,
-      dateRange: {},
-      initialDateRange: {
-        startDate: "2020-03-31T22:00:00.000Z",
-        endDate: "2020-04-03T22:00:00.000Z"
-    }
+      endDate: null
     }
   }
 
-  handleChange = (event) => {
+  handleChangeStart = (event) => {
     this.setState({
-        dateRange: event,
+      startDate: event
+    }, this.updateSearch)
+  }
 
+  handleChangeEnd = (event) => {
+      console.log(event);
+    this.setState({
+      endDate: event 
     }, this.updateSearch)
   }
 
   updateSearch = () => {
-    const [ startDate, endDate ] = this.state.dateRange ? this.state.dateRange : this.state.initialDateRange;
+    const { startDate, endDate } = this.state
     const { onFinished } = this.props
 
     if (!startDate || !endDate) {
       return
     }
+    console.log(startDate);
     onFinished({
       min: moment(startDate).format('x'),
       max: moment(endDate).format('x')
     })
   }
 
+  isBeforeStartDate = (date) => {
+    if (!this.state.startDate) {
+      return true
+    }
+
+    return this.state.startDate <= date
+  }
+
+  isAfterEndDate = (date) => {
+    if (!this.state.endDate) {
+      return true
+    }
+
+    return date <= this.state.endDate
+  }
 
   render () {
     return (<div className="date-filter">
-      <DateRangePicker
-      open={this.state.open}
-        onChange={this.handleChange}
-        initialDateRange = {this.state.initialDateRange}
-         />
-      {/* <DatePicker
+      <DatePicker
+        className="sk-input-filter"
+        placeholderText="Select start date"
+        isClearable={true}
+        filterDate={this.isAfterEndDate}
+        selectsStart
+        selected={this.state.startDate}
+        startDate={this.state.startDate}
+        endDate={this.state.endDate}
+        onChange={this.handleChangeStart} />
+      <DatePicker
         className="sk-input-filter"
         placeholderText="Select end date"
         isClearable={true}
@@ -58,7 +78,7 @@ class DateRangeFilter extends Component {
         selected={this.state.endDate}
         startDate={this.state.startDate}
         endDate={this.state.endDate}
-        onChange={this.handleChangeEnd} /> */}
+        onChange={this.handleChangeEnd} />
     </div>)
   }
 }
