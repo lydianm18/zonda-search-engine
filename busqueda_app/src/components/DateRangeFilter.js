@@ -58,9 +58,14 @@ class DateRangeFilter extends Component {
   }
 
   render () {
-    return (<div className="date-filter">
+    return (<div className="sk-panel filter--dates">
+      <div className="fecha-espacio">
+      <div className="sk-input-filter">
+      <form>
+        <div className= "sk-input-filter__icon">
+        </div>
       <DatePicker
-        className="sk-input-filter"
+        className="sk-input-filter__text"
         placeholderText="Select start date"
         isClearable={true}
         filterDate={this.isAfterEndDate}
@@ -69,8 +74,15 @@ class DateRangeFilter extends Component {
         startDate={this.state.startDate}
         endDate={this.state.endDate}
         onChange={this.handleChangeStart} />
+      </form>
+      </div>
+      </div>
+      <div className="sk-input-filter">
+      <form>
+        <div className= "sk-input-filter__icon">
+        </div>
       <DatePicker
-        className="sk-input-filter"
+        className="sk-input-filter__text"
         placeholderText="Select end date"
         isClearable={true}
         filterDate={this.isBeforeStartDate}
@@ -79,7 +91,9 @@ class DateRangeFilter extends Component {
         startDate={this.state.startDate}
         endDate={this.state.endDate}
         onChange={this.handleChangeEnd} />
-    </div>)
+        </form>
+      </div>
+  </div>)
   }
 }
 
