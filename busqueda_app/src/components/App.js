@@ -41,14 +41,15 @@ class App extends SearchkitComponent {
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
           <TopBar>
-          <div className="my-logo">Orders Search Engine</div>
-          <div>
+            <img className="logo" src="lh_logo.png" widht="30" height="60"></img>
+            <div className="my-logo">Orders Search Engine</div>
+            <div>
             <SearchBox
             autofocus={true}
             searchOnChange={true}
             placeholder="Order ID or Shipping Point"
-            queryFields={["ORDER_ID","SHIPPINGPOINT_ID","ORDER_NUMBER","LNF_SITE_CITY","POOL_ID"]}/>
-          </div>
+             queryFields={["ORDER_ID","SHIPPINGPOINT_ID","ORDER_NUMBER","LNF_SITE_CITY","POOL_ID"]}/>
+           </div>
           </TopBar>
           <LayoutBody>
             <SideBar>
@@ -73,16 +74,9 @@ class App extends SearchkitComponent {
                 prefixQueryFields={["CONTACT_PERSON_SIGNATURE_TXT"]}
                 queryFields={["CONTACT_PERSON_SIGNATURE_TXT"]}
                />
-              <RefinementListFilter
-                id="delivery_date"
-                title="Delivery date"
-                field="ACTUAL_DELIVERY_DAT"
-                operator="AND"
-                size={10}
-                />
                 <RangeFilter
                   id='event_date_filter'
-                  title='Event Date Filter'
+                  title='Delivery Dates:'
                   field={ 'ACTUAL_DELIVERY_DAT' }
                   rangeComponent={ DateRangeFilter }
                   min={ 946684800000 }
