@@ -1,0 +1,51 @@
+{
+    "endpoint": "https://search-pedidos-dev-4rtoq2jtrckjskj25rghj3t5fy.eu-west-1.es.amazonaws.com/pedidos",
+    "title": "Orders Search Engine",
+    "searchbox": {
+        "queryFields": ["ORDER_ID","SHIPPINGPOINT_ID"],
+        "placeholder": "Order ID or Shipping point"
+    },
+    "filters": {
+        "cityList": {
+            "fields": ["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID"],
+            "title": "Cities",
+            "id": "cities"
+        },
+        "searchboxCity": {
+            "title": "More cities",
+            "placeholder": "Search cities",
+            "fields": "LNF_SITE_CITY",
+            "id": "more_cities"
+        },
+        "searchboxPerson": {
+            "title": "Contact Person Signature",
+            "placeholder": "Contact person",
+            "fields": "CONTACT_PERSON_SIGNATURE_TXT",
+            "id": "person"
+        },
+        "dates": {
+            "fields": "ACTUAL_DELIVERY_DAT",
+            "title": "Delivery Dates:",
+            "id": "event_date_filter"
+        }
+    },
+    "sortingSelector": {
+        "options": [
+            {
+                "label": "Latest Delivery Date",
+                "field": "ACTUAL_DELIVERY_DAT",
+                "order": "desc"
+            },
+            {
+                "label": "Earliest Delivery Date",
+                "field": "ACTUAL_DELIVERY_DAT",
+                "order": "asc"
+            }
+        ]
+    },
+    "samples": {
+        "grid": {
+            "fields": ["ACTUAL_DELIVERY_DAT", "ORDER_ID", "LNF_SITE_CITY", "SHIPPINGPOINT_ID", "CONTACT_PERSON_SIGNATURE_TXT", "COMMERCIAL_DISTANCE_M", "DELIVERY_TYPE_CD", "TRANSPORT_DISTANCE_M", "TRANSPORT_DURATION_MIN"]
+        }
+    }
+}
