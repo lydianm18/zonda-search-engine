@@ -45,7 +45,22 @@
     },
     "samples": {
         "grid": {
-            "fields": ["ACTUAL_DELIVERY_DAT", "ORDER_ID", "LNF_SITE_CITY", "SHIPPINGPOINT_ID", "CONTACT_PERSON_SIGNATURE_TXT", "COMMERCIAL_DISTANCE_M", "DELIVERY_TYPE_CD", "TRANSPORT_DISTANCE_M", "TRANSPORT_DURATION_MIN"]
+            "fields": ["ACTUAL_DELIVERY_DAT", "ORDER_ID", "LNF_SITE_CITY", "SHIPPINGPOINT_ID", "CONTACT_PERSON_SIGNATURE_TXT", "COMMERCIAL_DISTANCE_M", "DELIVERY_TYPE_CD", "TRANSPORT_DISTANCE_M", "TRANSPORT_DURATION_MIN"],
+            "key": "grid",
+            "title": "Grid"
+        },
+        "list": {
+            "fields": ["ACTUAL_DELIVERY_DAT", "ORDER_ID", "LNF_SITE_CITY", "SHIPPINGPOINT_ID", "CONTACT_PERSON_SIGNATURE_TXT", "COMMERCIAL_DISTANCE_M", "DELIVERY_TYPE_CD", "TRANSPORT_DISTANCE_M", "TRANSPORT_DURATION_MIN"],
+            "key": "list",
+            "title": "List"
+        },
+        "table": {
+            "fields": ["ACTUAL_DELIVERY_DAT", "ORDER_ID", "LNF_SITE_CITY", "SHIPPINGPOINT_ID", "CONTACT_PERSON_SIGNATURE_TXT", "COMMERCIAL_DISTANCE_M", "DELIVERY_TYPE_CD", "TRANSPORT_DISTANCE_M", "TRANSPORT_DURATION_MIN"],
+            "key": "table",
+            "title": "Table"
+        },
+        "noResults": {
+            "NoHits.NoResultsFound":"No results were found for {query}"
         }
     }
 }

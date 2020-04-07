@@ -18,45 +18,30 @@ const OrderHitsGridItem = (props) => {
         <h3>Order Details:</h3>
         {fields.map((field, index) => {
           return(
-            <li key={index} className={bemBlocks.item(field)}>{field}: {source.field}</li>
+            <li key={index} className={bemBlocks.item(field)}>{field}: {source[field]}</li>
           )
         })}
       </ul>
     </div>
   )
-
-  {/*<div className={bemBlocks.item().mix(bemBlocks.container("item"))}>
-      <ul> <h3>Order Details:</h3>
-        <li className={bemBlocks.item(fields[0])}>Actual Delivery Date: {source.ACTUAL_DELIVERY_DAT}</li>       
-        <li className={bemBlocks.item(fields[1])}>Order ID: {source.ORDER_ID}</li>       
-        <li className={bemBlocks.item(config.samples.grid.fields[2])}>City: {source.LNF_SITE_CITY}</li>        
-        <li className={bemBlocks.item(config.samples.grid.fields[3])}>Shipping Point: {source.SHIPPINGPOINT_ID}</li>   
-        <li className={bemBlocks.item(config.samples.grid.fields[4])}>Contact Person Signature: {source.CONTACT_PERSON_SIGNATURE_TXT}</li>   
-        <li className={bemBlocks.item(config.samples.grid.fields[5])}>Commercial Distance: {source.COMMERCIAL_DISTANCE_M}</li>   
-        <li className={bemBlocks.item(config.samples.grid.fields[6])}>Delivery Type: {source.DELIVERY_TYPE_CD}</li>   
-        <li className={bemBlocks.item(config.samples.grid.fields[7])}>Transport Distance: {source.TRANSPORT_DISTANCE_M}</li>   
-        <li className={bemBlocks.item(config.samples.grid.fields[8])}>Transport Duration Min: {source.TRANSPORT_DURATION_MIN}</li>
-      </ul>
-  </div>*/}
 }
 
 const OrderHitsListItem = (props)=> {
   const {bemBlocks, result} = props  
   const source = result._source
-  return (
+  const fields = config.samples.list.fields;
+
+  return(
     <div className={bemBlocks.item().mix(bemBlocks.container("item"))} data-qa="hit">
       <div className={bemBlocks.item("details")}>
-        <ul> <h3>Order Details:</h3>
-          <li className={bemBlocks.item("ACTUAL_DELIVERY_DAT")}>Actual Delivery Date: {source.ACTUAL_DELIVERY_DAT}</li>       
-          <li className={bemBlocks.item("ORDER_ID")}>Order ID: {source.ORDER_ID}</li>       
-          <li className={bemBlocks.item("LNF_SITE_CITY")}>City: {source.LNF_SITE_CITY}</li>       
-          <li className={bemBlocks.item("SHIPPINGPOINT_ID")}>Shipping Point: {source.SHIPPINGPOINT_ID}</li>
-          <li className={bemBlocks.item("DELIVERY_TYPE_CD")}>Delivery Type: {source.DELIVERY_TYPE_CD}</li>   
-          <li className={bemBlocks.item("CONTACT_PERSON_SIGNATURE_TXT")}>Contact Person Signature: {source.CONTACT_PERSON_SIGNATURE_TXT}</li>   
-          <li className={bemBlocks.item("COMMERCIAL_DISTANCE_M")}>Commercial Distance: {source.COMMERCIAL_DISTANCE_M}</li>   
-          <li className={bemBlocks.item("TRANSPORT_DISTANCE_M")}>Transport Distance: {source.TRANSPORT_DISTANCE_M}</li>   
-          <li className={bemBlocks.item("TRANSPORT_DURATION_MIN")}>Transport Duration Minutes: {source.TRANSPORT_DURATION_MIN}</li>    
-        </ul>     
+        <ul>
+          <h3>Order Details:</h3>
+          {fields.map((field, index) => {
+            return(
+              <li key={index} className={bemBlocks.item(field)}>{field}: {source[field]}</li>
+            )
+          })}
+        </ul>
       </div>
     </div>
   )
@@ -64,41 +49,33 @@ const OrderHitsListItem = (props)=> {
 
 const OrderHitsTable = (props) => {  
   const {hits} = props;
-  return (
+  const fields = config.samples.table.fields;
+
+  return (  
     <div style={{width: '100%', boxSizing: 'border-box', padding: 8}}>
-      <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
-        <thead>
-          <tr>
-            <th>Actual Delivery Date</th>
-            <th>ORDER_ID</th>
-            <th>City</th>
-            <th>Shipping Point</th>
-            <th>Delivery Type</th>
-            <th>Contact Person Signature</th>
-            <th>Commercial Distance</th>
-            <th>Transport Distance</th>
-            <th>Transport Duration Minutes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {hits.map((hit) => {
-            return (
-              <tr key={hit._id}>
-                <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>
-                <td>{hit._source.ORDER_ID}</td>
-                <td>{hit._source.LNF_SITE_CITY}</td>
-                <td>{hit._source.SHIPPINGPOINT_ID}</td>
-                <td>{hit._source.DELIVERY_TYPE_CD}</td>
-                <td>{hit._source.CONTACT_PERSON_SIGNATURE_TXT}</td>
-                <td>{hit._source.COMMERCIAL_DISTANCE_M}</td>
-                <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
-                <td>{hit._source.TRANSPORT_DURATION_MIN}</td>
+      {fields.map((field, index) => {
+        return(
+          <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
+            <thead>
+              <tr>
+                <th key={index}>{field}</th>
               </tr>
-            )
-            })
-          }
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {
+                hits.map((hit) => {
+                  return(
+                    <tr key={hit._id}>
+                      <td>{hit._source[field]}</td>
+                    </tr>
+                  )
+                })
+              }
+            </tbody>
+          </table> 
+        )
+      })
+      }
     </div>
   )  
 }
@@ -110,16 +87,14 @@ class Samples extends SearchkitComponent {
           <ViewSwitcherHits
             hitsPerPage={16} 
             hitComponents={[
-              {key:"grid", title:"Grid", itemComponent: OrderHitsGridItem, defaultOption:true},
-              {key:"list", title:"List", itemComponent: OrderHitsListItem},
-              {key:"table", title:"Table", listComponent: OrderHitsTable}
+              {key: config.samples.grid.key, title: config.samples.grid.title, itemComponent: OrderHitsGridItem, defaultOption:true},
+              {key: config.samples.list.key, title: config.samples.list.title, itemComponent: OrderHitsListItem},
+              {key: config.samples.table.key, title: config.samples.table.title, listComponent: OrderHitsTable}
             ]}
             scrollTo="body"
           />
           <NoHits 
-            translations={{
-              "NoHits.NoResultsFound":"No results were found for {query}",
-            }}
+            translations={config.samples.noResults}
           />
       </div> 
     )
