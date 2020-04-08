@@ -8,19 +8,21 @@ import {
 import config from "../config.json";
 
 const OrderHitsGridItem = (props) => {
-  const {result, bemBlocks} = props
-  const source = result._source
+  const {result, bemBlocks} = props;
+  const source = result._source;
   const fields = config.samples.grid.fields;
 
   return(
     <div className={bemBlocks.item().mix(bemBlocks.container("item"))}>
       <ul>
         <h3>Order Details:</h3>
-          {fields.map((field, index) => {
-            return(
-              <li key={index} className={bemBlocks.item(field)}>{field}: {source[field]}</li>
-            )
-          })}
+          {
+            fields.map((field, index) => {
+              return(
+                <li key={index} className={bemBlocks.item(field)}>{field}: {source[field]}</li>
+              )
+            })
+          }
       </ul>
     </div>
   )

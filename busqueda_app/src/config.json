@@ -25,7 +25,7 @@
         },
         "dates": {
             "fields": "ACTUAL_DELIVERY_DAT",
-            "title": "Delivery Dates:",
+            "title": "Delivery Dates (mm/dd/yyyy):",
             "id": "event_date_filter"
         }
     },
@@ -62,5 +62,9 @@
         "noResults": {
             "NoHits.NoResultsFound":"No results were found for {query}"
         }
+    },
+    "dateFilter": {
+        "startDatePlaceholder": "Select start date",
+        "endDatePlaceholder": "Select end date"
     }
 }
