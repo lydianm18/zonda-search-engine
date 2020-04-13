@@ -18,14 +18,14 @@
             "id": "more_cities"
         },
         "searchboxPerson": {
-            "title": "Contact Person Signature",
+            "title": "Contact Signature",
             "placeholder": "Contact person",
             "fields": "CONTACT_PERSON_SIGNATURE_TXT",
             "id": "person"
         },
         "dates": {
             "fields": "ACTUAL_DELIVERY_DAT",
-            "title": "Delivery Dates (mm/dd/yyyy):",
+            "title": "Delivery Dates:",
             "id": "event_date_filter"
         }
     },

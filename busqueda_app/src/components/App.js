@@ -60,6 +60,7 @@ class App extends SearchkitComponent {
                 title={config.filters.cityList.title}
                 id={config.filters.cityList.id}
                 size={10}/>
+                <div className="line"></div>
               <InputFilter
               
                 id={config.filters.searchboxCity.id}
@@ -68,6 +69,7 @@ class App extends SearchkitComponent {
                 searchOnChange={true}
                 prefixQueryFields={config.filters.searchboxCity.fields}
                />
+               <div className="line"></div>
                <InputFilter
                 id={config.filters.searchboxPerson.id}
                 title={config.filters.searchboxPerson.title}
@@ -75,6 +77,7 @@ class App extends SearchkitComponent {
                 searchOnChange={true}
                 prefixQueryFields={config.filters.searchboxPerson.fields}
                />
+               <div className="line"></div>
               <RangeFilter
                 id={config.filters.dates.id}
                 title={config.filters.dates.title}
