@@ -1,4 +1,5 @@
 .table-container {
+  font-family: Arial;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,11 +15,58 @@
   width: 90%;
   height: 1108px;
   margin-bottom: 71px;
+  border-collapse: collapse;
+  border: none;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .header {
   background-color: #0074b4;
   padding: 1em 2em;
+}
+
+th:nth-child(2) {
+  width: 15%;
+}
+
+th:nth-child(4) {
+  width: 10%;
+}
+
+th:nth-child(5) {
+  width: 11%;
+}
+
+th:nth-child(7) {
+  width: 10%;
+}
+
+th:nth-child(8) {
+  width: 8%;
+}
+
+th:nth-child(9) {
+  width: 8%;
+}
+
+td:nth-child(7),
+td:nth-child(8),
+td:nth-child(9) {
+  color: #0073af;
+}
+
+td:nth-child(7)::after,
+td:nth-child(8)::after {
+  content: " m";
+}
+
+td:nth-child(9)::after {
+  content: " min";
+}
+
+.table-header:nth-child(even) {
+  background-color: #f5fcff;
 }
 
 th {
@@ -33,6 +81,7 @@ th,
 td {
   height: 54px;
   text-align: center;
+  border-left: 1px solid #c6c6c6;
 }
 
 td {
@@ -44,6 +93,41 @@ td {
   line-height: 1.75;
   text-align: center;
   color: #000000;
+  padding: 0;
+}
+
+.Rectangle-value-1 {
+  padding: 2em;
+  border-radius: 2px;
+  background-color: #ffc625;
+}
+
+.Rectangle-value-2 {
+  width: 17px;
+  height: 23px;
+  border-radius: 2px;
+  background-color: #00bbd6;
+}
+
+.Rectangle-value-3 {
+  width: 17px;
+  height: 23px;
+  border-radius: 2px;
+  background-color: #a5c36d;
+}
+
+.Rectangle-value-4 {
+  width: 17px;
+  height: 23px;
+  border-radius: 2px;
+  background-color: #ffc625;
+}
+
+.Rectangle-value-5 {
+  width: 17px;
+  height: 23px;
+  border-radius: 2px;
+  background-color: #ffc625;
 }
 
 .CALENDAR {
@@ -51,5 +135,25 @@ td {
   height: 19px;
   -o-object-fit: contain;
      object-fit: contain;
+  background-image: url(../img/calendar.svg);
+  float: left;
+}
+
+.LOCATION {
+  width: 12px;
+  height: 17px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background-image: url(../img/location.svg);
+  float: left;
+}
+
+.user-copy {
+  width: 17px;
+  height: 17px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background-image: url(../img/user-copy.svg);
+  float: left;
 }
 /*# sourceMappingURL=table.css.map */

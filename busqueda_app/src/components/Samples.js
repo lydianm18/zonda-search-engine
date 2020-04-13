@@ -59,11 +59,11 @@ const OrderHitsTable = (props) => {
           <thead>
             <tr className="table-header">
               <th className="header">ORDER ID</th>
-              <th className="header"><img src="../img/calendar.svg" class="CALENDAR"></img>Delivery Date</th>
+              <th className="header"><span className="CALENDAR"></span>Delivery Date</th>
               <th className="header">Shippingpoint ID</th>
               <th className="header">Delivery Type CD</th>
-              <th className="header">Site City</th>
-              <th className="header">Contact</th>
+              <th className="header"><span className="LOCATION"></span>Site City</th>
+              <th className="header"><span className="user-copy"></span>Contact</th>
               <th className="header">Commercial Distance</th>
               <th className="header">Transport Distance</th>
               <th className="header">Transport duration</th>
@@ -77,17 +77,73 @@ const OrderHitsTable = (props) => {
           <tbody>
             {
               hits.map((hit) => {
-                return (
-                  <tr key={hit._id}>
+                if(hit._source.DELIVERY_TYPE_CD == 1){
+                  return (
+                    <tr key={hit._id} className="table-header">
+                      <td>{hit._source.ORDER_ID}</td>
+                      <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
+                      <td>{hit._source.SHIPPINGPOINT_ID}</td>
+                      <td><div className="Rectangle-value-1">{hit._source.DELIVERY_TYPE_CD}</div></td>
+                      <td>{hit._source.LNF_SITE_CITY}</td>
+                      <td>{hit._source.CONTACT_PERSON_SIGNATURE_TXT}</td>
+                      <td>{hit._source.COMMERCIAL_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DURATION_MIN}</td>
+                    </tr>
+                  )
+                } else {
+                  return (
+                    <tr key={hit._id} className="table-header">
+                      <td>{hit._source.ORDER_ID}</td>
+                      <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
+                      <td>{hit._source.SHIPPINGPOINT_ID}</td>
+                      <td>{hit._source.DELIVERY_TYPE_CD}</td>
+                      <td>{hit._source.LNF_SITE_CITY}</td>
+                      <td>{hit._source.CONTACT_PERSON_SIGNATURE_TXT}</td>
+                      <td>{hit._source.COMMERCIAL_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DURATION_MIN}</td>
+                    </tr>
+                  )
+                }
+                
+                /*return (
+                  <tr key={hit._id} className="table-header">
                     {
-                      fields.map((f) => {
-                        return(                   
+                      fields.map((f) => {                  
+                        console.log(hit._source.DELIVERY_TYPE_CD)
+                        if(hit._source.DELIVERY_TYPE_CD === 1){
+                          return(                   
+                            <td><div className="Rectangle-value-1">{hit._source[f]}</div></td>                   
+                          )
+                        } else if(hit._source.DELIVERY_TYPE_CD === 2){
+                          return(                   
+                            <td><div className="Rectangle-value-2">{hit._source[f]}</div></td>                   
+                          )
+                        } else if(hit._source.DELIVERY_TYPE_CD === 3){
+                          return(                   
+                            <td><div className="Rectangle-value-3">{hit._source[f]}</div></td>                   
+                          )
+                        } else if(hit._source.DELIVERY_TYPE_CD === 4){
+                          return(                   
+                            <td><div className="Rectangle-value-4">{hit._source[f]}</div></td>                   
+                          )
+                        } else if(hit._source.DELIVERY_TYPE_CD === 5){
+                          return(                   
+                            <td><div className="Rectangle-value-5">{hit._source[f]}</div></td>                   
+                          )
+                        } else {
+                          return(                   
+                            <td>{hit._source[f]}</td>                   
+                          )
+                        }
+                        {return(                   
                           <td>{hit._source[f]}</td>                   
-                        )
+                        )}
                       })
                     }
                   </tr>
-                )
+                )*/
               })
             }
           </tbody>
