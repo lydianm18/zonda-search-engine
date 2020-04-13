@@ -73,7 +73,7 @@ const OrderHitsTable = (props) => {
                   {
                     fields.map((f) => {
                       return(                   
-                        <td>{hit._source[f]}</td>                   
+                        <td className="table">{hit._source[f]}</td>                   
                       )
                     })
                   }

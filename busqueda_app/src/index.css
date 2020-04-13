@@ -1,4 +1,5 @@
 @import url('../node_modules/searchkit/release/theme.css');
+@import './sass/sidebar.scss';
 
 .sk-layout__top-bar {
   height: fit-content;
@@ -8,12 +9,7 @@
   margin-top: 80px;
 }
 
-.my-logo {
-  color:white;
-  flex:0 0 250px;
-  padding:13px 20px;
-  margin-right:10px;
-}
+
 
 .sk-search-box {
   margin-top: 0.5em;
@@ -86,3 +82,5 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
