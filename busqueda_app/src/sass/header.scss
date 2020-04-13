@@ -2,5 +2,18 @@
     background-color: #0073AF;
     width: auto;
     margin-left: 300px;
+    .sk-top-bar__content {
+        display: flex;
+        margin: 0 auto;
+        padding: 0 37px;
+        width: 100%;
+        .my-logo{
+            font-size: 24px;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 
 }

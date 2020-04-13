@@ -43,13 +43,7 @@ class App extends SearchkitComponent {
           <TopBar className="header">
           <div className="my-logo">{config.title}</div>
 
-            <div>
-            <SearchBox
-              autofocus={true}
-              searchOnChange={true}
-              placeholder={config.searchbox.placeholder}
-              queryFields={config.searchbox.queryFields}/>
-           </div>
+
           </TopBar>
           <LayoutBody>
             <SideBar className="sidebar">
@@ -88,8 +82,16 @@ class App extends SearchkitComponent {
               />
             </SideBar>
             <LayoutResults className="layout">
+
               <ActionBar>
                 <ActionBarRow>
+                <div>
+            <SearchBox
+              autofocus={true}
+              searchOnChange={true}
+              placeholder={config.searchbox.placeholder}
+              queryFields={config.searchbox.queryFields}/>
+           </div>
                   <HitsStats/>
                   <ViewSwitcherToggle/>
                   <SortingSelector options={config.sortingSelector.options}
