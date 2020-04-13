@@ -7,6 +7,7 @@ import {
 
 import config from "../config.json";
 
+
 const OrderHitsGridItem = (props) => {
   const {result, bemBlocks} = props;
   const source = result._source;
@@ -59,7 +60,7 @@ const OrderHitsTable = (props) => {
           <thead>
             <tr className="table-header">
               <th className="header">ORDER ID</th>
-              <th className="header"><img src="../img/calendar.svg" class="CALENDAR"></img>Delivery Date</th>
+              <th className="header"><img src="img/calendar.png" className="CALENDAR"></img>Delivery Date</th>
               <th className="header">Shippingpoint ID</th>
               <th className="header">Delivery Type CD</th>
               <th className="header">Site City</th>
