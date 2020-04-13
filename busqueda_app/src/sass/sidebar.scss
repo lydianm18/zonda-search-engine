@@ -2,7 +2,95 @@
   width: 300px;
   background-color: #fafafa;
   position: absolute;
-  top: 0;
   margin: 0;
-  height: 100vh;
+  height: 100%;
+  padding: 0;
+  top: 0;
+  bottom: 0;
+
+
+  .logo {
+    width: auto;
+    height: 53px;
+    display: block;
+    margin: auto;
+    margin-top: 11px;
+    margin-bottom: 102px;
+  }
+
+  .sk-panel {
+    width: 225px;
+    margin-left: 41px;
+
+    .sk-panel__header {
+      font-size: 14px;
+      color: #595959;
+      margin-bottom: 26px;
+      text-transform: uppercase;
+    }
+
+    .sk-hierarchical-menu-option__text {
+      font-size: 14px;
+      color: #595959;
+      margin-bottom: 14px;
+    }
+
+    .sk-panel__content {
+      margin-left: 50px;
+      .sk-input-filter{
+        width: 175px;
+        height: 36px;
+        border-radius: 4px;
+        border: solid .5px rgb(192, 236, 255);
+        background-color: #f5fcff;
+      }
+    }
+
+    .sk-hierarchical-menu-option__count {
+      font-size: 14px;
+      color: #c6c6c6;
+    }
+  }
+
+  .filter--dates {
+    margin-left: 0px;
+  }
+
+
+  .line{
+    width: 225px;
+    height: 1px;
+    border: solid .5px #D8D8D8;
+    margin: 45px auto 17px auto;
+  }
+}
+
+
+
+// ICONOS TITULARES
+.filter--cities, .filter--more_cities {
+  .sk-panel__header {
+    &:before {
+      content: url("../img/location.svg");
+      margin-right: 26px;
+    }
+  }
+}
+
+.filter--person{
+  .sk-panel__header {
+    &:before {
+      content: url("../img/user.svg");
+      margin-right: 26px;
+    }
+  }
+}
+
+.filter--event_date_filter{
+  .sk-panel__header {
+    &:before {
+      content: url("../img/calendar.svg");
+      margin-right: 26px;
+    }
+  }
 }
