@@ -97,9 +97,11 @@ td {
 }
 
 .Rectangle-value-1 {
-  padding: 2em;
+  width: 17px;
+  height: 23px;
   border-radius: 2px;
   background-color: #ffc625;
+  margin: 0 auto;
 }
 
 .Rectangle-value-2 {
@@ -107,6 +109,7 @@ td {
   height: 23px;
   border-radius: 2px;
   background-color: #00bbd6;
+  margin: 0 auto;
 }
 
 .Rectangle-value-3 {
@@ -114,6 +117,7 @@ td {
   height: 23px;
   border-radius: 2px;
   background-color: #a5c36d;
+  margin: 0 auto;
 }
 
 .Rectangle-value-4 {
@@ -121,6 +125,7 @@ td {
   height: 23px;
   border-radius: 2px;
   background-color: #ffc625;
+  margin: 0 auto;
 }
 
 .Rectangle-value-5 {
@@ -128,6 +133,7 @@ td {
   height: 23px;
   border-radius: 2px;
   background-color: #ffc625;
+  margin: 0 auto;
 }
 
 .CALENDAR {

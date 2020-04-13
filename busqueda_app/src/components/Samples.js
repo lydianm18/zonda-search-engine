@@ -92,6 +92,62 @@ const OrderHitsTable = (props) => {
                       <td>{hit._source.TRANSPORT_DURATION_MIN}</td>
                     </tr>
                   )
+                } else if(hit._source.DELIVERY_TYPE_CD == 2){
+                  return (
+                    <tr key={hit._id} className="table-header">
+                      <td>{hit._source.ORDER_ID}</td>
+                      <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
+                      <td>{hit._source.SHIPPINGPOINT_ID}</td>
+                      <td><div className="Rectangle-value-2">{hit._source.DELIVERY_TYPE_CD}</div></td>
+                      <td>{hit._source.LNF_SITE_CITY}</td>
+                      <td>{hit._source.CONTACT_PERSON_SIGNATURE_TXT}</td>
+                      <td>{hit._source.COMMERCIAL_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DURATION_MIN}</td>
+                    </tr>
+                  )
+                } else if(hit._source.DELIVERY_TYPE_CD == 3){
+                  return (
+                    <tr key={hit._id} className="table-header">
+                      <td>{hit._source.ORDER_ID}</td>
+                      <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
+                      <td>{hit._source.SHIPPINGPOINT_ID}</td>
+                      <td><div className="Rectangle-value-3">{hit._source.DELIVERY_TYPE_CD}</div></td>
+                      <td>{hit._source.LNF_SITE_CITY}</td>
+                      <td>{hit._source.CONTACT_PERSON_SIGNATURE_TXT}</td>
+                      <td>{hit._source.COMMERCIAL_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DURATION_MIN}</td>
+                    </tr>
+                  )
+                } else if(hit._source.DELIVERY_TYPE_CD == 4){
+                  return (
+                    <tr key={hit._id} className="table-header">
+                      <td>{hit._source.ORDER_ID}</td>
+                      <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
+                      <td>{hit._source.SHIPPINGPOINT_ID}</td>
+                      <td><div className="Rectangle-value-4">{hit._source.DELIVERY_TYPE_CD}</div></td>
+                      <td>{hit._source.LNF_SITE_CITY}</td>
+                      <td>{hit._source.CONTACT_PERSON_SIGNATURE_TXT}</td>
+                      <td>{hit._source.COMMERCIAL_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DURATION_MIN}</td>
+                    </tr>
+                  )
+                } else if(hit._source.DELIVERY_TYPE_CD == 5){
+                  return (
+                    <tr key={hit._id} className="table-header">
+                      <td>{hit._source.ORDER_ID}</td>
+                      <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
+                      <td>{hit._source.SHIPPINGPOINT_ID}</td>
+                      <td><div className="Rectangle-value-5">{hit._source.DELIVERY_TYPE_CD}</div></td>
+                      <td>{hit._source.LNF_SITE_CITY}</td>
+                      <td>{hit._source.CONTACT_PERSON_SIGNATURE_TXT}</td>
+                      <td>{hit._source.COMMERCIAL_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
+                      <td>{hit._source.TRANSPORT_DURATION_MIN}</td>
+                    </tr>
+                  )
                 } else {
                   return (
                     <tr key={hit._id} className="table-header">
