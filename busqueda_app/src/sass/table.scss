@@ -7,7 +7,7 @@
 
 .table{
     width: 90%;
-    height: 1108px;
+    // height: 1108px;
     margin-bottom: 71px;
     border-collapse: collapse;
     border: none;
@@ -22,6 +22,7 @@
 }
 
 .table-header{
+    height: 50px;
     th:nth-child(2){
         width: 15%;
     }

@@ -1,14 +1,14 @@
 .sidebar {
   width: 300px;
+  background-color: #fafafa;
   position: absolute;
   margin: 0;
-  height: auto;
+  height: 100%;
   padding: 0;
   top: 0;
   bottom: 0;
-  box-shadow: none;
-  background: none;
-  background: #fafafa;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .sidebar .logo {

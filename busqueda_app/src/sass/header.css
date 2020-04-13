@@ -1,10 +1,11 @@
-.header {
+.sk-top-bar {
   background-color: #0073AF;
   width: auto;
   margin-left: 300px;
+  position: absolute;
 }
 
-.header .sk-top-bar__content {
+.sk-top-bar .sk-top-bar__content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,7 +14,7 @@
   width: 100%;
 }
 
-.header .sk-top-bar__content .my-logo {
+.sk-top-bar .sk-top-bar__content .my-logo {
   font-size: 24px;
   color: #ffffff;
   display: -webkit-box;
