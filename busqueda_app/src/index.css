@@ -1,5 +1,5 @@
 @import url('../node_modules/searchkit/release/theme.css');
-@import './sass/sidebar.scss';
+
 
 .sk-layout__top-bar {
   height: fit-content;
@@ -83,4 +83,7 @@ code {
     monospace;
 }
 
+@import './sass/sidebar.scss';
+@import './sass/header.scss';
+@import './sass/layout.scss';
 @import './sass/table.scss';

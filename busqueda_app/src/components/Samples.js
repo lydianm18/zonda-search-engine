@@ -7,6 +7,7 @@ import {
 
 import config from "../config.json";
 
+
 const OrderHitsGridItem = (props) => {
   const {result, bemBlocks} = props;
   const source = result._source;

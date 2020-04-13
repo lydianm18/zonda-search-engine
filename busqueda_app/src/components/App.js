@@ -40,9 +40,9 @@ class App extends SearchkitComponent {
     return (
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
-          <TopBar>
-            <img className="logo" src="lh_logo.png" widht="30" height="60"></img>
-            <div className="my-logo">{config.title}</div>
+          <TopBar className="header">
+          <div className="my-logo">{config.title}</div>
+
             <div>
             <SearchBox
               autofocus={true}
@@ -52,13 +52,16 @@ class App extends SearchkitComponent {
            </div>
           </TopBar>
           <LayoutBody>
-            <SideBar>
+            <SideBar className="sidebar">
+            <img className="logo" src="lh_logo.png" widht="30" height="60"></img>
               <HierarchicalMenuFilter
+                
                 fields={config.filters.cityList.fields}
                 title={config.filters.cityList.title}
                 id={config.filters.cityList.id}
                 size={10}/>
               <InputFilter
+              
                 id={config.filters.searchboxCity.id}
                 title={config.filters.searchboxCity.title}
                 placeholder={config.filters.searchboxCity.placeholder}
@@ -81,7 +84,7 @@ class App extends SearchkitComponent {
                 max={ new Date().getTime() }
               />
             </SideBar>
-            <LayoutResults>
+            <LayoutResults className="layout">
               <ActionBar>
                 <ActionBarRow>
                   <HitsStats/>
