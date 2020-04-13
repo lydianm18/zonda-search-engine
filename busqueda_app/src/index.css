@@ -83,4 +83,4 @@ code {
     monospace;
 }
 
-
+@import './sass/table.scss';

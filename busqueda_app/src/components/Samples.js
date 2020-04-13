@@ -54,36 +54,45 @@ const OrderHitsTable = (props) => {
   const fields = config.samples.table.fields;
 
   return (
-    <div style={{width: '100%', boxSizing: 'border-box', padding: 8}}>
-      <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
-        <thead>
-          <tr>
+      <div className="table-container">
+        <table className="table">
+          <thead>
+            <tr className="table-header">
+              <th className="header">ORDER ID</th>
+              <th className="header"><img src="../img/calendar.svg" class="CALENDAR"></img>Delivery Date</th>
+              <th className="header">Shippingpoint ID</th>
+              <th className="header">Delivery Type CD</th>
+              <th className="header">Site City</th>
+              <th className="header">Contact</th>
+              <th className="header">Commercial Distance</th>
+              <th className="header">Transport Distance</th>
+              <th className="header">Transport duration</th>
+              {/*
+                fields.map((field, index) => {
+                  return(<th className="header" key={index}>{field}</th>)
+                })
+              */}
+            </tr>
+          </thead>
+          <tbody>
             {
-              fields.map((field, index) => {
-                return(<th key={index}>{field}</th>)
+              hits.map((hit) => {
+                return (
+                  <tr key={hit._id}>
+                    {
+                      fields.map((f) => {
+                        return(                   
+                          <td>{hit._source[f]}</td>                   
+                        )
+                      })
+                    }
+                  </tr>
+                )
               })
             }
-          </tr>
-        </thead>
-        <tbody>
-          {
-            hits.map((hit) => {
-              return (
-                <tr key={hit._id}>
-                  {
-                    fields.map((f) => {
-                      return(                   
-                        <td className="table">{hit._source[f]}</td>                   
-                      )
-                    })
-                  }
-                </tr>
-              )
-            })
-          }
-        </tbody>
-      </table>
-    </div>
+          </tbody>
+        </table>
+      </div>
   )  
 }
 
