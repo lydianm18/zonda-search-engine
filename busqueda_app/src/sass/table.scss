@@ -7,7 +7,6 @@
 
 .table{
     width: 90%;
-    // height: 1108px;
     margin-bottom: 71px;
     border-collapse: collapse;
     border: none;
@@ -41,10 +40,17 @@
     th:nth-child(9){
         width: 8%;
     }
+
+    &:nth-child(even){
+        background-color:#f5fcff;
+    }
 }
 
-.table-header:nth-child(even){
-    background-color:#f5fcff;
+th,
+td{
+    height: 54px;
+    text-align: center;
+    border-left: 1px solid #c6c6c6;
 }
 
 th{
@@ -53,13 +59,6 @@ th{
     font-size: 15px;
     font-weight: normal;
     color: #ffffff;
-}
-
-th,
-td{
-    height: 54px;
-    text-align: center;
-    border-left: 1px solid #c6c6c6;
 }
 
 td{
@@ -72,21 +71,21 @@ td{
     text-align: center;
     color: #000000;
     padding: 0;
-}
 
-td:nth-child(7),
-td:nth-child(8),
-td:nth-child(9){
-    color: #0073af;
-}
+    &:nth-child(7),
+    &:nth-child(8),
+    &:nth-child(9){
+        color: #0073af;
+    }
 
-td:nth-child(7)::after,
-td:nth-child(8)::after{
-    content: " m";
-}
+    &:nth-child(7)::after,
+    &:nth-child(8)::after{
+        content: " m";
+    }
 
-td:nth-child(9)::after{
-    content: " min";
+    &:nth-child(9)::after{
+        content: " min";
+    }
 }
 
 //CLASES DELIVERY TYPE CD
