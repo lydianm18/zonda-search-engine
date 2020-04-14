@@ -16,12 +16,13 @@
 
 .header{
     background-color: #0074b4;
-    color: white;
+    color: #ffffff;
     padding: 1em 2em;
 }
 
 .table-header{
     height: 50px;
+
     th:nth-child(2){
         width: 15%;
     }
@@ -51,6 +52,7 @@ td{
     height: 54px;
     text-align: center;
     border-left: 1px solid #c6c6c6;
+    border-right: 1px solid #c6c6c6;
 }
 
 th{

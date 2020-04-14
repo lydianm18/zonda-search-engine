@@ -1,0 +1,179 @@
+.cards-wrapper{ 
+    height: auto;
+    margin: 0 auto;
+}
+
+.card{
+    display: grid;
+    height: auto;
+    width: 247px;
+    border: 1px solid gray;
+    font-family: Arial;
+    font-size: 16px;
+    grid-template-columns: 109px 68px 68px;
+    grid-template-rows: 36px 187px 72px;
+    grid-template-areas: 
+        "header header header"
+        "sidebar main main"
+        "footer footer footer";
+    margin: 20px;
+
+    //TÍTULO
+    .card-title{
+        background-color: #0073af;
+        color: #fff;
+        padding: 8px 15px;
+        grid-area: header;
+    }
+
+    //PARTE IZQUIERDA
+    .left-side{
+        grid-area: sidebar;
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        padding: 0 11px;
+        border-right: 0.4px solid #979797;
+
+        .order-id{
+            font-weight: bold;
+            div:nth-child(1){
+                color: #0073af;
+            }
+
+            div:nth-child(2){
+                color: #252525;
+                margin-top: 3px;
+            }
+
+        }
+
+        .shipping-point{
+            margin-top: 15px;
+
+            div:nth-child(1){
+                font-size: 10px;
+                color: #727272;
+                font-weight: bold;
+            }
+
+            div:nth-child(2){
+                font-weight: bold;
+                margin-top: 3px;
+            }
+        }
+
+        .delivery-date{
+            margin-top: 15px;
+
+            div:nth-child(2){
+                font-weight: bold;
+                margin-top: 3px;
+            }
+        }
+    }
+
+    //PARTE DERECHA
+    .right-side{
+        grid-area: main;
+        display: flex;
+        flex-direction: column;
+        padding: 0 11px;
+
+        .delivery-type{
+            margin-top: 15px;
+
+            div:nth-child(1){
+                font-size: 10px;
+                color: #727272;
+                font-weight: bold;
+            }
+
+            div:nth-child(2){
+                float: left;
+                text-align: center;
+                margin-top: 3px;
+            }
+        }
+
+        .city{
+            margin-top: 30px;
+
+            div:nth-child(2){
+                margin-top: 3px;
+                font-size: 14px;
+                color: #252525;
+                font-weight: bold;
+            }
+        }
+
+        .contact{
+            margin-top: 15px;
+
+            div:nth-child(2){
+                margin-top: 3px;
+                font-size: 14px;
+                color: #252525;
+                font-weight: bold;
+            }
+        }
+    }
+
+    //PARTE DE ABAJO
+    .bottom-side{
+        grid-area: footer;
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        text-align: center;
+        padding-top: 10px;
+        margin: 0 7px;
+        border-top: 0.4px solid #979797;
+
+        .bottom-text{
+            
+            div:nth-child(1){
+                font-size: 10px;
+                color: #727272;
+                font-weight: bold;
+            }
+
+            div:nth-child(2){
+                color: #0073af;
+                font-weight: bold;
+                padding-top: 5px;
+            }
+
+            div:nth-child(2)::after{
+                content: " m"
+            }
+
+            .minutes::after{
+                content: " min"
+            }
+        }
+    }
+}
+
+//ICONOS
+.calendar {
+    width: 18px;
+    height: 19px;
+    object-fit: contain;
+    background-image: url(../img/calendar-card.svg);
+}
+
+.location {
+    width: 12px;
+    height: 17px;
+    object-fit: contain;
+    background-image: url(../img/location-card.svg);
+}
+
+.user {
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+    background-image: url(../img/user-card.svg);
+}

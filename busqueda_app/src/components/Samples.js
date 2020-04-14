@@ -13,20 +13,326 @@ const OrderHitsGridItem = (props) => {
   const source = result._source;
   const fields = config.samples.grid.fields;
 
-  return(
-    <div className={bemBlocks.item().mix(bemBlocks.container("item"))}>
-      <ul>
-        <h3>Order Details:</h3>
-          {
-            fields.map((field, index) => {
-              return(
-                <li key={index} className={bemBlocks.item(field)}>{field}: {source[field]}</li>
-              )
-            })
-          }
-      </ul>
-    </div>
-  )
+  /*fields.map((field, index) => {
+      return(
+        <li key={index} className={bemBlocks.item(field)}>{field}: {source[field]}</li>
+      )
+    })
+  */
+  if(source.DELIVERY_TYPE_CD == 1){
+    return(
+      <div className="cards-wrapper">
+        <div className="card">
+          <div className="card-title">
+            Order Details
+          </div>
+          <div className="left-side">
+            <div className="order-id">
+              <div>Order ID</div>
+              <div>{source.ORDER_ID}</div>
+            </div>
+            <div className="shipping-point">
+              <div>Shippingpoint ID</div>
+              <div>{source.SHIPPINGPOINT_ID}</div>
+            </div>
+            <div className="delivery-date">
+              <div className="calendar"></div>
+              <div>{source.ACTUAL_DELIVERY_DAT}</div>
+            </div>
+          </div>
+          <div className="right-side">
+            <div className="delivery-type">
+              <div>Delivery type CD</div> 
+              <div className="Rectangle-value-1">{source.DELIVERY_TYPE_CD}</div>
+            </div>
+            <div className="city">
+              <div className="location"></div>
+              <div>{source.LNF_SITE_CITY}</div>
+            </div>
+            <div className="contact">
+              <div className="user"></div>
+              <div>{source.CONTACT_PERSON_SIGNATURE_TXT}</div>
+            </div>
+          </div>
+          <div className="bottom-side">
+            <div className="bottom-text">
+              <div>Commercial distance</div>
+              <div>{source.COMMERCIAL_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div>Trasnport distance</div>
+              <div>{source.TRANSPORT_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div className="minutes">Transport duration</div>
+              <div>{source.TRANSPORT_DURATION_MIN}</div>
+            </div>
+          </div>
+        </div>
+      </div>         
+    )
+  }else if(source.DELIVERY_TYPE_CD == 2){
+    return(
+      <div className="cards-wrapper">
+        <div className="card">
+          <div className="card-title">
+            Order Details
+          </div>
+          <div className="left-side">
+            <div className="order-id">
+              <div>Order ID</div>
+              <div>{source.ORDER_ID}</div>
+            </div>
+            <div className="shipping-point">
+              <div>Shippingpoint ID</div>
+              <div>{source.SHIPPINGPOINT_ID}</div>
+            </div>
+            <div className="delivery-date">
+              <div className="calendar"></div>
+              <div>{source.ACTUAL_DELIVERY_DAT}</div>
+            </div>
+          </div>
+          <div className="right-side">
+            <div className="delivery-type">
+              <div>Delivery type CD</div> 
+              <div className="Rectangle-value-2">{source.DELIVERY_TYPE_CD}</div>
+            </div>
+            <div className="city">
+              <div className="location"></div>
+              <div>{source.LNF_SITE_CITY}</div>
+            </div>
+            <div className="contact">
+              <div className="user"></div>
+              <div>{source.CONTACT_PERSON_SIGNATURE_TXT}</div>
+            </div>
+          </div>
+          <div className="bottom-side">
+            <div className="bottom-text">
+              <div>Commercial distance</div>
+              <div>{source.COMMERCIAL_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div>Trasnport distance</div>
+              <div>{source.TRANSPORT_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div className="minutes">Transport duration</div>
+              <div>{source.TRANSPORT_DURATION_MIN}</div>
+            </div>
+          </div>
+        </div>
+      </div>         
+    )
+  } else if(source.DELIVERY_TYPE_CD == 3){
+    return(
+      <div className="cards-wrapper">
+        <div className="card">
+          <div className="card-title">
+            Order Details
+          </div>
+          <div className="left-side">
+            <div className="order-id">
+              <div>Order ID</div>
+              <div>{source.ORDER_ID}</div>
+            </div>
+            <div className="shipping-point">
+              <div>Shippingpoint ID</div>
+              <div>{source.SHIPPINGPOINT_ID}</div>
+            </div>
+            <div className="delivery-date">
+              <div className="calendar"></div>
+              <div>{source.ACTUAL_DELIVERY_DAT}</div>
+            </div>
+          </div>
+          <div className="right-side">
+            <div className="delivery-type">
+              <div>Delivery type CD</div> 
+              <div className="Rectangle-value-3">{source.DELIVERY_TYPE_CD}</div>
+            </div>
+            <div className="city">
+              <div className="location"></div>
+              <div>{source.LNF_SITE_CITY}</div>
+            </div>
+            <div className="contact">
+              <div className="user"></div>
+              <div>{source.CONTACT_PERSON_SIGNATURE_TXT}</div>
+            </div>
+          </div>
+          <div className="bottom-side">
+            <div className="bottom-text">
+              <div>Commercial distance</div>
+              <div>{source.COMMERCIAL_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div>Trasnport distance</div>
+              <div>{source.TRANSPORT_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div className="minutes">Transport duration</div>
+              <div>{source.TRANSPORT_DURATION_MIN}</div>
+            </div>
+          </div>
+        </div>
+      </div>         
+    )
+  } else if(source.DELIVERY_TYPE_CD == 4){
+    return(
+      <div className="cards-wrapper">
+        <div className="card">
+          <div className="card-title">
+            Order Details
+          </div>
+          <div className="left-side">
+            <div className="order-id">
+              <div>Order ID</div>
+              <div>{source.ORDER_ID}</div>
+            </div>
+            <div className="shipping-point">
+              <div>Shippingpoint ID</div>
+              <div>{source.SHIPPINGPOINT_ID}</div>
+            </div>
+            <div className="delivery-date">
+              <div className="calendar"></div>
+              <div>{source.ACTUAL_DELIVERY_DAT}</div>
+            </div>
+          </div>
+          <div className="right-side">
+            <div className="delivery-type">
+              <div>Delivery type CD</div> 
+              <div className="Rectangle-value-4">{source.DELIVERY_TYPE_CD}</div>
+            </div>
+            <div className="city">
+              <div className="location"></div>
+              <div>{source.LNF_SITE_CITY}</div>
+            </div>
+            <div className="contact">
+              <div className="user"></div>
+              <div>{source.CONTACT_PERSON_SIGNATURE_TXT}</div>
+            </div>
+          </div>
+          <div className="bottom-side">
+            <div className="bottom-text">
+              <div>Commercial distance</div>
+              <div>{source.COMMERCIAL_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div>Trasnport distance</div>
+              <div>{source.TRANSPORT_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div className="minutes">Transport duration</div>
+              <div>{source.TRANSPORT_DURATION_MIN}</div>
+            </div>
+          </div>
+        </div>
+      </div>         
+    )
+  } else if(source.DELIVERY_TYPE_CD == 5){
+    return(
+      <div className="cards-wrapper">
+        <div className="card">
+          <div className="card-title">
+            Order Details
+          </div>
+          <div className="left-side">
+            <div className="order-id">
+              <div>Order ID</div>
+              <div>{source.ORDER_ID}</div>
+            </div>
+            <div className="shipping-point">
+              <div>Shippingpoint ID</div>
+              <div>{source.SHIPPINGPOINT_ID}</div>
+            </div>
+            <div className="delivery-date">
+              <div className="calendar"></div>
+              <div>{source.ACTUAL_DELIVERY_DAT}</div>
+            </div>
+          </div>
+          <div className="right-side">
+            <div className="delivery-type">
+              <div>Delivery type CD</div> 
+              <div className="Rectangle-value-5">{source.DELIVERY_TYPE_CD}</div>
+            </div>
+            <div className="city">
+              <div className="location"></div>
+              <div>{source.LNF_SITE_CITY}</div>
+            </div>
+            <div className="contact">
+              <div className="user"></div>
+              <div>{source.CONTACT_PERSON_SIGNATURE_TXT}</div>
+            </div>
+          </div>
+          <div className="bottom-side">
+            <div className="bottom-text">
+              <div>Commercial distance</div>
+              <div>{source.COMMERCIAL_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div>Trasnport distance</div>
+              <div>{source.TRANSPORT_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div className="minutes">Transport duration</div>
+              <div>{source.TRANSPORT_DURATION_MIN}</div>
+            </div>
+          </div>
+        </div>
+      </div>         
+    )
+  } else{
+    return(
+      <div className="cards-wrapper">
+        <div className="card">
+          <div className="card-title">
+            Order Details
+          </div>
+          <div className="left-side">
+            <div className="order-id">
+              <div>Order ID</div>
+              <div>{source.ORDER_ID}</div>
+            </div>
+            <div className="shipping-point">
+              <div>Shippingpoint ID</div>
+              <div>{source.SHIPPINGPOINT_ID}</div>
+            </div>
+            <div className="delivery-date">
+              <div className="calendar"></div>
+              <div>{source.ACTUAL_DELIVERY_DAT}</div>
+            </div>
+          </div>
+          <div className="right-side">
+            <div className="delivery-type">
+              <div>Delivery type CD</div> 
+              <div>{source.DELIVERY_TYPE_CD}</div>
+            </div>
+            <div className="city">
+              <div className="location"></div>
+              <div>-</div>
+            </div>
+            <div className="contact">
+              <div className="user"></div>
+              <div>-</div>
+            </div>
+          </div>
+          <div className="bottom-side">
+            <div className="bottom-text">
+              <div>Commercial distance</div>
+              <div>{source.COMMERCIAL_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div>Trasnport distance</div>
+              <div>{source.TRANSPORT_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div className="minutes">Transport duration</div>
+              <div>{source.TRANSPORT_DURATION_MIN}</div>
+            </div>
+          </div>
+        </div>
+      </div>         
+    )
+  }
+  
 }
 
 const OrderHitsListItem = (props)=> {
@@ -59,8 +365,8 @@ const OrderHitsTable = (props) => {
         <table className="table">
           <thead>
             <tr className="table-header">
-              <th className="header">ORDER ID</th>
-              <th className="header"><span className="CALENDAR"></span>Delivery Date</th>
+              <th className="header">Order ID</th>
+              <th className="header icon-text"><span className="CALENDAR"></span>Delivery Date</th>
               <th className="header">Shippingpoint ID</th>
               <th className="header">Delivery Type CD</th>
               <th className="header"><span className="LOCATION"></span>Site City</th>
