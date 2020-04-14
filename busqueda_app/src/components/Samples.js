@@ -7,7 +7,7 @@ import {
 
 import config from "../config.json";
 
-
+//VISTA DE LOS RESULTADOS EN FORMA DE CARTAS
 const OrderHitsGridItem = (props) => {
   const {result, bemBlocks} = props;
   const source = result._source;
@@ -19,6 +19,8 @@ const OrderHitsGridItem = (props) => {
       )
     })
   */
+
+  //CONDICIONAL PARA PINTAR EL RECUADRO DE COLOR SEGÚN EL DELIVERY TYPE
   if(source.DELIVERY_TYPE_CD == 1){
     return(
       <div className="cards-wrapper">
@@ -335,7 +337,8 @@ const OrderHitsGridItem = (props) => {
   
 }
 
-const OrderHitsListItem = (props)=> {
+//VISTA DE LOS RESULTADOS EN FORMA DE LISTA
+/*const OrderHitsListItem = (props)=> {
   const {bemBlocks, result} = props  
   const source = result._source
   const fields = config.samples.list.fields;
@@ -354,8 +357,9 @@ const OrderHitsListItem = (props)=> {
       </div>
     </div>
   )
-}
+}*/
 
+//VISTA DE LOS RESULTADOS EN FORMA DE TABLA
 const OrderHitsTable = (props) => {  
   const {hits} = props;
   const fields = config.samples.table.fields;
@@ -523,7 +527,6 @@ class Samples extends SearchkitComponent {
             hitsPerPage={12} 
             hitComponents={[
               {key: config.samples.grid.key, title: config.samples.grid.title, itemComponent: OrderHitsGridItem, defaultOption:true},
-              {key: config.samples.list.key, title: config.samples.list.title, itemComponent: OrderHitsListItem},
               {key: config.samples.table.key, title: config.samples.table.title, listComponent: OrderHitsTable}
             ]}
             scrollTo="body"
