@@ -7,14 +7,10 @@
 
 .sk-layout__body {
   margin-top: 80px;
-  background: #fafafa;
 }
 
 
 
-.sk-search-box {
-  margin-top: 0.5em;
-}
 
 h3 {
   color:#2a4466;
@@ -80,6 +76,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html, body{
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+  margin: 0;
+}
 
 code {
   font-family: Arial, Helvetica, sans-serif
@@ -90,3 +92,4 @@ code {
 @import './sass/header.css';
 @import './sass/layout.css';
 @import './sass/table.css';
+@import './sass/actions.css';
