@@ -1,0 +1,57 @@
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 158px;
+}
+
+.pagination .sk-toggle {
+  width: 387px;
+  min-height: 36px;
+  border-radius: 4px;
+  border-right: solid 1px #0073af;
+}
+
+.pagination .sk-toggle .sk-toggle-option {
+  border: 1px solid #0073af;
+  font-size: 14px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #0073af;
+  border-right: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.pagination .sk-select {
+  min-width: 177px;
+  min-height: 36px;
+  border-radius: 4px;
+  border: solid 1px #0073af;
+}
+
+.pagination .sk-select select {
+  height: 34px;
+  font-weight: normal;
+  color: #0073af;
+  border: none;
+}
+
+.pagination .sk-select:after {
+  border: solid #0073af;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-top: -4px;
+}
+/*# sourceMappingURL=pagination.css.map */

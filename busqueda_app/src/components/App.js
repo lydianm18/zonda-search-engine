@@ -108,7 +108,9 @@ class App extends SearchkitComponent {
                 <HitsStats/>
               </ActionBar>
               <Samples />
-              <Pagination showNumbers={true}/>
+              <div className="pagination">
+                <Pagination showNumbers={true}/>
+              </div>
             </LayoutResults>
           </LayoutBody>
         </Layout>

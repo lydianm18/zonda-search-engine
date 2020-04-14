@@ -1,0 +1,49 @@
+.pagination{
+    display: flex;
+    margin-top: 158px;
+    
+    .sk-toggle {
+        width: 387px;
+        min-height: 36px;
+        border-radius: 4px;
+        border-right: solid 1px #0073af;
+
+        .sk-toggle-option {
+            border: 1px solid #0073af;
+            font-size: 14px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0073af;
+            border-right: none;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+    }
+
+    .sk-select {
+        min-width: 177px;
+        min-height: 36px;
+        border-radius: 4px;
+        border: solid 1px #0073af;
+
+        select {
+            height: 34px;
+            font-weight: normal;
+            color: #0073af;
+            border: none;
+        }
+
+        &:after {
+            border: solid #0073af;
+            border-width: 0 1px 1px 0;
+            display: inline-block;
+            padding: 3px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            margin-top: -4px;
+
+        }
+    }
+}

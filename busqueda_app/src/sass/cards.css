@@ -10,6 +10,12 @@
 }
 
 .cards-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   height: auto;
   margin: 0 20px 20px 0;
 }
