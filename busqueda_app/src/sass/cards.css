@@ -1,6 +1,11 @@
 .cards-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   height: auto;
-  margin: 0 auto;
 }
 
 .card {
@@ -8,7 +13,6 @@
   display: grid;
   height: auto;
   width: 247px;
-  border: 1px solid gray;
   font-family: Arial;
   font-size: 16px;
   -ms-grid-columns: 109px 68px 68px;
@@ -17,6 +21,8 @@
       grid-template-rows: 36px 187px 72px;
       grid-template-areas: "header header header" "sidebar main main" "footer footer footer";
   margin: 20px;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.32);
+          box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.32);
 }
 
 .card .card-title {

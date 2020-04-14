@@ -1,13 +1,14 @@
 .cards-wrapper{ 
+    display: flex;
+    justify-content: flex-start;
     height: auto;
-    margin: 0 auto;
+    //margin: 0 auto;
 }
 
 .card{
     display: grid;
     height: auto;
     width: 247px;
-    border: 1px solid gray;
     font-family: Arial;
     font-size: 16px;
     grid-template-columns: 109px 68px 68px;
@@ -17,6 +18,7 @@
         "sidebar main main"
         "footer footer footer";
     margin: 20px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.32);
 
     //TÍTULO
     .card-title{

@@ -66,8 +66,8 @@ const OrderHitsGridItem = (props) => {
               <div>{source.TRANSPORT_DISTANCE_M}</div>
             </div>
             <div className="bottom-text">
-              <div className="minutes">Transport duration</div>
-              <div>{source.TRANSPORT_DURATION_MIN}</div>
+              <div>Transport duration</div>
+              <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
             </div>
           </div>
         </div>
@@ -118,8 +118,8 @@ const OrderHitsGridItem = (props) => {
               <div>{source.TRANSPORT_DISTANCE_M}</div>
             </div>
             <div className="bottom-text">
-              <div className="minutes">Transport duration</div>
-              <div>{source.TRANSPORT_DURATION_MIN}</div>
+              <div>Transport duration</div>
+              <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
             </div>
           </div>
         </div>
@@ -170,8 +170,8 @@ const OrderHitsGridItem = (props) => {
               <div>{source.TRANSPORT_DISTANCE_M}</div>
             </div>
             <div className="bottom-text">
-              <div className="minutes">Transport duration</div>
-              <div>{source.TRANSPORT_DURATION_MIN}</div>
+              <div>Transport duration</div>
+              <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
             </div>
           </div>
         </div>
@@ -222,8 +222,8 @@ const OrderHitsGridItem = (props) => {
               <div>{source.TRANSPORT_DISTANCE_M}</div>
             </div>
             <div className="bottom-text">
-              <div className="minutes">Transport duration</div>
-              <div>{source.TRANSPORT_DURATION_MIN}</div>
+              <div>Transport duration</div>
+              <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
             </div>
           </div>
         </div>
@@ -274,8 +274,8 @@ const OrderHitsGridItem = (props) => {
               <div>{source.TRANSPORT_DISTANCE_M}</div>
             </div>
             <div className="bottom-text">
-              <div className="minutes">Transport duration</div>
-              <div>{source.TRANSPORT_DURATION_MIN}</div>
+              <div>Transport duration</div>
+              <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
             </div>
           </div>
         </div>
@@ -326,8 +326,8 @@ const OrderHitsGridItem = (props) => {
               <div>{source.TRANSPORT_DISTANCE_M}</div>
             </div>
             <div className="bottom-text">
-              <div className="minutes">Transport duration</div>
-              <div>{source.TRANSPORT_DURATION_MIN}</div>
+              <div>Transport duration</div>
+              <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
             </div>
           </div>
         </div>
