@@ -58,19 +58,19 @@
   background-color: #f5fcff;
 }
 
+th,
+td {
+  height: 54px;
+  text-align: center;
+  border-left: 1px solid #c6c6c6;
+}
+
 th {
   height: 17px;
   font-family: Arial;
   font-size: 15px;
   font-weight: normal;
   color: #ffffff;
-}
-
-th,
-td {
-  height: 54px;
-  text-align: center;
-  border-left: 1px solid #c6c6c6;
 }
 
 td {
@@ -85,14 +85,11 @@ td {
   padding: 0;
 }
 
-td:nth-child(7),
-td:nth-child(8),
-td:nth-child(9) {
+td:nth-child(7), td:nth-child(8), td:nth-child(9) {
   color: #0073af;
 }
 
-td:nth-child(7)::after,
-td:nth-child(8)::after {
+td:nth-child(7)::after, td:nth-child(8)::after {
   content: " m";
 }
 
