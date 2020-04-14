@@ -520,7 +520,7 @@ class Samples extends SearchkitComponent {
     return (
       <div>
           <ViewSwitcherHits
-            hitsPerPage={16} 
+            hitsPerPage={12} 
             hitComponents={[
               {key: config.samples.grid.key, title: config.samples.grid.title, itemComponent: OrderHitsGridItem, defaultOption:true},
               {key: config.samples.list.key, title: config.samples.list.title, itemComponent: OrderHitsListItem},

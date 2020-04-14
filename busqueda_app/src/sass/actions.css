@@ -1,0 +1,101 @@
+.sk-action-bar-row {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.sk-action-bar-row .sk-search-box {
+  width: 356px;
+  height: 36px;
+  border-radius: 4px;
+  border: solid .5px #c0ecff;
+  background-color: #f5fcff;
+}
+
+.sk-action-bar-row .sk-search-box .is-focused {
+  color: #959595;
+}
+
+.sk-action-bar-row .sk-search-box input.sk-search-box__text {
+  font-size: 14px;
+  color: #959595;
+}
+
+.sk-action-bar-row .sk-search-box input.sk-search-box__text::-webkit-input-placeholder {
+  color: #959595;
+}
+
+.sk-action-bar-row .sk-search-box input.sk-search-box__text:-ms-input-placeholder {
+  color: #959595;
+}
+
+.sk-action-bar-row .sk-search-box input.sk-search-box__text::-ms-input-placeholder {
+  color: #959595;
+}
+
+.sk-action-bar-row .sk-search-box input.sk-search-box__text::placeholder {
+  color: #959595;
+}
+
+.sk-action-bar-row .actions-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sk-action-bar-row .actions-2 .sk-toggle {
+  width: 182px;
+  min-height: 36px;
+  border-radius: 4px;
+}
+
+.sk-action-bar-row .actions-2 .sk-toggle .sk-toggle-option {
+  font-size: 14px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #0073af;
+  border-right: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.sk-action-bar-row .actions-2 .sk-select {
+  min-width: 177px;
+  min-height: 36px;
+  border-radius: 4px;
+  border: solid 1px #0073af;
+}
+
+.sk-action-bar-row .actions-2 .sk-select select {
+  height: 34px;
+  font-weight: normal;
+  color: #0073af;
+}
+
+.sk-action-bar-row .actions-2 .sk-select:after {
+  border: solid #0073af;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-top: -4px;
+}
+
+.sk-hits-stats__info {
+  font-size: 19px;
+  color: #595959;
+}
+
+.is-active {
+  color: white !important;
+}
+/*# sourceMappingURL=actions.css.map */

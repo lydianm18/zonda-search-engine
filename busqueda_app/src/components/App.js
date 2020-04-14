@@ -36,6 +36,9 @@ class App extends SearchkitComponent {
 
   onChange = date => this.setState({ date })
 
+
+
+
   render(){
     return (
       <SearchkitProvider searchkit={searchkit}>
@@ -92,15 +95,17 @@ class App extends SearchkitComponent {
               placeholder={config.searchbox.placeholder}
               queryFields={config.searchbox.queryFields}/>
            </div>
-                  <HitsStats/>
+                 <div className="actions-2">
                   <ViewSwitcherToggle/>
                   <SortingSelector options={config.sortingSelector.options}
                   />
+                  </div>
                 </ActionBarRow>
                 <ActionBarRow>
                   <SelectedFilters/>
                   <ResetFilters/>
                 </ActionBarRow>
+                <HitsStats/>
               </ActionBar>
               <Samples />
               <Pagination showNumbers={true}/>
