@@ -1,22 +1,31 @@
+.sk-hits-grid, .sk-hits-list {
+    margin: 0;
+}
+.sk-hits-grid{
+    column-gap: 10px;
+  row-gap: 15px;
+  margin-right: -37px;
+}
 .cards-wrapper{ 
     height: auto;
-    margin: 0 auto;
+    margin: 0 20px 20px 0;
+    
 }
 
 .card{
     display: grid;
     height: auto;
-    width: 247px;
-    border: 1px solid gray;
+    width: 248px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.32);
     font-family: Arial;
-    font-size: 16px;
+    font-size: 15px;
     grid-template-columns: 109px 68px 68px;
     grid-template-rows: 36px 187px 72px;
     grid-template-areas: 
         "header header header"
         "sidebar main main"
         "footer footer footer";
-    margin: 20px;
+    // margin: 20px;
 
     //TÍTULO
     .card-title{
@@ -24,6 +33,7 @@
         color: #fff;
         padding: 8px 15px;
         grid-area: header;
+        width: 248px;
     }
 
     //PARTE IZQUIERDA
