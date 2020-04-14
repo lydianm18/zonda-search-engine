@@ -59,7 +59,7 @@ const OrderHitsTable = (props) => {
         <table className="table">
           <thead>
             <tr className="table-header">
-              <th className="header">ORDER ID</th>
+              <th className="header">Order ID</th>
               <th className="header"><span className="CALENDAR"></span>Delivery Date</th>
               <th className="header">Shippingpoint ID</th>
               <th className="header">Delivery Type CD</th>
