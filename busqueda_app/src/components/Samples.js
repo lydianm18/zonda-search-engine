@@ -3,6 +3,7 @@ import {
   SearchkitComponent,
   NoHits,
   ViewSwitcherHits,
+  HitItemProps
 } from "searchkit";
 
 import config from "../config.json";
@@ -473,44 +474,6 @@ const OrderHitsTable = (props) => {
                     </tr>
                   )
                 }
-                
-                /*return (
-                  <tr key={hit._id} className="table-header">
-                    {
-                      fields.map((f) => {                  
-                        console.log(hit._source.DELIVERY_TYPE_CD)
-                        if(hit._source.DELIVERY_TYPE_CD === 1){
-                          return(                   
-                            <td><div className="Rectangle-value-1">{hit._source[f]}</div></td>                   
-                          )
-                        } else if(hit._source.DELIVERY_TYPE_CD === 2){
-                          return(                   
-                            <td><div className="Rectangle-value-2">{hit._source[f]}</div></td>                   
-                          )
-                        } else if(hit._source.DELIVERY_TYPE_CD === 3){
-                          return(                   
-                            <td><div className="Rectangle-value-3">{hit._source[f]}</div></td>                   
-                          )
-                        } else if(hit._source.DELIVERY_TYPE_CD === 4){
-                          return(                   
-                            <td><div className="Rectangle-value-4">{hit._source[f]}</div></td>                   
-                          )
-                        } else if(hit._source.DELIVERY_TYPE_CD === 5){
-                          return(                   
-                            <td><div className="Rectangle-value-5">{hit._source[f]}</div></td>                   
-                          )
-                        } else {
-                          return(                   
-                            <td>{hit._source[f]}</td>                   
-                          )
-                        }
-                        {return(                   
-                          <td>{hit._source[f]}</td>                   
-                        )}
-                      })
-                    }
-                  </tr>
-                )*/
               })
             }
           </tbody>
@@ -524,7 +487,7 @@ class Samples extends SearchkitComponent {
     return (
       <div>
           <ViewSwitcherHits
-            hitsPerPage={12} 
+            hitsPerPage={12}
             hitComponents={[
               {key: config.samples.grid.key, title: config.samples.grid.title, itemComponent: OrderHitsGridItem, defaultOption:true},
               {key: config.samples.table.key, title: config.samples.table.title, listComponent: OrderHitsTable}

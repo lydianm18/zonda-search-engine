@@ -7,7 +7,7 @@
     },
     "filters": {
         "cityList": {
-            "fields": ["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID"],
+            "fields": ["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID.keyword"],
             "title": "Cities",
             "id": "cities"
         },
