@@ -93,7 +93,8 @@ class App extends SearchkitComponent {
               autofocus={true}
               searchOnChange={true}
               placeholder={config.searchbox.placeholder}
-              queryFields={config.searchbox.queryFields}/>
+              prefixQueryFields={config.searchbox.queryFields}
+              />
            </div>
                  <div className="actions-2">
                   <ViewSwitcherToggle/>
