@@ -62,7 +62,7 @@ class App extends SearchkitComponent {
                 title={config.filters.cityList.title}
                 id={config.filters.cityList.id}
               size={10}/>*/}
-              
+
                 <div className="line"></div>
               <InputFilter
               
@@ -116,6 +116,7 @@ class App extends SearchkitComponent {
               </ActionBar>
               <Samples />
               <div className="pagination">
+                
                 <Pagination showNumbers={true}/>
               </div>
             </LayoutResults>
