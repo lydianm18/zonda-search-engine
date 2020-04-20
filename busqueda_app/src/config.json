@@ -1,5 +1,5 @@
 {
-    "endpoint": "https://search-pedidos-dev-4rtoq2jtrckjskj25rghj3t5fy.eu-west-1.es.amazonaws.com/pedidos",
+    "endpoint": "https://search-pedidos-dev-4rtoq2jtrckjskj25rghj3t5fy.eu-west-1.es.amazonaws.com/all_pedidos",
     "title": "Orders Search Engine",
     "searchbox": {
         "queryFields": ["ORDER_ID","SHIPPINGPOINT_ID"],
