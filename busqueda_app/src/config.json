@@ -6,6 +6,11 @@
         "placeholder": "Order ID or Shipping point"
     },
     "filters": {
+        "cityCheckbox": {
+            "fields": "LNF_SITE_CITY.keyword",
+            "title": "Cities",
+            "id": "cities"
+        },
         "cityList": {
             "fields": ["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID.keyword"],
             "title": "Cities",

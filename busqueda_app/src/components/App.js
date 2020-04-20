@@ -19,7 +19,8 @@ import {
   SortingSelector,
   InputFilter,
   ViewSwitcherToggle,
-  RangeFilter
+  RangeFilter,
+  RefinementListFilter
 } from "searchkit";
 import DateRangeFilter from './DateRangeFilter'
 import Samples from './Samples';
@@ -36,9 +37,6 @@ class App extends SearchkitComponent {
 
   onChange = date => this.setState({ date })
 
-
-
-
   render(){
     return (
       <SearchkitProvider searchkit={searchkit}>
@@ -51,12 +49,20 @@ class App extends SearchkitComponent {
           <LayoutBody>
             <SideBar className="sidebar">
             <img className="logo" src="lh_logo.png" widht="30" height="60"></img>
-              <HierarchicalMenuFilter
-                
+
+              <RefinementListFilter
+                id={config.filters.cityCheckbox.id}
+                title={config.filters.cityCheckbox.title}
+                field={config.filters.cityCheckbox.fields}
+                operator="OR"
+                size={15}/>
+
+              {/*<HierarchicalMenuFilter
                 fields={config.filters.cityList.fields}
                 title={config.filters.cityList.title}
                 id={config.filters.cityList.id}
-                size={10}/>
+              size={10}/>*/}
+              
                 <div className="line"></div>
               <InputFilter
               
