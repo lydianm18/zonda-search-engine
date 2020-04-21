@@ -1,7 +1,3 @@
-.sk-item-list-option {
-  margin-bottom: 7px;
-}
-
 input[type="checkbox"] + div:before {
   color: #595959;
 }
@@ -9,10 +5,42 @@ input[type="checkbox"] + div:before {
 input[type="checkbox"]:checked + div.sk-item-list-option__text,
 input[type="checkbox"]:checked + div.sk-item-list-option__text + div.sk-item-list-option__count {
   color: #0074b4;
+  font-weight: bold;
 }
 
-input[type="checkbox"] + div.sk-item-list-option__text:before {
-  border: 3px solid #0074b4;
+.sk-item-list-option {
+  margin-bottom: 7px;
+  position: relative;
+}
+
+input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+input[type="checkbox"] + div {
+  cursor: pointer;
+}
+
+input[type="checkbox"] + div:before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 1px solid #0074b4;
+  margin-top: 5px;
+  cursor: pointer;
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 7px;
+  border-radius: 3px;
+}
+
+input[type="checkbox"]:checked + div:before {
+  -webkit-box-shadow: inset 0 0 1px 1.5px white;
+          box-shadow: inset 0 0 1px 1.5px white;
+  background: #0074b4;
 }
 
 .sk-refinement-list__view-more-action {

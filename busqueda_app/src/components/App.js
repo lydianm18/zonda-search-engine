@@ -4,7 +4,6 @@ import {
   HitsStats,
   SearchkitComponent,
   SelectedFilters,
-  HierarchicalMenuFilter,
   Pagination,
   ResetFilters,
   SearchkitManager,
@@ -56,13 +55,6 @@ class App extends SearchkitComponent {
                 field={config.filters.cityCheckbox.fields}
                 operator="OR"
                 size={15}/>
-
-              {/*<HierarchicalMenuFilter
-                fields={config.filters.cityList.fields}
-                title={config.filters.cityList.title}
-                id={config.filters.cityList.id}
-              size={10}/>*/}
-
                 <div className="line"></div>
               <InputFilter
               
