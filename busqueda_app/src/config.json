@@ -8,7 +8,7 @@
     "filters": {
         "cityCheckbox": {
             "fields": "LNF_SITE_CITY.keyword",
-            "title": "Cities",
+            "title": "Top Cities",
             "id": "cities"
         },
         "cityList": {

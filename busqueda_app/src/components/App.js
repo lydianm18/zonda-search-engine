@@ -85,13 +85,13 @@ class App extends SearchkitComponent {
               <ActionBar>
                 <ActionBarRow>
                 <div>
-            <SearchBox
-              autofocus={true}
-              searchOnChange={true}
-              placeholder={config.searchbox.placeholder}
-              prefixQueryFields={config.searchbox.queryFields}
-              />
-           </div>
+                <SearchBox
+                  autofocus={true}
+                  searchOnChange={true}
+                  placeholder={config.searchbox.placeholder}
+                  prefixQueryFields={config.searchbox.queryFields}
+                  />
+              </div>
                  <div className="actions-2">
                   <ViewSwitcherToggle/>
                   <SortingSelector options={config.sortingSelector.options}
@@ -106,7 +106,6 @@ class App extends SearchkitComponent {
               </ActionBar>
               <Samples />
               <div className="pagination">
-                
                 <Pagination showNumbers={true}/>
               </div>
             </LayoutResults>
