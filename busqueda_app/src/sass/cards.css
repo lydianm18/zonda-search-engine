@@ -188,7 +188,7 @@
   content: " m";
 }
 
-.card .bottom-side .bottom-text .minutes::after {
+.card .bottom-side .bottom-text div.minutes::after {
   content: " min";
 }
 
