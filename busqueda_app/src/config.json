@@ -18,7 +18,7 @@
         },
         "searchboxCity": {
             "title": "More cities",
-            "placeholder": "Search cities",
+            "placeholder": "Search city",
             "fields": "LNF_SITE_CITY",
             "id": "more_cities"
         },
