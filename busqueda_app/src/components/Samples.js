@@ -12,7 +12,7 @@ import config from "../config.json";
 const OrderHitsGridItem = (props) => {
   const {result, bemBlocks} = props;
   const source = result._source;
-  const fields = config.samples.grid.fields;
+  //const fields = config.samples.grid.fields;
 
   /*fields.map((field, index) => {
       return(
@@ -363,7 +363,7 @@ const OrderHitsGridItem = (props) => {
 //VISTA DE LOS RESULTADOS EN FORMA DE TABLA
 const OrderHitsTable = (props) => {  
   const {hits} = props;
-  const fields = config.samples.table.fields;
+  //const fields = config.samples.table.fields;
 
   return (
       <div className="table-container">

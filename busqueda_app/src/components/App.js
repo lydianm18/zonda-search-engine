@@ -42,8 +42,6 @@ class App extends SearchkitComponent {
         <Layout>
           <TopBar className="header">
           <div className="my-logo">{config.title}</div>
-
-
           </TopBar>
           <LayoutBody>
             <SideBar className="sidebar">
@@ -54,10 +52,10 @@ class App extends SearchkitComponent {
                 title={config.filters.cityCheckbox.title}
                 field={config.filters.cityCheckbox.fields}
                 operator="OR"
-                size={15}/>
-                <div className="line"></div>
-              <InputFilter
-              
+                size={10}
+                />
+                
+              <InputFilter             
                 id={config.filters.searchboxCity.id}
                 title={config.filters.searchboxCity.title}
                 placeholder={config.filters.searchboxCity.placeholder}
