@@ -4,7 +4,6 @@ import {
   HitsStats,
   SearchkitComponent,
   SelectedFilters,
-  HierarchicalMenuFilter,
   Pagination,
   ResetFilters,
   SearchkitManager,
