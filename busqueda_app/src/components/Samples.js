@@ -3,7 +3,6 @@ import {
   SearchkitComponent,
   NoHits,
   ViewSwitcherHits,
-  HitItemProps
 } from "searchkit";
 
 import config from "../config.json";
