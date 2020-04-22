@@ -20,7 +20,7 @@ const OrderHitsGridItem = (props) => {
       )
     })
   */
-
+    
   //CONDICIONAL PARA PINTAR EL RECUADRO DE COLOR SEGÚN EL DELIVERY TYPE
   if(source.DELIVERY_TYPE_CD == 1){
     return(
@@ -488,6 +488,7 @@ class Samples extends SearchkitComponent {
       <div>
           <ViewSwitcherHits
             hitsPerPage={12}
+            highlightFields={["ORDER_ID"]}
             hitComponents={[
               {key: config.samples.grid.key, title: config.samples.grid.title, itemComponent: OrderHitsGridItem, defaultOption:true},
               {key: config.samples.table.key, title: config.samples.table.title, listComponent: OrderHitsTable}
