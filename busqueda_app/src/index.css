@@ -93,6 +93,7 @@ code {
 @import './sass/layout.css';
 @import './sass/table.css';
 @import './sass/cards.css';
+@import './sass/cardDetails.css';
 
 @import './sass/actions.css';
 @import './sass/pagination.css';

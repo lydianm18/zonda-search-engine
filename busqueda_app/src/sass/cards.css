@@ -9,6 +9,10 @@
   margin-right: -37px;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .cards-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;

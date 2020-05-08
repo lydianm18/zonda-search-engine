@@ -43,12 +43,14 @@ const OrderHitsGridItem = (props) => {
   }
 
   return(
-      <Link to={`card-details/${source.ORDER_ID}`}>
+      
       <div className="cards-wrapper">
         <div className="card">
-          <div className="card-title">
-            Order Details
-          </div>
+          <Link to={`card-details/${source.ORDER_ID}`} className="link">
+            <div className="card-title">
+              Order Details
+            </div>
+          </Link>
           <div className="left-side">
             <div className="order-id">
               <div>Order ID</div>
@@ -93,7 +95,6 @@ const OrderHitsGridItem = (props) => {
           </div>
         </div>
       </div>
-    </Link>
   )
 }
 
