@@ -1,5 +1,4 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {
   SearchBox,
   HitsStats,
@@ -24,7 +23,6 @@ import {
 } from "searchkit";
 import DateRangeFilter from './DateRangeFilter';
 import Samples from './Samples';
-import CardDetails from './CardDetails'
 import config from "../config.json";
 
 
