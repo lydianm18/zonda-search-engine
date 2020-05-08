@@ -43,81 +43,60 @@ const OrderHitsGridItem = (props) => {
   }
 
   return(
-    <Link to="/card-details">
+      <Link to={`card-details/${source.ORDER_ID}`}>
       <div className="cards-wrapper">
-          <div className="card">
-            <div className="card-title">
-              Order Details
+        <div className="card">
+          <div className="card-title">
+            Order Details
+          </div>
+          <div className="left-side">
+            <div className="order-id">
+              <div>Order ID</div>
+              <div>{source.ORDER_ID}</div>
             </div>
-            <div className="left-side">
-              <div className="order-id">
-                <div>Order ID</div>
-                <div>{source.ORDER_ID}</div>
-              </div>
-              <div className="shipping-point">
-                <div>Shippingpoint ID</div>
-                <div>{source.SHIPPINGPOINT_ID}</div>
-              </div>
-              <div className="delivery-date">
-                <div className="calendar"></div>
-                <div>{source.ACTUAL_DELIVERY_DAT}</div>
-              </div>
+            <div className="shipping-point">
+              <div>Shippingpoint ID</div>
+              <div>{source.SHIPPINGPOINT_ID}</div>
             </div>
-            <div className="right-side">
-              <div className="delivery-type">
-                <div>Delivery type CD</div> 
-                <DeliveryType />
-              </div>
-              <div className="city">
-                <div className="location"></div>
-                <div>{source.LNF_SITE_CITY}</div>
-              </div>
-              <div className="contact">
-                <div className="user"></div>
-                <div>{source.CONTACT_PERSON_SIGNATURE_TXT}</div>
-              </div>
+            <div className="delivery-date">
+              <div className="calendar"></div>
+              <div>{source.ACTUAL_DELIVERY_DAT}</div>
             </div>
-            <div className="bottom-side">
-              <div className="bottom-text">
-                <div>Commercial distance</div>
-                <div>{source.COMMERCIAL_DISTANCE_M}</div>
-              </div>
-              <div className="bottom-text">
-                <div>Trasnport distance</div>
-                <div>{source.TRANSPORT_DISTANCE_M}</div>
-              </div>
-              <div className="bottom-text">
-                <div>Transport duration</div>
-                <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
-              </div>
+          </div>
+          <div className="right-side">
+            <div className="delivery-type">
+              <div>Delivery type CD</div> 
+              <DeliveryType />
+            </div>
+            <div className="city">
+              <div className="location"></div>
+              <div>{source.LNF_SITE_CITY}</div>
+            </div>
+            <div className="contact">
+              <div className="user"></div>
+              <div>{source.CONTACT_PERSON_SIGNATURE_TXT}</div>
+            </div>
+          </div>
+          <div className="bottom-side">
+            <div className="bottom-text">
+              <div>Commercial distance</div>
+              <div>{source.COMMERCIAL_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div>Trasnport distance</div>
+              <div>{source.TRANSPORT_DISTANCE_M}</div>
+            </div>
+            <div className="bottom-text">
+              <div>Transport duration</div>
+              <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
             </div>
           </div>
         </div>
-      </Link>
+      </div>
+    </Link>
   )
 }
 
-//VISTA DE LOS RESULTADOS EN FORMA DE LISTA
-/*const OrderHitsListItem = (props)=> {
-  const {bemBlocks, result} = props  
-  const source = result._source
-  const fields = config.samples.list.fields;
-
-  return(
-    <div className={bemBlocks.item().mix(bemBlocks.container("item"))} data-qa="hit">
-      <div className={bemBlocks.item("details")}>
-        <ul>
-          <h3>Order Details:</h3>
-          {fields.map((field, index) => {
-            return(
-              <li key={index} className={bemBlocks.item(field)}>{field}: {source[field]}</li>
-            )
-          })}
-        </ul>
-      </div>
-    </div>
-  )
-}*/
 
 //VISTA DE LOS RESULTADOS EN FORMA DE TABLA
 const OrderHitsTable = (props) => {  
