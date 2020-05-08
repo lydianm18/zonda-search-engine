@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {
   SearchkitComponent,
   NoHits,
@@ -42,6 +43,7 @@ const OrderHitsGridItem = (props) => {
   }
 
   return(
+    <Link to="/CardDetails">
     <div className="cards-wrapper">
         <div className="card">
           <div className="card-title">
@@ -91,6 +93,7 @@ const OrderHitsGridItem = (props) => {
           </div>
         </div>
       </div>
+      </Link>
   )
 }
 
