@@ -15,11 +15,11 @@ function CardDetails() {
                 .then(result => {
                     console.log(result)
                     //console.log(result.hits.hits[0]._source)
-                    let newItem = result.hits.hits;
+                    let newItem = result.hits.hits[0]._source;
                     console.log(newItem)
 
                     setItem({
-                        i: newItem
+                        newItem
                     });
                 })
 
@@ -37,8 +37,7 @@ function CardDetails() {
                 <table>
                     <thead>
                         <tr>
-                            <th>{item.i && console.log(item.i[0]._source)}</th>
-                            <th>Encabezado</th>
+                            <th>{item.newItem && item.newItem.CURRENCY_CD}</th>
                             <th>Encabezado</th>
                         </tr>
                     </thead>
@@ -55,6 +54,7 @@ function CardDetails() {
 
     
 }
+
 
 
 export default CardDetails;
