@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {
   SearchkitComponent,
   NoHits,
@@ -43,56 +43,56 @@ const OrderHitsGridItem = (props) => {
   }
 
   return(
-    <Link to="/CardDetails">
-    <div className="cards-wrapper">
-        <div className="card">
-          <div className="card-title">
-            Order Details
-          </div>
-          <div className="left-side">
-            <div className="order-id">
-              <div>Order ID</div>
-              <div>{source.ORDER_ID}</div>
+    <Link to="/card-details">
+      <div className="cards-wrapper">
+          <div className="card">
+            <div className="card-title">
+              Order Details
             </div>
-            <div className="shipping-point">
-              <div>Shippingpoint ID</div>
-              <div>{source.SHIPPINGPOINT_ID}</div>
+            <div className="left-side">
+              <div className="order-id">
+                <div>Order ID</div>
+                <div>{source.ORDER_ID}</div>
+              </div>
+              <div className="shipping-point">
+                <div>Shippingpoint ID</div>
+                <div>{source.SHIPPINGPOINT_ID}</div>
+              </div>
+              <div className="delivery-date">
+                <div className="calendar"></div>
+                <div>{source.ACTUAL_DELIVERY_DAT}</div>
+              </div>
             </div>
-            <div className="delivery-date">
-              <div className="calendar"></div>
-              <div>{source.ACTUAL_DELIVERY_DAT}</div>
+            <div className="right-side">
+              <div className="delivery-type">
+                <div>Delivery type CD</div> 
+                <DeliveryType />
+              </div>
+              <div className="city">
+                <div className="location"></div>
+                <div>{source.LNF_SITE_CITY}</div>
+              </div>
+              <div className="contact">
+                <div className="user"></div>
+                <div>{source.CONTACT_PERSON_SIGNATURE_TXT}</div>
+              </div>
             </div>
-          </div>
-          <div className="right-side">
-            <div className="delivery-type">
-              <div>Delivery type CD</div> 
-              <DeliveryType />
-            </div>
-            <div className="city">
-              <div className="location"></div>
-              <div>{source.LNF_SITE_CITY}</div>
-            </div>
-            <div className="contact">
-              <div className="user"></div>
-              <div>{source.CONTACT_PERSON_SIGNATURE_TXT}</div>
-            </div>
-          </div>
-          <div className="bottom-side">
-            <div className="bottom-text">
-              <div>Commercial distance</div>
-              <div>{source.COMMERCIAL_DISTANCE_M}</div>
-            </div>
-            <div className="bottom-text">
-              <div>Trasnport distance</div>
-              <div>{source.TRANSPORT_DISTANCE_M}</div>
-            </div>
-            <div className="bottom-text">
-              <div>Transport duration</div>
-              <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
+            <div className="bottom-side">
+              <div className="bottom-text">
+                <div>Commercial distance</div>
+                <div>{source.COMMERCIAL_DISTANCE_M}</div>
+              </div>
+              <div className="bottom-text">
+                <div>Trasnport distance</div>
+                <div>{source.TRANSPORT_DISTANCE_M}</div>
+              </div>
+              <div className="bottom-text">
+                <div>Transport duration</div>
+                <div className="minutes">{source.TRANSPORT_DURATION_MIN}</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </Link>
   )
 }

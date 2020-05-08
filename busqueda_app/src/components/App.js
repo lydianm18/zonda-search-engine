@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Main from './Main';
 import CardDetails from './CardDetails';
 
@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route path="/CardDetails" children={<CardDetails />} />
+        <Route path="/card-details" children={<CardDetails />} />
       </Switch>
     </Router>
   );
