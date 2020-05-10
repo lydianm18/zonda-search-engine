@@ -5,17 +5,19 @@
 .details-header{
     height: 75px;
     background-color: #0074b4;
+    display: flex;
 }
 
 .details-title{
     font-size: 24px;
     color: #ffffff;
     padding: 1em 3em;
+    flex-grow: 1;
 }
 
 .details-content{
     margin: 0 auto;
-    height: 250px;
+    height: auto;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -50,5 +52,61 @@
     border: 1px solid #0074b4;
     border-radius: 2px;
     cursor: pointer;
-    margin-left: 15px;
+    margin-top: 2.5em;
+    margin-left: -22em;
+    align-self: center;
+}
+
+.button-return:hover{
+    background-color: #0074b4;
+    color: white;
+    transition: 0.1s;
+}
+
+//LISTADO
+.details-table{
+    width: 450px;
+    align-self: center;
+    border: 1px solid #c6c6c6;
+}
+
+.details-table-row{
+    width: 100%;
+    border-bottom: 1px solid #c6c6c6;
+    align-self: center;
+    display: flex;
+
+    &:last-child{
+        border-bottom: none;
+    }
+}
+
+.details-table-title{
+    margin: 3em 0 2em -15em;
+    align-self: center;
+}
+
+.details-data{
+    height: 52px;
+    width: 50%;
+    background-color: #0074b4;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details-data-content{
+    height: 52px;
+    width: 50%;
+    border-left: 1px solid #c6c6c6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading{
+    margin-left: 22em;
 }
