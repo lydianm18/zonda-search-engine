@@ -16,7 +16,7 @@
 .details-content {
   margin: 0 auto;
   height: 250px;
-  width: 70%;
+  width: 60%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33,18 +33,31 @@
 
 .details-table {
   width: 100%;
+  border-collapse: collapse;
+  border: none;
+  border-right: 1px solid #c6c6c6;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.details-table-header th {
+  background-color: #0074b4;
+  height: 52px;
+}
+
+.details-table-content td {
+  height: 45px;
 }
 
 .button-return {
   text-decoration: none;
   width: 100px;
-  background-color: #0074b4;
-  color: white;
+  background-color: white;
+  color: #0074b4;
   text-align: center;
   padding: 0.7em 2em;
-  border: none;
+  border: 1px solid #0074b4;
   border-radius: 2px;
   cursor: pointer;
-  margin-left: 25px;
+  margin-left: 15px;
 }
 /*# sourceMappingURL=cardDetails.css.map */

@@ -46,7 +46,7 @@ const OrderHitsGridItem = (props) => {
       
       <div className="cards-wrapper">
         <div className="card">
-          <Link to={`card-details/${source.ORDER_ID}`} className="link">
+          <Link to={`card-details/${source.ORDER_ID}`} className="card-link">
             <div className="card-title">
               Order Details
             </div>
@@ -117,11 +117,6 @@ const OrderHitsTable = (props) => {
             <th className="header">Commercial Distance</th>
             <th className="header">Transport Distance</th>
             <th className="header">Transport duration</th>
-            {/*
-              fields.map((field, index) => {
-                return(<th className="header" key={index}>{field}</th>)
-              })
-            */}
           </tr>
         </thead>
         <tbody>
@@ -157,7 +152,12 @@ const OrderHitsTable = (props) => {
 
               return (
                 <tr key={hit._id} className="table-header">
-                  <td>{hit._source.ORDER_ID}</td>
+                  <td>
+                    <Link to={`card-details/${hit._source.ORDER_ID}`} className="table-link">
+                      {hit._source.ORDER_ID}
+                    </Link>
+                  </td>
+                  
                   <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
                   <td>{hit._source.SHIPPINGPOINT_ID}</td>
                   <td><DeliveryType /></td>
