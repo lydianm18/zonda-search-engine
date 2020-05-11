@@ -2,29 +2,6 @@
   height: 50vh;
 }
 
-.popup-overlay {
-  position: fixed;
-  width: 100%;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  background: rgba(0, 0, 0, 0.5);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  z-index: 999;
-}
-
-.popup-content {
-  position: relative;
-  background: white;
-  width: 30% !important;
-  margin: auto;
-  border: 1px solid #fafafa;
-  padding: 5px;
-}
-
 .details-content {
   margin: 0 auto;
   height: auto;
@@ -41,6 +18,7 @@
           justify-content: space-evenly;
   -ms-flex-line-pack: center;
       align-content: center;
+  margin-bottom: 1em;
 }
 
 .details-table {
@@ -148,5 +126,30 @@
 
 .loading {
   margin-left: 22em;
+}
+
+.popup-overlay {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 999;
+}
+
+.popup-content {
+  position: relative;
+  background: white;
+  width: 40% !important;
+  height: 420px !important;
+  padding: 0 !important;
+  margin: auto;
+  border: 1px solid #fafafa;
+  opacity: 2;
 }
 /*# sourceMappingURL=cardDetails.css.map */
