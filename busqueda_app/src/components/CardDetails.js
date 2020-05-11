@@ -37,7 +37,7 @@ function CardDetails() {
                         <div className="details-table">
                             <div className="details-table-row">
                                 <div className="details-data">
-                                    <div className="details-data-position">ORDER ID</div>
+                                    <div className="details-data-position">Order ID</div>
                                 </div>
                                 <div className="details-data-content">
                                     <div className="details-data-position">{item.newItem.ORDER_ID}</div>
@@ -45,7 +45,7 @@ function CardDetails() {
                             </div>
                             <div className="details-table-row">
                                 <div className="details-data">
-                                    <div className="details-data-position">ORDER ITEM ID</div>
+                                    <div className="details-data-position">Order item ID</div>
                                 </div>
                                 <div className="details-data-content">
                                     <div className="details-data-position">{item.newItem.ORDER_ITEM_ID}</div>
@@ -53,7 +53,7 @@ function CardDetails() {
                             </div>  
                             <div className="details-table-row">
                                 <div className="details-data">
-                                    <div className="details-data-position">ORDERED QUANTITY</div>
+                                    <div className="details-data-position">Ordered Quantity</div>
                                 </div>
                                 <div className="details-data-content">
                                     <div className="details-data-position">{item.newItem.ORDERED_QUANTITY}</div>
@@ -61,7 +61,7 @@ function CardDetails() {
                             </div>  
                             <div className="details-table-row">
                                 <div className="details-data">
-                                    <div className="details-data-position">DELIVERED QUANTITY</div>
+                                    <div className="details-data-position">Delivered Quantity</div>
                                 </div>
                                 <div className="details-data-content">
                                     <div className="details-data-position">{item.newItem.DELIVERED_QUANTITY}</div>
@@ -69,7 +69,7 @@ function CardDetails() {
                             </div>  
                             <div className="details-table-row">
                                 <div className="details-data">
-                                    <div className="details-data-position">CURRENCY CD</div>
+                                    <div className="details-data-position">Currency CD</div>
                                 </div>
                                 <div className="details-data-content">
                                     <div className="details-data-position">{item.newItem.CURRENCY_CD}</div>
@@ -77,7 +77,7 @@ function CardDetails() {
                             </div>  
                             <div className="details-table-row">
                                 <div className="details-data">
-                                    <div className="details-data-position">GROSS PRICE MAT</div>
+                                    <div className="details-data-position">Gross Price MAT</div>
                                 </div>
                                 <div className="details-data-content">
                                     <div className="details-data-position">{item.newItem.GROSS_PRICE_MAT}</div>
