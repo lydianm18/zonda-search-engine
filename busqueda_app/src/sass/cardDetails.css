@@ -1,22 +1,5 @@
 .details-wrapper {
-  height: 100vh;
-}
-
-.details-header {
-  height: 75px;
-  background-color: #0074b4;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.details-title {
-  font-size: 24px;
-  color: #ffffff;
-  padding: 1em 3em;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  height: 50vh;
 }
 
 .details-content {
@@ -35,9 +18,7 @@
           justify-content: space-evenly;
   -ms-flex-line-pack: center;
       align-content: center;
-  color: #252525;
-  font-size: 16px;
-  font-weight: bold;
+  margin-bottom: 1em;
 }
 
 .details-table {
@@ -106,7 +87,7 @@
 }
 
 .details-table-title {
-  margin: 3em 0 2em -15em;
+  margin: 1em 0 1em -15em;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -147,6 +128,31 @@
 }
 
 .loading {
-  margin-left: 22em;
+  margin-left: 12em;
+}
+
+.popup-overlay {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 999;
+}
+
+.popup-content {
+  position: relative;
+  background: white;
+  width: 40% !important;
+  height: 420px !important;
+  padding: 0 !important;
+  margin: auto;
+  border: 1px solid #fafafa;
+  opacity: 2;
 }
 /*# sourceMappingURL=cardDetails.css.map */

@@ -97,6 +97,10 @@ td {
   padding: 0;
 }
 
+td:nth-child(1) {
+  cursor: pointer;
+}
+
 td:nth-child(7), td:nth-child(8), td:nth-child(9) {
   color: #0073af;
 }

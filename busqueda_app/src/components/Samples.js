@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {
   SearchkitComponent,
   NoHits,
   ViewSwitcherHits,
 } from "searchkit";
-
+import Popup from "reactjs-popup";
+import CardDetails from './CardDetails';
 import config from "../config.json";
 
 
@@ -46,11 +47,9 @@ const OrderHitsGridItem = (props) => {
       
       <div className="cards-wrapper">
         <div className="card">
-          <Link to={`card-details/${source.ORDER_ID}`} className="card-link">
-            <div className="card-title">
-              Order Details
-            </div>
-          </Link>
+          <Popup trigger={<div className="card-title">Order Details</div>} modal>
+            <CardDetails order_id={source.ORDER_ID}/>
+          </Popup>
           <div className="left-side">
             <div className="order-id">
               <div>Order ID</div>
@@ -153,11 +152,10 @@ const OrderHitsTable = (props) => {
               return (
                 <tr key={hit._id} className="table-header">
                   <td>
-                    <Link to={`card-details/${hit._source.ORDER_ID}`} className="table-link">
-                      {hit._source.ORDER_ID}
-                    </Link>
-                  </td>
-                  
+                    <Popup trigger={<div>{hit._source.ORDER_ID}</div>} modal>
+                      <CardDetails order_id={hit._source.ORDER_ID} />
+                    </Popup>
+                  </td>              
                   <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
                   <td>{hit._source.SHIPPINGPOINT_ID}</td>
                   <td><DeliveryType /></td>
