@@ -49,6 +49,7 @@
   -ms-grid-column-span: 3;
   grid-area: header;
   width: 248px;
+  cursor: pointer;
 }
 
 .card .left-side {
