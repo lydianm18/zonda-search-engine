@@ -112,12 +112,14 @@
           justify-content: center;
   font-weight: normal;
   font-size: 16px;
+  line-height: normal;
 }
 
 .details-data-position {
   color: #252525;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 .details-data-content {
