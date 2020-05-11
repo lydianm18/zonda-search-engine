@@ -2,12 +2,26 @@
   height: 50vh;
 }
 
+.popup-overlay {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 999;
+}
+
 .popup-content {
   position: relative;
   background: white;
-  width: 100%;
+  width: 30% !important;
   margin: auto;
-  border: 1px solid #bbbbbb;
+  border: 1px solid #fafafa;
   padding: 5px;
 }
 

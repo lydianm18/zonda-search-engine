@@ -15,7 +15,6 @@ function CardDetails(props) {
                 .then(result => {
                     let newItem = result.hits.hits[0]._source;
                     console.log(newItem)
-
                     setItem({newItem});
                 })
             }
