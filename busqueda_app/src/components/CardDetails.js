@@ -1,7 +1,4 @@
 import React, {useState, useEffect} from 'react';
-//import { useParams, Link } from 'react-router-dom';
-import Samples from './Samples';
-import config from "../config.json";
 
 function CardDetails(props) {
     const id = props.order_id;
