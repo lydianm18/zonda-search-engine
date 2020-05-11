@@ -27,67 +27,62 @@ function CardDetails(props) {
     }, [])
 
     return(
-        <div className="details-wrapper">
-            <div className="details-header">         
-                <div className="details-title">{config.title}</div>
-            </div>
-            <div className="details-content">
-                <h2 className="details-table-title">Order Details:</h2>
-                {
-                    (!item.newItem) ? (<div className="loading">Loading...</div>) : (                                       
-                        <div className="details-table">
-                            <div className="details-table-row">
-                                <div className="details-data">
-                                    <div className="details-data-position">ORDER ID</div>
-                                </div>
-                                <div className="details-data-content">
-                                    <div className="details-data-position">{item.newItem.ORDER_ID}</div>
-                                </div>
+        <div className="details-content">
+            <h2 className="details-table-title">Order Details:</h2>
+            {
+                (!item.newItem) ? (<div className="loading">Loading...</div>) : (                                       
+                    <div className="details-table">
+                        <div className="details-table-row">
+                            <div className="details-data">
+                                <div className="details-data-position">ORDER ID</div>
                             </div>
-                            <div className="details-table-row">
-                                <div className="details-data">
-                                    <div className="details-data-position">ORDER ITEM ID</div>
-                                </div>
-                                <div className="details-data-content">
-                                    <div className="details-data-position">{item.newItem.ORDER_ITEM_ID}</div>
-                                </div>
-                            </div>  
-                            <div className="details-table-row">
-                                <div className="details-data">
-                                    <div className="details-data-position">ORDERED QUANTITY</div>
-                                </div>
-                                <div className="details-data-content">
-                                    <div className="details-data-position">{item.newItem.ORDERED_QUANTITY}</div>
-                                </div>
-                            </div>  
-                            <div className="details-table-row">
-                                <div className="details-data">
-                                    <div className="details-data-position">DELIVERED QUANTITY</div>
-                                </div>
-                                <div className="details-data-content">
-                                    <div className="details-data-position">{item.newItem.DELIVERED_QUANTITY}</div>
-                                </div>
-                            </div>  
-                            <div className="details-table-row">
-                                <div className="details-data">
-                                    <div className="details-data-position">CURRENCY CD</div>
-                                </div>
-                                <div className="details-data-content">
-                                    <div className="details-data-position">{item.newItem.CURRENCY_CD}</div>
-                                </div>
-                            </div>  
-                            <div className="details-table-row">
-                                <div className="details-data">
-                                    <div className="details-data-position">GROSS PRICE MAT</div>
-                                </div>
-                                <div className="details-data-content">
-                                    <div className="details-data-position">{item.newItem.GROSS_PRICE_MAT}</div>
-                                </div>
-                            </div>  
-                        </div>            
-                    )   
-                }
-            </div>
+                            <div className="details-data-content">
+                                <div className="details-data-position">{item.newItem.ORDER_ID}</div>
+                            </div>
+                        </div>
+                        <div className="details-table-row">
+                            <div className="details-data">
+                                <div className="details-data-position">ORDER ITEM ID</div>
+                            </div>
+                            <div className="details-data-content">
+                                <div className="details-data-position">{item.newItem.ORDER_ITEM_ID}</div>
+                            </div>
+                        </div>  
+                        <div className="details-table-row">
+                            <div className="details-data">
+                                <div className="details-data-position">ORDERED QUANTITY</div>
+                            </div>
+                            <div className="details-data-content">
+                                <div className="details-data-position">{item.newItem.ORDERED_QUANTITY}</div>
+                            </div>
+                        </div>  
+                        <div className="details-table-row">
+                            <div className="details-data">
+                                <div className="details-data-position">DELIVERED QUANTITY</div>
+                            </div>
+                            <div className="details-data-content">
+                                <div className="details-data-position">{item.newItem.DELIVERED_QUANTITY}</div>
+                            </div>
+                        </div>  
+                        <div className="details-table-row">
+                            <div className="details-data">
+                                <div className="details-data-position">CURRENCY CD</div>
+                            </div>
+                            <div className="details-data-content">
+                                <div className="details-data-position">{item.newItem.CURRENCY_CD}</div>
+                            </div>
+                        </div>  
+                        <div className="details-table-row">
+                            <div className="details-data">
+                                <div className="details-data-position">GROSS PRICE MAT</div>
+                            </div>
+                            <div className="details-data-content">
+                                <div className="details-data-position">{item.newItem.GROSS_PRICE_MAT}</div>
+                            </div>
+                        </div>  
+                    </div>            
+                )   
+            }
         </div>
     )
 }
