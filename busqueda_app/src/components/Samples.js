@@ -151,7 +151,11 @@ const OrderHitsTable = (props) => {
 
               return (
                 <tr key={hit._id} className="table-header">
-                  <td>{hit._source.ORDER_ID}</td>
+                  <td>
+                    <Popup trigger={<div>{hit._source.ORDER_ID}</div>} modal>
+                      <CardDetails order_id={hit._source.ORDER_ID} />
+                    </Popup>
+                  </td>              
                   <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
                   <td>{hit._source.SHIPPINGPOINT_ID}</td>
                   <td><DeliveryType /></td>
