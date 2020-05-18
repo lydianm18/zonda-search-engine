@@ -111,7 +111,10 @@ class Main extends SearchkitComponent {
                     <SelectedFilters/>
                     <ResetFilters/>
                     </ActionBarRow>
-                    <HitsStats/>
+                    <div className="hitStats-download-container">
+                        <HitsStats/>
+                        <a href="/file/orders.csv" download="orders.csv" className="download-button-link">CSV download</a>
+                    </div>
                 </ActionBar>
                 <Samples />
                 <div className="pagination">
