@@ -72,6 +72,16 @@
   margin: 45px auto 17px auto;
 }
 
+.saved-search-link {
+  text-decoration: none;
+  color: #595959;
+  font-size: 14px;
+}
+
+.saved-search-link:hover {
+  color: #0074b4;
+}
+
 .filter--cities .sk-panel__header:before, .filter--more_cities .sk-panel__header:before {
   content: url("../img/location.svg");
   margin-right: 26px;
@@ -84,6 +94,11 @@
 
 .filter--event_date_filter .sk-panel__header:before {
   content: url("../img/calendar.svg");
+  margin-right: 26px;
+}
+
+.filter--searches .sk-panel__header:before {
+  content: url("../img/location.svg");
   margin-right: 26px;
 }
 /*# sourceMappingURL=sidebar.css.map */

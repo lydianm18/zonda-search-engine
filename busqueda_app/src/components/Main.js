@@ -46,7 +46,16 @@ class Main extends SearchkitComponent {
             <LayoutBody>
                 <SideBar className="sidebar">
                 <img className="logo" src="lh_logo.png" widht="30" height="60"></img>
+                <div className="sk-panel filter--searches">
+                    <div className="sk-panel__header">Saved Searches</div>
+                    <div className="sk-panel__content">
+                        <p><a href="http://localhost:3000/?cities[0]=LILLE" className="saved-search-link">Last Search 1</a></p>
+                        <p><a href="http://localhost:3000/?person=jorge" className="saved-search-link">Last Search 2</a></p>
+                        <p><a href="#" className="saved-search-link">Last Search 3</a></p>
+                    </div>
+                </div>
 
+                <div className="line"></div>
                 <RefinementListFilter
                     id={config.filters.cityCheckbox.id}
                     title={config.filters.cityCheckbox.title}
