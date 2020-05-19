@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   SearchkitComponent,
-  ViewSwitcherHits
+  ViewSwitcherHits,
+  NoHits
 } from "searchkit";
 import Popup from "reactjs-popup";
 import CardDetails from './CardDetails';
@@ -184,6 +185,7 @@ class Samples extends SearchkitComponent {
             ]}
             scrollTo="body"
           />
+          <NoHits />
       </div> 
     )
   } 
