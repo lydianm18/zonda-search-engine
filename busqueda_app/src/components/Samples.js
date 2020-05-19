@@ -1,8 +1,7 @@
 import React from 'react';
 import {
   SearchkitComponent,
-  NoHits,
-  ViewSwitcherHits,
+  ViewSwitcherHits
 } from "searchkit";
 import Popup from "reactjs-popup";
 import CardDetails from './CardDetails';
@@ -184,9 +183,6 @@ class Samples extends SearchkitComponent {
               {key: config.samples.table.key, title: config.samples.table.title, listComponent: OrderHitsTable}
             ]}
             scrollTo="body"
-          />
-          <NoHits 
-            translations={config.samples.noResults}
           />
       </div> 
     )

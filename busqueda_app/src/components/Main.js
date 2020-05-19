@@ -31,10 +31,33 @@ const searchkit = new SearchkitManager(config.endpoint);
 class Main extends SearchkitComponent {
 
   state = {
-    date: [new Date(), new Date()]
+    date: [new Date(), new Date()],
   }
 
   onChange = date => this.setState({ date })
+
+  DownloadButton(props){
+    const result = props.hits;
+    if(result == 0){
+        return (<></>)
+    } else {
+        return(<a href="/file/orders.csv" download="orders.csv" className="download-button-link">CSV download</a>)
+    }
+  }
+
+  CustomHitStats = (props) => {
+    const {bemBlocks, hitsCount, timeTaken} = props;
+    return(
+        <>
+            <div className={bemBlocks.container()} data-qa="hits-stats">
+                <div className={bemBlocks.container("info")} data-qa="info">
+                    {hitsCount} results found in {timeTaken}ms
+                </div>
+            </div>
+            <this.DownloadButton hits={hitsCount}/>
+        </>
+    )
+  }
 
   render(){
     return (
@@ -49,9 +72,9 @@ class Main extends SearchkitComponent {
                 <div className="sk-panel filter--searches">
                     <div className="sk-panel__header">Saved Searches</div>
                     <div className="sk-panel__content">
-                        <p><a href="http://localhost:3000/?cities[0]=LILLE" className="saved-search-link">Last Search 1</a></p>
+                        <p><a href="http://localhost:3000/?cities[0]=LILLE&event_date_filter[min]=1585692000000&event_date_filter[max]=1588197600000" className="saved-search-link">Last Search 1</a></p>
                         <p><a href="http://localhost:3000/?person=jorge" className="saved-search-link">Last Search 2</a></p>
-                        <p><a href="#" className="saved-search-link">Last Search 3</a></p>
+                        <p><a href="http://localhost:3000/?event_date_filter[min]=1546297200000&event_date_filter[max]=1577746800000&sort=ACTUAL_DELIVERY_DAT_desc" className="saved-search-link">Last Search 3</a></p>
                     </div>
                 </div>
 
@@ -112,8 +135,7 @@ class Main extends SearchkitComponent {
                     <ResetFilters/>
                     </ActionBarRow>
                     <div className="hitStats-download-container">
-                        <HitsStats/>
-                        <a href="/file/orders.csv" download="orders.csv" className="download-button-link">CSV download</a>
+                        <HitsStats component={this.CustomHitStats}/>
                     </div>
                 </ActionBar>
                 <Samples />
