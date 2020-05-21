@@ -72,9 +72,9 @@ class Main extends SearchkitComponent {
                 <div className="sk-panel filter--searches">
                     <div className="sk-panel__header">Saved Searches</div>
                     <div className="sk-panel__content">
-                        <p><a href="http://localhost:3000/?cities[0]=LILLE&event_date_filter[min]=1585692000000&event_date_filter[max]=1588197600000" className="saved-search-link">Last Search 1</a></p>
-                        <p><a href="http://localhost:3000/?person=jorge" className="saved-search-link">Last Search 2</a></p>
-                        <p><a href="http://localhost:3000/?event_date_filter[min]=1546297200000&event_date_filter[max]=1577746800000&sort=ACTUAL_DELIVERY_DAT_desc" className="saved-search-link">Last Search 3</a></p>
+                        <p><a href="/?cities[0]=LILLE&event_date_filter[min]=1585692000000&event_date_filter[max]=1588197600000" className="saved-search-link">Last Search 1</a></p>
+                        <p><a href="/?person=jorge" className="saved-search-link">Last Search 2</a></p>
+                        <p><a href="/?event_date_filter[min]=1546297200000&event_date_filter[max]=1577746800000&sort=ACTUAL_DELIVERY_DAT_desc" className="saved-search-link">Last Search 3</a></p>
                     </div>
                 </div>
 
