@@ -64,7 +64,11 @@ class Main extends SearchkitComponent {
         <SearchkitProvider searchkit={searchkit}>
             <Layout>
             <TopBar className="header">
-            <div className="my-logo">{config.title}</div>
+            <div className="my-logo">
+                <div className="zonda-logo">
+                    <img src="zonda.png"></img>
+                </div>        
+            </div>
             </TopBar>
             <LayoutBody>
                 <SideBar className="sidebar">

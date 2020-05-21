@@ -27,4 +27,8 @@
       -ms-flex-align: center;
           align-items: center;
 }
+
+.sk-top-bar .sk-top-bar__content .my-logo .zonda-logo {
+  margin-top: 10px;
+}
 /*# sourceMappingURL=header.css.map */
