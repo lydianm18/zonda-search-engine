@@ -33,7 +33,7 @@ function CardDetails(props) {
                                 <div className="details-data">Order ID</div>
                             </div>
                             <div className="details-data-content">
-                                <div className="details-data-position">{item.newItem.ORDER_ID}</div>
+                                <div className="details-data-position"><a href={`https://lp1-logon.holcim.com/logon/order/auftrag/OrderDetailEntry.do?orderid=${item.newItem.ORDER_ID}`}>{item.newItem.ORDER_ID}</a></div>
                             </div>
                         </div>
                         <div className="details-table-row">
