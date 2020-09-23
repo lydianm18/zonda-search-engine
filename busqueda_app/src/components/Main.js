@@ -72,80 +72,77 @@ class Main extends SearchkitComponent {
             </TopBar>
             <LayoutBody>
                 <SideBar className="sidebar">
-                <img className="logo" src="lh_logo.png" widht="30" height="60"></img>
-                <div className="sk-panel filter--searches">
-                    <div className="sk-panel__header">Saved Searches</div>
-                    <div className="sk-panel__content">
-                        <p><a href="/?cities[0]=LILLE&event_date_filter[min]=1585692000000&event_date_filter[max]=1588197600000" className="saved-search-link">Last Search 1</a></p>
-                        <p><a href="/?person=jorge" className="saved-search-link">Last Search 2</a></p>
-                        <p><a href="/?event_date_filter[min]=1546297200000&event_date_filter[max]=1577746800000&sort=ACTUAL_DELIVERY_DAT_desc" className="saved-search-link">Last Search 3</a></p>
+                    <img className="logo" src="lh_logo.png" widht="30" height="60"></img>
+                    <div className="sk-panel filter--searches">
+                        <div className="sk-panel__header">Saved Searches</div>
+                        <div className="sk-panel__content">
+                            <p><a href="/?cities[0]=LILLE&event_date_filter[min]=1585692000000&event_date_filter[max]=1588197600000" className="saved-search-link">Last Search 1</a></p>
+                            <p><a href="/?person=jorge" className="saved-search-link">Last Search 2</a></p>
+                            <p><a href="/?event_date_filter[min]=1546297200000&event_date_filter[max]=1577746800000&sort=ACTUAL_DELIVERY_DAT_desc" className="saved-search-link">Last Search 3</a></p>
+                        </div>
                     </div>
-                </div>
-
-                <div className="line"></div>
-                <RefinementListFilter
-                    id={config.filters.cityCheckbox.id}
-                    title={config.filters.cityCheckbox.title}
-                    field={config.filters.cityCheckbox.fields}
-                    operator="OR"
-                    size={10}
+                    <div className="line"></div>
+                    <RangeFilter
+                        id={config.filters.dates.id}
+                        title={config.filters.dates.title}
+                        field={config.filters.dates.fields}
+                        rangeComponent={ DateRangeFilter }
+                        min={ 946684800000 }
+                        max={ new Date().getTime() }
                     />
-                    
-                <InputFilter             
-                    id={config.filters.searchboxCity.id}
-                    title={config.filters.searchboxCity.title}
-                    placeholder={config.filters.searchboxCity.placeholder}
-                    searchOnChange={true}
-                    prefixQueryFields={config.filters.searchboxCity.fields}
-                />
-                <div className="line"></div>
-                <InputFilter
-                    id={config.filters.searchboxPerson.id}
-                    title={config.filters.searchboxPerson.title}
-                    placeholder={config.filters.searchboxPerson.placeholder}
-                    searchOnChange={true}
-                    prefixQueryFields={config.filters.searchboxPerson.fields}
-                />
-                <div className="line"></div>
-                <RangeFilter
-                    id={config.filters.dates.id}
-                    title={config.filters.dates.title}
-                    field={config.filters.dates.fields}
-                    rangeComponent={ DateRangeFilter }
-                    min={ 946684800000 }
-                    max={ new Date().getTime() }
-                />
+                    <div className="line"></div>
+                    <RefinementListFilter
+                        id={config.filters.cityCheckbox.id}
+                        title={config.filters.cityCheckbox.title}
+                        field={config.filters.cityCheckbox.fields}
+                        operator="OR"
+                        size={10}
+                        />
+                        
+                    <InputFilter             
+                        id={config.filters.searchboxCity.id}
+                        title={config.filters.searchboxCity.title}
+                        placeholder={config.filters.searchboxCity.placeholder}
+                        searchOnChange={true}
+                        prefixQueryFields={config.filters.searchboxCity.fields}
+                    />
+                    <div className="line"></div>
+                    <InputFilter
+                        id={config.filters.searchboxPerson.id}
+                        title={config.filters.searchboxPerson.title}
+                        placeholder={config.filters.searchboxPerson.placeholder}
+                        searchOnChange={true}
+                        prefixQueryFields={config.filters.searchboxPerson.fields}
+                    />              
                 </SideBar>
                 <LayoutResults className="layout">
-
-                <ActionBar>
-                    <ActionBarRow>
-                    <div>
-                    <SearchBox
-                    autofocus={true}
-                    searchOnChange={true}
-                    placeholder={config.searchbox.placeholder}
-                    prefixQueryFields={config.searchbox.queryFields}
-                    />
-                </div>
-                    <div className="actions-2">
-                    <ViewSwitcherToggle/>
-                    <SortingSelector options={config.sortingSelector.options}
-                    />
+                    <ActionBar>
+                        <ActionBarRow>
+                            <div>
+                                <SearchBox
+                                autofocus={true}
+                                searchOnChange={true}
+                                placeholder={config.searchbox.placeholder}
+                                prefixQueryFields={config.searchbox.queryFields}
+                                />
+                            </div>
+                            <div className="actions-2">
+                                <ViewSwitcherToggle/>
+                                <SortingSelector options={config.sortingSelector.options}/>
+                            </div>
+                        </ActionBarRow>
+                        <ActionBarRow>
+                            <SelectedFilters/>
+                            <ResetFilters/>
+                        </ActionBarRow>
+                        <div className="hitStats-download-container">
+                            <HitsStats component={this.CustomHitStats}/>
+                        </div>
+                    </ActionBar>
+                    <Samples />
+                    <div className="pagination">
+                        <Pagination showNumbers={true}/>
                     </div>
-                    </ActionBarRow>
-                    <ActionBarRow>
-                    <SelectedFilters/>
-                    <ResetFilters/>
-                    </ActionBarRow>
-                    <div className="hitStats-download-container">
-                        <HitsStats component={this.CustomHitStats}/>
-                    </div>
-                </ActionBar>
-                <Samples />
-                <div className="pagination">
-                    <Pagination showNumbers={true}/>
-                </div>
                 </LayoutResults>
             </LayoutBody>
             </Layout>
