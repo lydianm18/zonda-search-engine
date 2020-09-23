@@ -24,7 +24,7 @@ import {
 import DateRangeFilter from './DateRangeFilter';
 import Samples from './Samples';
 import config from "../config.json";
-
+import SavedSearches from './SavedSearches'
 
 const searchkit = new SearchkitManager(config.endpoint);
 
@@ -32,9 +32,20 @@ class Main extends SearchkitComponent {
 
   state = {
     date: [new Date(), new Date()],
+    params: "/"
   }
 
   onChange = date => this.setState({ date })
+
+  componentDidMount(){
+    this.urlParams()
+  }
+
+  urlParams = () => {
+    console.log('URLPARAMS'+this.state.params)
+    this.setState({params: this.state.params + this.props.location.search})
+    console.log(this.state.params)
+  }
 
   DownloadButton(props){
     const result = props.hits;
@@ -81,6 +92,7 @@ class Main extends SearchkitComponent {
                             <p><a href="/?event_date_filter[min]=1546297200000&event_date_filter[max]=1577746800000&sort=ACTUAL_DELIVERY_DAT_desc" className="saved-search-link">Last Search 3</a></p>
                         </div>
                     </div>
+                    <SavedSearches params={this.state.params}/>
                     <div className="line"></div>
                     <RangeFilter
                         id={config.filters.dates.id}
@@ -97,7 +109,7 @@ class Main extends SearchkitComponent {
                         field={config.filters.cityCheckbox.fields}
                         operator="OR"
                         size={10}
-                        />
+                    />
                         
                     <InputFilter             
                         id={config.filters.searchboxCity.id}
@@ -133,6 +145,10 @@ class Main extends SearchkitComponent {
                         </ActionBarRow>
                         <ActionBarRow>
                             <SelectedFilters/>
+                            <div onClick={() => {
+                                console.log("clicado")
+                                console.log(this.state.params)    
+                            }}>Save search</div>
                             <ResetFilters/>
                         </ActionBarRow>
                         <div className="hitStats-download-container">
