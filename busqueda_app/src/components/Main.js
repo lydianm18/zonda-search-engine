@@ -37,14 +37,11 @@ class Main extends SearchkitComponent {
 
   onChange = date => this.setState({ date })
 
-  componentDidMount(){
-    this.urlParams()
-  }
-
-  urlParams = () => {
-    console.log('URLPARAMS'+this.state.params)
-    this.setState({params: this.state.params + this.props.location.search})
-    console.log(this.state.params)
+  LocalStorage = () => {
+      console.log('local')
+      console.log(this.props.location)
+      localStorage.setItem("searchParams", this.props.location.search);
+      console.log(localStorage.getItem("searchParams"))
   }
 
   DownloadButton(props){
@@ -92,7 +89,7 @@ class Main extends SearchkitComponent {
                             <p><a href="/?event_date_filter[min]=1546297200000&event_date_filter[max]=1577746800000&sort=ACTUAL_DELIVERY_DAT_desc" className="saved-search-link">Last Search 3</a></p>
                         </div>
                     </div>
-                    <SavedSearches params={this.state.params}/>
+                    {/*<SavedSearches params={this.state.params}/>*/}
                     <div className="line"></div>
                     <RangeFilter
                         id={config.filters.dates.id}
@@ -145,10 +142,7 @@ class Main extends SearchkitComponent {
                         </ActionBarRow>
                         <ActionBarRow>
                             <SelectedFilters/>
-                            <div onClick={() => {
-                                console.log("clicado")
-                                console.log(this.state.params)    
-                            }}>Save search</div>
+                            <div onClick={this.LocalStorage}>Save search</div>
                             <ResetFilters/>
                         </ActionBarRow>
                         <div className="hitStats-download-container">

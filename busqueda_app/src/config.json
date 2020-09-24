@@ -1,5 +1,5 @@
 {
-    "endpoint": "https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/orders",
+    "endpoint": "https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/tlgnc_order",
     "title": "Orders Search Engine",
     "searchbox": {
         "queryFields": ["ORDER_ID","SHIPPINGPOINT_ID"],
