@@ -59,7 +59,7 @@ const OrderHitsGridItem = (props) => {
           </div>
           <div className="delivery-date">
             <div className="calendar"></div>
-            <div>{source.ACTUAL_DELIVERY_DAT}</div>
+            <div>{source.ACTUAL_DELIVERY_DAT.split("T")[0]} {source.ACTUAL_DELIVERY_DAT.split("T")[1].slice(1,-1)}</div>
           </div>
         </div>
         <div className="right-side">
@@ -154,7 +154,7 @@ const OrderHitsTable = (props) => {
                       <CardDetails order_id={hit._source.ORDER_ID} />
                     </Popup>
                   </td>              
-                  <td>{hit._source.ACTUAL_DELIVERY_DAT}</td>              
+                  <td>{hit._source.ACTUAL_DELIVERY_DAT.split("T")[0]} {hit._source.ACTUAL_DELIVERY_DAT.split("T")[1].slice(1,-1)}</td>              
                   <td>{hit._source.SHIPPINGPOINT_ID}</td>
                   <td><DeliveryType /></td>
                   <td>{hit._source.LNF_SITE_CITY}</td>
