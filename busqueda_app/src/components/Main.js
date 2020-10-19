@@ -59,6 +59,30 @@ class Main extends SearchkitComponent {
     )
   }
 
+  SelectedFilter = (props) => {
+    if(props.filterId === "event_date_filter"){
+        let firstDateMs = props.labelValue.slice(0, 13)
+        let firstDateFormat = new Date(parseInt(firstDateMs)).toLocaleDateString();
+
+        let secondDateMs = props.labelValue.slice(-13)
+        let secondDateFormat = new Date(parseInt(secondDateMs)).toLocaleDateString();
+
+        return(
+            <div className={props.bemBlocks.option()}>
+                <div className={props.bemBlocks.option("name")}>{props.labelKey} {firstDateFormat} - {secondDateFormat}</div>
+                <div className={props.bemBlocks.option("remove-action")} onClick={props.removeFilter}>x</div>
+            </div>
+        )
+    }
+
+    return(
+        <div className={props.bemBlocks.option()}>
+            <div className={props.bemBlocks.option("name")}>{props.labelKey}: {props.labelValue}</div>
+            <div className={props.bemBlocks.option("remove-action")} onClick={props.removeFilter}>x</div>
+        </div>
+    )
+ }
+
   render(){
     return (
         <SearchkitProvider searchkit={searchkit}>
@@ -132,7 +156,7 @@ class Main extends SearchkitComponent {
                             </div>
                         </ActionBarRow>
                         <ActionBarRow>
-                            <SelectedFilters/>
+                            <SelectedFilters itemComponent={this.SelectedFilter}/>
                             <ResetFilters/>
                         </ActionBarRow>
                         <div className="hitStats-download-container">
