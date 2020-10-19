@@ -106,15 +106,40 @@ class Main extends SearchkitComponent {
                         </div>
                     </div>
                     <div className="line"></div>
-                    <RangeFilter
+                   <RangeFilter
                         id={config.filters.dates.id}
                         title={config.filters.dates.title}
                         field={config.filters.dates.fields}
                         rangeComponent={ DateRangeFilter }
                         min={ 946684800000 }
                         max={ new Date().getTime() }
-                    />
+                    /> 
                     <div className="line"></div>
+                    <RefinementListFilter
+                        id={config.filters.onHoldCheckbox.id}
+                        title={config.filters.onHoldCheckbox.title}
+                        field={config.filters.onHoldCheckbox.fields}
+                        operator="OR"
+                        size={10}
+                        />
+                    <div className="line"></div>
+                    {/* <RangeFilter
+                        id={config.filters.deliveryFrom.id}
+                        title={config.filters.deliveryFrom.title}
+                        field={config.filters.deliveryFrom.fields}
+                        rangeComponent={ DateRangeFilter }
+                        min={ 946684800000 }
+                        max={ new Date().getTime() }
+                    />
+                     <RangeFilter
+                        id={config.filters.deliveryTo.id}
+                        title={config.filters.deliveryTo.title}
+                        field={config.filters.deliveryTo.fields}
+                        rangeComponent={ DateRangeFilter }
+                        min={ 946684800000 }
+                        max={ new Date().getTime() }
+                    /> */}
+                    {/* <div className="line"></div>
                     <RefinementListFilter
                         id={config.filters.cityCheckbox.id}
                         title={config.filters.cityCheckbox.title}
@@ -128,16 +153,16 @@ class Main extends SearchkitComponent {
                         title={config.filters.searchboxCity.title}
                         placeholder={config.filters.searchboxCity.placeholder}
                         searchOnChange={true}
-                        prefixQueryFields={config.filters.searchboxCity.fields}
+                        prefixQueryFields={config.filters.searchboxCity.fields} 
                     />
                     <div className="line"></div>
-                    <InputFilter
+                   <InputFilter
                         id={config.filters.searchboxPerson.id}
                         title={config.filters.searchboxPerson.title}
                         placeholder={config.filters.searchboxPerson.placeholder}
                         searchOnChange={true}
                         prefixQueryFields={config.filters.searchboxPerson.fields}
-                    />              
+                    />            */}
                 </SideBar>
                 <LayoutResults className="layout">
                     <ActionBar>
@@ -149,6 +174,27 @@ class Main extends SearchkitComponent {
                                 placeholder={config.searchbox.placeholder}
                                 prefixQueryFields={config.searchbox.queryFields}
                                 />
+                                <InputFilter
+                                id={config.filters.searchboxBusiness.id}
+                                title={config.filters.searchboxBusiness.title}
+                                placeholder={config.filters.searchboxBusiness.placeholder}
+                                searchOnChange={true}
+                                prefixQueryFields={config.filters.searchboxBusiness.fields}
+                                />           
+                                <InputFilter
+                                id={config.filters.searchboxTransporter.id}
+                                title={config.filters.searchboxTransporter.title}
+                                placeholder={config.filters.searchboxTransporter.placeholder}
+                                searchOnChange={true}
+                                prefixQueryFields={config.filters.searchboxTransporter.fields}
+                                />           
+                                <InputFilter
+                                id={config.filters.searchboxCreatedBy.id}
+                                title={config.filters.searchboxCreatedBy.title}
+                                placeholder={config.filters.searchboxCreatedBy.placeholder}
+                                searchOnChange={true}
+                                prefixQueryFields={config.filters.searchboxCreatedBy.fields}
+                                />           
                             </div>
                             <div className="actions-2">
                                 <ViewSwitcherToggle/>

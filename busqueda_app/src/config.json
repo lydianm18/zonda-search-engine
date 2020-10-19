@@ -2,8 +2,8 @@
     "endpoint": "https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/orders",
     "title": "Orders Search Engine",
     "searchbox": {
-        "queryFields": ["ORDER_ID","SHIPPINGPOINT_ID"],
-        "placeholder": "Order ID or Shipping point"
+        "queryFields": ["ORDER_NUMBER","ORDER_NUMBER_FROM_SEQ_USAGE", "LDS_DELIVERY_NOTE_NO"],
+        "placeholder": "Logon Order, Sequential or LDS Number"
     },
     "filters": {
         "cityCheckbox": {
@@ -32,6 +32,39 @@
             "fields": "ACTUAL_DELIVERY_DAT",
             "title": "Delivery Dates:",
             "id": "event_date_filter"
+        },
+        "deliveryFrom": {
+            "fields": "DELIVERY_FROM_DAT",
+            "title": "Delivery From Dates:",
+            "id": "event_date_filter"
+        },
+        "deliveryTo": {
+            "fields": "DELIVERY_TO_DAT",
+            "title": "Delivery To Dates:",
+            "id": "event_date_filter"
+        },
+        "searchboxTransporter": {
+            "title": "Transporter",
+            "placeholder": "Search Commercial or Executing Carrier",
+            "fields": ["COMM_CARRIER_ID", "EXEC_CARRIER_ID"],
+            "id": "transporter"
+        },
+        "searchboxBusiness": {
+            "title": "Business Partners",
+            "placeholder": "Search Destination, Customer, Address or Payer",
+            "fields": ["SHIPTO_SAP_BP_ID", "SOLDTO_SAP_BP_ID", "BILLTO_SAP_BP_ID", "PAYER_SAP_BP_ID"],
+            "id": "business_partners"
+        },
+        "searchboxCreatedBy": {
+            "title": "Created By",
+            "placeholder": "Search person",
+            "fields": "CTL_CRE_UID",
+            "id": "crated_by"
+        },
+        "onHoldCheckbox": {
+            "fields": "ON_HOLD_ORDER_AND_LOCKED_FLAG",
+            "title": "On Hold",
+            "id": "onHold"
         }
     },
     "sortingSelector": {
