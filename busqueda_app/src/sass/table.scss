@@ -27,7 +27,7 @@
 
 .table-header{
     height: 52px;
-    th:nth-child(2){
+   /*  th:nth-child(2){
         width: 15%;
     }
     th:nth-child(4){
@@ -44,7 +44,7 @@
     }
     th:nth-child(9){
         width: 8%;
-    }
+    } */
 
     &:nth-child(even){
         background-color:#f5fcff;
@@ -83,7 +83,7 @@ td{
     color: #000000;
     padding: 0;
 
-    &:nth-child(1){
+   /*  &:nth-child(1){
         cursor: pointer;
     }
 
@@ -100,7 +100,7 @@ td{
 
     &:nth-child(9)::after{
         content: " min";
-    }
+    } */
 }
 
 //CLASES DELIVERY TYPE CD
@@ -165,6 +165,68 @@ td{
     align-items: center;
 }
 
+
+//CLASES ORDER STATUS y ORDER CREATION
+
+.Rectangle-value-6 {
+    width: auto; 
+    height: 23px;
+    border-radius: 2px;
+    background-color: #ffc625;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Rectangle-value-7 {
+    width: auto; 
+    height: 23px;
+    border-radius: 2px;
+    background-color: #00bbd6;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Rectangle-value-8 {
+    width: auto; 
+    height: 23px;
+    border-radius: 2px;
+    background-color: #a5c36d;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Rectangle-value-9 {
+    width: auto; 
+    height: 23px;
+    border-radius: 2px;
+    background-color: #FD7255;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Rectangle-value-10 {
+    width: auto; 
+    height: 23px;
+    border-radius: 2px;
+    background-color: rgb(97, 105, 218);
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 //ICONOS
 
