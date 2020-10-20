@@ -5,23 +5,31 @@ import config from '../config.json'
 import 'react-datepicker/dist/react-datepicker.css'
 
 class DateRangeFilter extends Component {
-
   constructor (props) {
     super(props)
+    console.log(props)
     this.state = {
       startDate: null,
       endDate: null
     }
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    if(this.props.cleanDate === true && prevProps.cleanDate != this.props.cleanDate){
+      this.setState({startDate: null, endDate: null})
+    }
+  }
+  
   handleChangeStart = (event) => {
     this.setState({
       startDate: event
     }, this.updateSearch)
+
+    this.props.turnFalseDateFilter()
   }
 
   handleChangeEnd = (event) => {
-      console.log(event);
+      console.log(event)
     this.setState({
       endDate: event 
     }, this.updateSearch)
@@ -56,6 +64,7 @@ class DateRangeFilter extends Component {
 
     return date <= this.state.endDate
   }
+
 
   render () {
     return (
