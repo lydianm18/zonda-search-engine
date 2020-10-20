@@ -66,6 +66,10 @@ class Main extends SearchkitComponent {
     );
   };
 
+  changeCleanDateStatus = () => {
+      this.setState({cleanDate: true})
+  }
+
   SelectedFilter = (props) => {
     if (props.filterId === "event_date_filter") {
       let firstDateMs = props.labelValue.slice(0, 13);
@@ -85,8 +89,10 @@ class Main extends SearchkitComponent {
           </div>
           <div
             className={props.bemBlocks.option("remove-action")}
-            onClick={props.removeFilter}
-          >
+            onClick={() => {
+                props.removeFilter()
+                this.changeCleanDateStatus()
+            }}>
             x
           </div>
         </div>
@@ -211,12 +217,7 @@ class Main extends SearchkitComponent {
                 </ActionBarRow>
                 <ActionBarRow>
                   <SelectedFilters itemComponent={this.SelectedFilter} />
-                  <div
-                    onClick={() => {
-                      console.log(this.state.cleanDate);
-                      this.setState({ cleanDate: true });
-                    }}
-                  >
+                  <div onClick={this.changeCleanDateStatus}>
                     <ResetFilters />
                   </div>
                 </ActionBarRow>

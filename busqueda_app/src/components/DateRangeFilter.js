@@ -7,7 +7,6 @@ import 'react-datepicker/dist/react-datepicker.css'
 class DateRangeFilter extends Component {
   constructor (props) {
     super(props)
-    console.log(props)
     this.state = {
       startDate: null,
       endDate: null
