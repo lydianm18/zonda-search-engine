@@ -42,6 +42,15 @@ const OrderHitsGridItem = (props) => {
     }
   }
 
+  const ActualDate = () => {
+    if(source.ACTUAL_DELIVERY_DAT){
+      return(
+        <div>{source.ACTUAL_DELIVERY_DAT.split("T")[0]} {source.ACTUAL_DELIVERY_DAT.split("T")[1].slice(1,-1)}</div>
+      )
+    }
+    return(<div>{source.ACTUAL_DELIVERY_DAT}</div>)  
+  }
+
   return( 
     <div className="cards-wrapper">
       <div className="card">
@@ -59,7 +68,8 @@ const OrderHitsGridItem = (props) => {
           </div>
           <div className="delivery-date">
             <div className="calendar"></div>
-            <div>{source.ACTUAL_DELIVERY_DAT.split("T")[0]} {source.ACTUAL_DELIVERY_DAT.split("T")[1].slice(1,-1)}</div>
+            {/* <div>{source.ACTUAL_DELIVERY_DAT.split("T")[0]} {source.ACTUAL_DELIVERY_DAT.split("T")[1].slice(1,-1)}</div> */}
+            <ActualDate />
           </div>
         </div>
         <div className="right-side">
