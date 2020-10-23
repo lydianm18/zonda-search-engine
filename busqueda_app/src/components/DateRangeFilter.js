@@ -50,7 +50,7 @@ class DateRangeFilter extends Component {
 
     onFinished({
       min: moment(startDate).format('YYYY-MM-DDTHH:mm:ss'),
-      max: moment(endDate).format('x')
+      max: moment(endDate).format('YYYY-MM-DD')
     })
   }
 
