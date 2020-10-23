@@ -43,7 +43,7 @@ class DateRangeFilter extends Component {
     }
     //console.log(startDate);
     onFinished({
-      min: moment(startDate).format('YYYY-MM-DDTHH:mm:ss'),
+      min: moment(startDate).format('YYYY-MM-DD'),
       max: moment(endDate).format('YYYY-MM-DD')
     })
   }

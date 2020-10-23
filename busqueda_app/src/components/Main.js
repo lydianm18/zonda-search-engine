@@ -71,23 +71,25 @@ class Main extends SearchkitComponent {
   }
 
   SelectedFilter = (props) => {
-    if (props.filterId === "event_date_filter") {
-      
-      let firstDate = props.labelValue.slice(0, 10);
+    const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
+
+    if (filterId === "event_date_filter") {
+
+      let firstDate = labelValue.slice(0, 10);
       let firstDateFormat = new Date(firstDate).toLocaleDateString('en-GB');
 
-      let secondDate = props.labelValue.slice(-10);
+      let secondDate = labelValue.slice(-10);
       let secondDateFormat = new Date(secondDate).toLocaleDateString('en-GB');
 
       return (
-        <div className={props.bemBlocks.option()}>
-          <div className={props.bemBlocks.option("name")}>
-            {props.labelKey} {firstDateFormat} - {secondDateFormat}
+        <div className={bemBlocks.option()}>
+          <div className={bemBlocks.option("name")}>
+            {labelKey} {firstDateFormat} - {secondDateFormat}
           </div>
           <div
-            className={props.bemBlocks.option("remove-action")}
+            className={bemBlocks.option("remove-action")}
             onClick={() => {
-                props.removeFilter()
+                removeFilter()
                 this.changeCleanDateStatus()
             }}>
             x
@@ -95,20 +97,6 @@ class Main extends SearchkitComponent {
         </div>
       );
     }
-
-    return (
-      <div className={props.bemBlocks.option()}>
-        <div className={props.bemBlocks.option("name")}>
-          {props.labelKey}: {props.labelValue}
-        </div>
-        <div
-          className={props.bemBlocks.option("remove-action")}
-          onClick={props.removeFilter}
-        >
-          x
-        </div>
-      </div>
-    );
   };
 
   turnFalseDateFilter = () => {
