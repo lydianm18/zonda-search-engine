@@ -28,7 +28,7 @@ class DateRangeFilter extends Component {
   }
 
   handleChangeEnd = (event) => {
-      console.log(event)
+      //console.log(event)
     this.setState({
       endDate: event 
     }, this.updateSearch)
@@ -41,10 +41,10 @@ class DateRangeFilter extends Component {
     if (!startDate || !endDate) {
       return
     }
-    console.log(startDate);
+    //console.log(startDate);
     onFinished({
-      min: moment(startDate).format('x'),
-      max: moment(endDate).format('x')
+      min: moment(startDate).format('YYYY-MM-DDTHH:mm:ss'),
+      max: moment(endDate).format('YYYY-MM-DD')
     })
   }
 

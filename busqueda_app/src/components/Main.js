@@ -72,15 +72,12 @@ class Main extends SearchkitComponent {
 
   SelectedFilter = (props) => {
     if (props.filterId === "event_date_filter") {
-      let firstDateMs = props.labelValue.slice(0, 13);
-      let firstDateFormat = new Date(
-        parseInt(firstDateMs)
-      ).toLocaleDateString();
+      
+      let firstDate = props.labelValue.slice(0, 10);
+      let firstDateFormat = new Date(firstDate).toLocaleDateString('en-GB');
 
-      let secondDateMs = props.labelValue.slice(-13);
-      let secondDateFormat = new Date(
-        parseInt(secondDateMs)
-      ).toLocaleDateString();
+      let secondDate = props.labelValue.slice(-10);
+      let secondDateFormat = new Date(secondDate).toLocaleDateString('en-GB');
 
       return (
         <div className={props.bemBlocks.option()}>
