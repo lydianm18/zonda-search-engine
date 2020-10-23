@@ -213,7 +213,6 @@ class Main extends SearchkitComponent {
                   <SelectedFilters itemComponent={this.SelectedFilter} />
                   <div
                     onClick={() => {
-                      console.log(this.state.cleanDate);
                       this.setState({ cleanDate: true });
                     }}
                   >
