@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SearchkitComponent,
   ViewSwitcherHits,
@@ -7,7 +7,8 @@ import {
 import Popup from "reactjs-popup";
 import CardDetails from './CardDetails';
 import config from "../config.json";
-
+import EditableTable from "./EditableTable";
+import { ReactTabulator } from "react-tabulator";
 
 //VISTA DE LOS RESULTADOS EN FORMA DE CARTAS
 const OrderHitsGridItem = (props) => {
@@ -109,172 +110,59 @@ const OrderHitsGridItem = (props) => {
 //VISTA DE LOS RESULTADOS EN FORMA DE TABLA
 const OrderHitsTable = (props) => {  
   const {hits} = props;
+  const [data, setData] = useState([])
+  const [header, setHeader] = useState([])
+
+  /*const getColumnas = async () => {
+    const fields = Object.getOwnPropertyNames(hits[0]._source)
+    await fields.map(field => {
+      //console.log(field)
+      let column = {
+        title: "aa",
+        field: field,
+        hozAlign: "center",
+        width: 150
+      }
+      setHeader(header => [...header, column])
+    })
+    console.log(header)
+  }*/
+
+  useEffect(() => {
+    const getData = async () => {
+      await hits.map(hit => {
+        //console.log(hit._source)
+        let row = {
+          orderNumber: hit._source.ORDER_NUMBER,
+          sequentialNumber: hit._source.ORDER_NUMBER_FROM_SEQ_USAGE,
+          ldsNumber: hit._source.LDS_DELIVERY_NOTE_NO,
+          orderStatus: hit._source.ORDER_STATUS_CD,
+          orderCreationSystem: hit._source.ORDER_CREATION_TYPE_CD
+        }
+        setData(data => [...data, row])
+      })
+    }
+    getData();
+    //getColumnas();
+  }, [hits])
+
+  const columns = [
+    { title: "Logon Order Number", field: "orderNumber", hozAlign: "center", width: 150 },
+    { title: "Sequential Number", field: "sequentialNumber", hozAlign: "center" },
+    { title: "LDS Number", field: "ldsNumber", hozAlign: "center" },
+    { title: "Order Status", field: "orderStatus", hozAlign: "center" },
+    { title: "Order Creation System", field: "orderCreationSystem", hozAlign: "center" }    
+  ]
+
+  const options = {
+    movableColumns: true
+  }
 
   return (
-    <div className="table-container">
-      <table className="table">
-        <thead>
-          <tr className="table-header">
-          {/* TABLA FILTROS NUEVOS */}
-            <th className="header">Logon Order Number</th>
-            <th className="header">Sequential Number</th>
-            <th className="header">LDS Number</th>
-            <th className="header">Order Status</th>
-            <th className="header">Order Creation System</th>
-            <th className="header">Ship-to (Destination)</th>
-            <th className="header">Sold-to (Customer)</th>
-            <th className="header">Bill-to (Address invoice)</th>
-            <th className="header">Payer (credit check)</th>
-            <th className="header">Commercial Carrier</th>
-            <th className="header">Executing Carrier</th>
-            <th className="header">Delivery Type</th>
-            <th className="header">Process Type</th>
-            <th className="header">Delivery From</th>
-            <th className="header">Delivery To</th>
-            <th className="header">Created By</th>
-            <th className="header">On Hold</th>
-
-            {/* TABLA DEMO
-            <th className="header">Order ID</th>
-            <th className="header icon-text"><span className="CALENDAR"></span>Delivery Date</th>
-            <th className="header">Shippingpoint ID</th>
-            <th className="header">Delivery Type CD</th>
-            <th className="header"><span className="LOCATION"></span>Site City</th>
-            <th className="header"><span className="user-copy"></span>Contact</th>
-            <th className="header">Commercial Distance</th>
-            <th className="header">Transport Distance</th>
-            <th className="header">Transport duration</th> */}
-          </tr>
-        </thead>
-        <tbody>
-          {
-            hits.map((hit) => {
-              const DeliveryType = () => {
-                  if(hit._source.DELIVERY_TYPE_CD == 1){
-                    return(
-                      <div className="Rectangle-value-1">{hit._source.DELIVERY_TYPE_CD}</div>
-                    )
-                  } else if(hit._source.DELIVERY_TYPE_CD == 2){
-                    return(
-                      <div className="Rectangle-value-2">{hit._source.DELIVERY_TYPE_CD}</div>
-                    )
-                  } else if(hit._source.DELIVERY_TYPE_CD == 3){
-                    return(
-                      <div className="Rectangle-value-3">{hit._source.DELIVERY_TYPE_CD}</div>
-                    )
-                  } else if(hit._source.DELIVERY_TYPE_CD == 4){
-                    return(
-                      <div className="Rectangle-value-4">{hit._source.DELIVERY_TYPE_CD}</div>
-                    )
-                  } else if(hit._source.DELIVERY_TYPE_CD == 5){
-                    return(
-                      <div className="Rectangle-value-5">{hit._source.DELIVERY_TYPE_CD}</div>
-                    )
-                  } else{
-                    return(
-                      <div className="Rectangle-value-4">{hit._source.DELIVERY_TYPE_CD}</div>
-                    )
-                  }}
-                  {/* TABLA FILTROS NUEVOS */}
-                  const OrderStatus = () => {
-                  if(hit._source.ORDER_STATUS_CD == 1){
-                    return(
-                      <div className="Rectangle-value-6">New</div>
-                    )
-                  } else if(hit._source.ORDER_STATUS_CD == 6){
-                    return(
-                      <div className="Rectangle-value-7">Dispatched</div>
-                    )
-                  } else if(hit._source.ORDER_STATUS_CD == 15){
-                    return(
-                      <div className="Rectangle-value-8">Delivered</div>
-                    )
-                  } else if(hit._source.ORDER_STATUS_CD == 16){
-                    return(
-                      <div className="Rectangle-value-9">Finished</div>
-                    )
-                  } else if(hit._source.ORDER_STATUS_CD == 17){
-                    return(
-                      <div className="Rectangle-value-10">Deleted</div>
-                    )
-                  } else{
-                    return(
-                      <div className="Rectangle-value-11">{hit._source.ORDER_STATUS_CD}</div>
-                    )
-                  }
-                }
-                {/* TABLA FILTROS NUEVOS */}
-                const OrderCreation = () => {
-                  if(hit._source.ORDER_CREATION_TYPE_CD == 1){
-                    return(
-                      <div className="Rectangle-value-6">Call Center</div>
-                    )
-                  } else if(hit._source.ORDER_CREATION_TYPE_CD == 2){
-                    return(
-                      <div className="Rectangle-value-7">Web Order</div>
-                    )
-                  } else if(hit._source.ORDER_CREATION_TYPE_CD == 3){
-                    return(
-                      <div className="Rectangle-value-8">Generated by Logon</div>
-                    )
-                  } else if(hit._source.ORDER_CREATION_TYPE_CD == 4){
-                    return(
-                      <div className="Rectangle-value-9">Dummy</div>
-                    )
-                  } else if(hit._source.ORDER_STATUS_CD == 5){
-                    return(
-                      <div className="Rectangle-value-10">Pickup Terminal</div>
-                    )
-                  } else{
-                    return(
-                      <div className="Rectangle-value-11">{hit._source.ORDER_STATUS_CD}</div>
-                    )
-                  }
-                }
-
-
-              return (
-                <tr key={hit._id} className="table-header">
-                {/* TABLA FILTROS NUEVOS */}
-                   <td>{hit._source.ORDER_NUMBER}</td>
-                   <td>{hit._source.ORDER_NUMBER_FROM_SEQ_USAGE}</td>
-                   <td>{hit._source.LDS_DELIVERY_NOTE_NO}</td>
-                   <td><OrderStatus/></td>
-                   <td><OrderCreation/></td>
-                   <td>{hit._source.SHIPTO_SAP_BP_ID}</td>
-                   <td>{hit._source.SOLDTO_SAP_BP_ID}</td>
-                   <td>{hit._source.BILLTO_SAP_BP_ID}</td>
-                   <td>{hit._source.PAYER_SAP_BP_ID}</td>
-                   <td>{hit._source.COMM_CARRIER_ID}</td>
-                   <td>{hit._source.EXEC_CARRIER_ID}</td>
-                   <td><DeliveryType/></td>
-                   <td>{hit._source.DISTRIBUTION_DEST_CD}</td>
-                   <td>{hit._source.DELIVERY_FROM_DAT.split("T")[0]} {hit._source.DELIVERY_FROM_DAT.split("T")[1].slice(1,-1) }</td>
-                   <td>{hit._source.DELIVERY_TO_DAT.split("T")[0]} {hit._source.DELIVERY_TO_DAT.split("T")[1].slice(1,-1) }</td>
-                   <td>{hit._source.CTL_CRE_UID}</td>
-                   <td>{hit._source.ON_HOLD_ORDER_AND_LOCKED_FLAG}</td>
-
-                 {/* TABLA DEMO
-                  <td>
-                    <Popup trigger={<div>{hit._source.ORDER_ID}</div>} modal>
-                      <CardDetails order_id={hit._source.ORDER_ID} />
-                    </Popup>
-                  </td>              
-                  <td>{hit._source.ACTUAL_DELIVERY_DAT.split("T")[0]} {hit._source.ACTUAL_DELIVERY_DAT.split("T")[1].slice(1,-1)}</td>              
-                  <td>{hit._source.SHIPPINGPOINT_ID}</td>
-                  <td><DeliveryType /></td>
-                  <td>{hit._source.LNF_SITE_CITY}</td>
-                  <td>{hit._source.CONTACT_PERSON_SIGNATURE_TXT}</td>
-                  <td>{hit._source.COMMERCIAL_DISTANCE_M}</td>
-                  <td>{hit._source.TRANSPORT_DISTANCE_M}</td>
-                  <td>{hit._source.TRANSPORT_DURATION_MIN}</td> */}
-                </tr>
-              )
-            })
-          }
-        </tbody>
-      </table>
-    </div>
+    <>
+      <p onClick={columns}>INFO</p>
+      {(data.length === 0) ? (<div>No hay data</div>) : (<ReactTabulator columns={columns} data={data} options={options}/>)}
+    </>
   )  
 }
 

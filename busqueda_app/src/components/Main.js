@@ -24,6 +24,7 @@ import {
 import DateRangeFilter from "./DateRangeFilter";
 import Samples from "./Samples";
 import config from "../config.json";
+//import EditableTable from "./EditableTable";
 
 const searchkit = new SearchkitManager(config.endpoint);
 
@@ -218,6 +219,7 @@ class Main extends SearchkitComponent {
           </LayoutBody>
         </Layout>
       </SearchkitProvider>
+      
     );
   }
 }
