@@ -70,7 +70,9 @@ class Main extends SearchkitComponent {
       this.setState({cleanDate: true})
   }
 
-  SelectedFilter = (props) => {
+  //FUNCIÓN RENDERIZADA POR SEECTEDFILTERS, PERO NO FUNCIONA
+  /*SelectedFilter = (props) => {
+    console.log(props)
     const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
 
     if (filterId === "event_date_filter") {
@@ -80,7 +82,7 @@ class Main extends SearchkitComponent {
 
       let secondDate = labelValue.slice(-10);
       let secondDateFormat = new Date(secondDate).toLocaleDateString('en-GB');
-
+      
       return (
         <div className={bemBlocks.option()}>
           <div className={bemBlocks.option("name")}>
@@ -97,7 +99,7 @@ class Main extends SearchkitComponent {
         </div>
       );
     }
-  };
+  };*/
 
   turnFalseDateFilter = () => {
       this.setState({cleanDate: false})
