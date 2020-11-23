@@ -15,12 +15,12 @@ import 'antd/dist/antd.css'
 //VISTA DE LOS RESULTADOS EN FORMA DE TABLA
 const OrderHitsTable = (props) => {  
   const {hits} = props;
-  const [data, setData] = useState([hits])
+  const [data, setData] = useState([])
 
   useEffect(() => {
     const getData = async () => {
+      let arrayData = [];
       await hits.map(hit => {
-        //console.log(hit._source)
         let row = {
           city: hit._source.LNF_SITE_CITY,
           orderNumber: hit._source.ORDER_NUMBER,
@@ -40,16 +40,18 @@ const OrderHitsTable = (props) => {
           deliveryTo: hit._source.DELIVERY_TO_DAT,
           createdBy: hit._source.CTL_CRE_UID
         }
-        setData(data => [...data, row])
+        arrayData.push(row);
+        
       })
+      setData(arrayData)
     }
     getData();
 
   }, [hits])
 
   const columns = [
-    { title: "City", dataIndex: "city", key:"city" },
-    { title: "Logon Order Number", dataIndex: "orderNumber", key:"orderNumber" },
+    { title: "City", dataIndex: "city", key:"city", sorter: true },
+    { title: "Logon Order Number", dataIndex: "orderNumber", key:"orderNumber", sorter: true },
     { title: "Sequential Number", dataIndex: "sequentialNumber", key:"sequentialNumber" },
     { title: "LDS Number", dataIndex: "ldsNumber", key:"ldsNumber" },
     { title: "Order Status", dataIndex: "orderStatus", key:"orderStatus" },
@@ -62,14 +64,14 @@ const OrderHitsTable = (props) => {
     { title: "Executing Carrier", dataIndex: "executingCarrier", key:"executingCarrier" },
     { title: "Delivery Type", dataIndex: "deliveryType", key:"deliveryType" },
     { title: "Process Type", dataIndex: "processType", key:"processType" },
-    { title: "Delivery From", dataIndex: "deliveryFrom", key:"deliveryFrom" },
-    { title: "Delivery To", dataIndex: "deliveryTo", key:"deliveryTo" },
-    { title: "Created By", dataIndex: "createdBy", key:"createdBy" },
+    { title: "Delivery From", dataIndex: "deliveryFrom", key:"deliveryFrom", sorter: true },
+    { title: "Delivery To", dataIndex: "deliveryTo", key:"deliveryTo", sorter: true },
+    { title: "Created By", dataIndex: "createdBy", key:"createdBy" }
   ]
 
   return (
     <>
-      {(data.length === 0) ? (<div>No hay data</div>) : (<Table columns={columns} dataSource={data}/>)}
+      {(data.length === 0) ? (<div>No hay data</div>) : (<Table columns={columns} dataSource={data} onChange={()=>console.log('hola')}/>)}
     </>
   )  
 }
@@ -79,7 +81,7 @@ class Samples extends SearchkitComponent {
     return (
       <div>
           <ViewSwitcherHits
-            hitsPerPage={12}
+            hitsPerPage={100}
             highlightFields={["ORDER_ID"]}
             hitComponents={[
               {key: config.samples.table.key, title: config.samples.table.title, listComponent: OrderHitsTable}
