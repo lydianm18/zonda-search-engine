@@ -71,7 +71,7 @@ class Main extends SearchkitComponent {
       this.setState({cleanDate: true})
   }
 
-  SelectedFilter = (props) => {
+  /*SelectedFilter = (props) => {
     const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
 
     if (filterId === "event_date_filter") {
@@ -98,7 +98,7 @@ class Main extends SearchkitComponent {
         </div>
       );
     }
-  };
+  };*/
 
   turnFalseDateFilter = () => {
       this.setState({cleanDate: false})
