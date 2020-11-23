@@ -25,6 +25,7 @@ const OrderHitsTable = (props) => {
           city: hit._source.LNF_SITE_CITY,
           orderNumber: hit._source.ORDER_NUMBER,
           sequentialNumber: hit._source.ORDER_NUMBER_FROM_SEQ_USAGE,
+          shippingPoint: hit._source.SHIPPIINGPOINT_ID,
           ldsNumber: hit._source.LDS_DELIVERY_NOTE_NO,
           orderStatus: hit._source.ORDER_STATUS_CD,
           orderCreationSystem: hit._source.ORDER_CREATION_TYPE_CD,
@@ -40,8 +41,7 @@ const OrderHitsTable = (props) => {
           deliveryTo: hit._source.DELIVERY_TO_DAT,
           createdBy: hit._source.CTL_CRE_UID
         }
-        arrayData.push(row);
-        
+        arrayData.push(row);      
       })
       setData(arrayData)
     }
@@ -50,9 +50,16 @@ const OrderHitsTable = (props) => {
   }, [hits])
 
   const columns = [
-    { title: "City", dataIndex: "city", key:"city", sorter: true },
-    { title: "Logon Order Number", dataIndex: "orderNumber", key:"orderNumber", sorter: true },
+    { 
+      title: "City", 
+      dataIndex: "city", 
+      key:"city",
+      sorter: (a, b) => a.city.localeCompare(b.city),
+      sortDirections: ['descend','ascend']
+    },
+    { title: "Logon Order Number", dataIndex: "orderNumber", key:"orderNumber"},
     { title: "Sequential Number", dataIndex: "sequentialNumber", key:"sequentialNumber" },
+    { title: "Shipping Point", dataIndex: "shippingPoint", key:"shippingPoint" },
     { title: "LDS Number", dataIndex: "ldsNumber", key:"ldsNumber" },
     { title: "Order Status", dataIndex: "orderStatus", key:"orderStatus" },
     { title: "Order Creation System", dataIndex: "orderCreationSystem", key:"orderCreationSystem" },
@@ -64,14 +71,18 @@ const OrderHitsTable = (props) => {
     { title: "Executing Carrier", dataIndex: "executingCarrier", key:"executingCarrier" },
     { title: "Delivery Type", dataIndex: "deliveryType", key:"deliveryType" },
     { title: "Process Type", dataIndex: "processType", key:"processType" },
-    { title: "Delivery From", dataIndex: "deliveryFrom", key:"deliveryFrom", sorter: true },
-    { title: "Delivery To", dataIndex: "deliveryTo", key:"deliveryTo", sorter: true },
+    { title: "Delivery From", dataIndex: "deliveryFrom", key:"deliveryFrom"},
+    { title: "Delivery To", dataIndex: "deliveryTo", key:"deliveryTo"},
     { title: "Created By", dataIndex: "createdBy", key:"createdBy" }
   ]
 
+  function onChange(filters, sorter) {
+    console.log('params', filters, sorter);
+  }
+
   return (
     <>
-      {(data.length === 0) ? (<div>No hay data</div>) : (<Table columns={columns} dataSource={data} onChange={()=>console.log('hola')}/>)}
+      {(data.length === 0) ? (<div>No hay data</div>) : (<Table columns={columns} dataSource={data} onChange={onChange} size="small"/>)}
     </>
   )  
 }
@@ -81,7 +92,7 @@ class Samples extends SearchkitComponent {
     return (
       <div>
           <ViewSwitcherHits
-            hitsPerPage={100}
+            hitsPerPage={10000}
             highlightFields={["ORDER_ID"]}
             hitComponents={[
               {key: config.samples.table.key, title: config.samples.table.title, listComponent: OrderHitsTable}
