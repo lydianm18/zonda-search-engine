@@ -8,7 +8,7 @@ import Popup from "reactjs-popup";
 import config from "../config.json";
 //import EditableTable from "./EditableTable";
 //import { ReactTabulator } from "react-tabulator";
-import {statusMigration} from '../utils/Utils';
+import { statusMigration, orderCreationSystemMigration } from '../utils/Utils';
 import { Table } from 'antd';
 import 'antd/dist/antd.css'
 
@@ -23,13 +23,12 @@ const OrderHitsTable = (props) => {
       let arrayData = [];
       await hits.map(hit => {
         let row = {
-          city: hit._source.LNF_SITE_CITY,
           orderNumber: hit._source.ORDER_NUMBER,
           sequentialNumber: hit._source.ORDER_NUMBER_FROM_SEQ_USAGE,
           shippingPoint: hit._source.SHIPPIINGPOINT_ID,
           ldsNumber: hit._source.LDS_DELIVERY_NOTE_NO,
           orderStatus: statusMigration(hit._source.ORDER_STATUS_CD),
-          orderCreationSystem: hit._source.ORDER_CREATION_TYPE_CD,
+          orderCreationSystem: orderCreationSystemMigration(hit._source.ORDER_CREATION_TYPE_CD),
           shipTo: hit._source.SHIPTO_SAP_BP_ID,
           soldTo: hit._source.SOLDTO_SAP_BP_ID,
           billTo: hit._source.BILLTO_SAP_BP_ID,
@@ -51,13 +50,6 @@ const OrderHitsTable = (props) => {
   }, [hits])
 
   const columns = [
-    { 
-      title: "City", 
-      dataIndex: "city", 
-      key:"city",
-      /*sorter: (a, b) => a.city.localeCompare(b.city),
-      sortDirections: ['descend','ascend']*/
-    },
     { title: "Logon Order Number", dataIndex: "orderNumber", key:"orderNumber"},
     { title: "Sequential Number", dataIndex: "sequentialNumber", key:"sequentialNumber" },
     { title: "Shipping Point", dataIndex: "shippingPoint", key:"shippingPoint" },
