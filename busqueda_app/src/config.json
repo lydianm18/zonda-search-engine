@@ -1,9 +1,9 @@
 {
-    "endpoint": "https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/tlgnc_order",
+    "endpoint": "https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/filters-test",
     "title": "Orders Search Engine",
     "searchbox": {
-        "queryFields": ["ORDER_ID","SHIPPINGPOINT_ID"],
-        "placeholder": "Order ID or Shipping point"
+        "queryFields": ["ORDER_NUMBER","ORDER_NUMBER_FROM_SEQ_USAGE", "LDS_DELIVERY_NOTE_NO"],
+        "placeholder": "Order or Delivery Number"
     },
     "filters": {
         "cityCheckbox": {
@@ -29,9 +29,32 @@
             "id": "person"
         },
         "dates": {
-            "fields": "ACTUAL_DELIVERY_DAT",
-            "title": "Delivery Dates:",
-            "id": "event_date_filter"
+            "fields": "DELIVERY_FROM_DAT",
+            "title": "Delivery Dates",
+            "id": "event_date_filterfrom"
+        },
+        "datesTo": {
+            "fields": "DELIVERY_TO_DAT",
+            "title": "Delivery Dates",
+            "id": "event_date_filterto"
+        },
+        "searchboxTransporter": {
+            "title": "Transporter",
+            "placeholder": "Transporter",
+            "fields": ["COMM_CARRIER_ID", "EXEC_CARRIER_ID"],
+            "id": "transporter"
+        },
+        "searchboxBusiness": {
+            "title": "Business",
+            "placeholder": "Business Partners",
+            "fields": ["SHIPTO_SAP_BP_ID", "SOLDTO_SAP_BP_ID", "BILLTO_SAP_BP_ID", "PAYER_SAP_BP_ID"],
+            "id": "business"
+        },
+        "searchboxCreatedBy": {
+            "title": "Created by",
+            "placeholder": "Created by",
+            "fields": "CTL_CRE_UID",
+            "id": "createdBy"
         }
     },
     "sortingSelector": {
@@ -69,7 +92,7 @@
         }
     },
     "dateFilter": {
-        "startDatePlaceholder": "Select start date",
-        "endDatePlaceholder": "Select end date"
+        "startDatePlaceholder": "Delivery From",
+        "endDatePlaceholder": "/ To"
     }
 }

@@ -71,7 +71,7 @@ class Main extends SearchkitComponent {
       this.setState({cleanDate: true})
   }
 
-  /*SelectedFilter = (props) => {
+ /* SelectedFilter = (props) => {
     const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
 
     if (filterId === "event_date_filter") {
@@ -98,7 +98,7 @@ class Main extends SearchkitComponent {
         </div>
       );
     }
-  };*/
+  }; */
 
   turnFalseDateFilter = () => {
       this.setState({cleanDate: false})
@@ -150,16 +150,16 @@ class Main extends SearchkitComponent {
                 </div>
               </div>
               <div className="line"></div>
-              <RangeFilter
+             {/*  <RangeFilter
                 id={config.filters.dates.id}
                 title={config.filters.dates.title}
                 field={config.filters.dates.fields}
                 rangeComponent={
-                  <DateRangeFilter cleanDate={this.state.cleanDate} turnFalseDateFilter={this.turnFalseDateFilter}/>
+                  <DateRangeFilter cleanDate={this.state.cleanDate} turnFalseDateFilter={this.turnFalseDateFilter} keepDates={this.state.keepDates}/>
                 }
                 min={946684800000}
                 max={new Date().getTime()}
-              />
+              /> */}
               <div className="line"></div>
               <RefinementListFilter
                 id={config.filters.cityCheckbox.id}
@@ -177,29 +177,62 @@ class Main extends SearchkitComponent {
                 prefixQueryFields={config.filters.searchboxCity.fields}
               />
               <div className="line"></div>
-              <InputFilter
-                id={config.filters.searchboxPerson.id}
-                title={config.filters.searchboxPerson.title}
-                placeholder={config.filters.searchboxPerson.placeholder}
-                searchOnChange={true}
-                prefixQueryFields={config.filters.searchboxPerson.fields}
-              />
             </SideBar>
             <LayoutResults className="layout">
               <ActionBar>
-                <ActionBarRow>
-                  <div>
+                <ActionBarRow /* className="searchInput" */>
+          
                     <SearchBox
                       autofocus={true}
                       searchOnChange={true}
                       placeholder={config.searchbox.placeholder}
                       prefixQueryFields={config.searchbox.queryFields}
                     />
-                  </div>
-                  <div className="actions-2">
+                     <InputFilter
+                      id={config.filters.searchboxBusiness.id}
+                      title={config.filters.searchboxBusiness.title}
+                      placeholder={config.filters.searchboxBusiness.placeholder}
+                      searchOnChange={true}
+                      prefixQueryFields={config.filters.searchboxBusiness.fields}
+                     />
+                     <InputFilter
+                      id={config.filters.searchboxTransporter.id}
+                      title={config.filters.searchboxTransporter.title}
+                      placeholder={config.filters.searchboxTransporter.placeholder}
+                      searchOnChange={true}
+                      prefixQueryFields={config.filters.searchboxTransporter.fields}
+                     />
+                     <InputFilter
+                      id={config.filters.searchboxCreatedBy.id}
+                      title={config.filters.searchboxCreatedBy.title}
+                      placeholder={config.filters.searchboxCreatedBy.placeholder}
+                      searchOnChange={true}
+                      prefixQueryFields={config.filters.searchboxCreatedBy.fields}
+                     />
+
+                    <RangeFilter
+                      id={config.filters.dates.id}
+                      title={config.filters.dates.title}
+                      field={config.filters.dates.fields}
+                      rangeComponent={
+                   <DateRangeFilter cleanDate={this.state.cleanDate} turnFalseDateFilter={this.turnFalseDateFilter}/>
+                      }
+                      min={946684800000}
+                      max={new Date().getTime()}
+                    />
+                  {/* </div> */}
+                   {/* <InputFilter
+                      id={config.filters.searchboxCity.id}
+                      title={config.filters.searchboxCity.title}
+                      placeholder={config.filters.searchboxCity.placeholder}
+                      searchOnChange={true}
+                      prefixQueryFields={config.filters.searchboxCity.fields}
+              /> */}
+                 {/*BOTONES DE GRID-TABLE Y LASTEST-EARLIEST  
+                 <div className="actions-2">
                     <ViewSwitcherToggle />
                     <SortingSelector options={config.sortingSelector.options} />
-                  </div>
+                  </div> */}
                 </ActionBarRow>
                 <ActionBarRow>
                   <SelectedFilters itemComponent={this.SelectedFilter} />
@@ -212,9 +245,10 @@ class Main extends SearchkitComponent {
                 </div>
               </ActionBar>
               <Samples />
+             {/* PAGINACION SEARCHKIT
               <div className="pagination">
                 <Pagination showNumbers={true} />
-              </div>
+              </div> */}
             </LayoutResults>
           </LayoutBody>
         </Layout>

@@ -5,20 +5,53 @@ import config from '../config.json'
 import 'react-datepicker/dist/react-datepicker.css'
 
 class DateRangeFilter extends Component {
+  
   constructor (props) {
     super(props)
+    //console.log(props)
     this.state = {
       startDate: null,
-      endDate: null
+      endDate: null,
+      years: this.range(2000, new Date().getFullYear()),
+      months: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
+    }
+  }
+
+  componentDidMount = () => {
+    // 946684800000 es 01/01/2000 en ms que es la fecha más antigua para el calendario
+    if(this.props.keepDates === true && this.props.minValue !== 946684800000){
+      this.setState({startDate: this.props.minValue, endDate: this.props.maxValue})
     }
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    if(this.props.cleanDate === true && prevProps.cleanDate != this.props.cleanDate){
+    if(this.props.cleanDate === true && prevProps.cleanDate !== this.props.cleanDate){
       this.setState({startDate: null, endDate: null})
     }
   }
-  
+
+  range = (startYear, endYear) => {
+    let arrayYears = []
+    while(startYear <= endYear){
+      arrayYears.push(startYear)
+      startYear += 1
+    }
+    return arrayYears;
+  }
+
   handleChangeStart = (event) => {
     this.setState({
       startDate: event
@@ -28,7 +61,7 @@ class DateRangeFilter extends Component {
   }
 
   handleChangeEnd = (event) => {
-      //console.log(event)
+      console.log(event);
     this.setState({
       endDate: event 
     }, this.updateSearch)
@@ -41,10 +74,10 @@ class DateRangeFilter extends Component {
     if (!startDate || !endDate) {
       return
     }
-    //console.log(startDate);
+    console.log(startDate);
     onFinished({
-      min: moment(startDate).format('YYYY-MM-DD'),
-      max: moment(endDate).format('YYYY-MM-DD')
+      min: moment(startDate).format('x'),
+      max: moment(endDate).format('x')
     })
   }
 
@@ -71,8 +104,6 @@ class DateRangeFilter extends Component {
         <div className="fecha-espacio">
           <div className="sk-input-filter">
             <form>
-              <div className= "sk-input-filter__icon">
-              </div>
             <DatePicker
               className="sk-input-filter__text"
               placeholderText={config.dateFilter.startDatePlaceholder}
@@ -82,14 +113,45 @@ class DateRangeFilter extends Component {
               selected={this.state.startDate}
               startDate={this.state.startDate}
               endDate={this.state.endDate}
-              onChange={this.handleChangeStart} />
-            </form>
-          </div>
-        </div>
-        <div className="sk-input-filter">
-          <form>
-            <div className= "sk-input-filter__icon">
-            </div>
+              onChange={this.handleChangeStart}
+              renderCustomHeader={({
+                date,
+                changeYear,
+                changeMonth
+              }) => (
+                <div
+                  style={{
+                    margin: 10,
+                    display: "flex",
+                    justifyContent: "space-around"
+                  }}
+                >
+                  <select
+                    value={date.getFullYear()}
+                    onChange={({ target: { value } }) => changeYear(value)}
+                  >
+                    {this.state.years.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+
+                  <select
+                    value={this.state.months[date.getMonth()]}
+                    onChange={({ target: { value } }) =>
+                      changeMonth(this.state.months.indexOf(value))
+                    }
+                  >
+                    {this.state.months.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option> 
+                       ))}
+                  </select>
+                </div>
+              )}
+               />    
             <DatePicker
               className="sk-input-filter__text"
               placeholderText={config.dateFilter.endDatePlaceholder}
@@ -99,10 +161,49 @@ class DateRangeFilter extends Component {
               selected={this.state.endDate}
               startDate={this.state.startDate}
               endDate={this.state.endDate}
-              onChange={this.handleChangeEnd} />
+              onChange={this.handleChangeEnd}
+              renderCustomHeader={({  date,
+                changeYear,
+                changeMonth
+              }) => (
+                <div
+                  style={{
+                    margin: 10,
+                    display: "flex",
+                    justifyContent: "space-around"
+                  }}
+                >
+                  <select
+                    value={date.getFullYear()}
+                    onChange={({ target: { value } }) => changeYear(value)}
+                  >
+                    {this.state.years.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                   <select
+                    value={this.state.months[date.getMonth()]}
+                    onChange={({ target: { value } }) =>
+                      changeMonth(this.state.months.indexOf(value))
+                    }
+                  >
+                    {this.state.months.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            />
+              <div className= "sk-input-filter__icon">
+              </div>
           </form>
         </div>
-      </div>
+        </div>
+        </div>
     )
   }
 }

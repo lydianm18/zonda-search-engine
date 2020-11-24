@@ -45,7 +45,7 @@
       .sk-input-filter{
         width: 175px;
         height: 36px;
-        border-radius: 4px;
+        border-radius : 4px;
         border: solid .5px rgb(192, 236, 255);
         background-color: #f5fcff;
       }
@@ -57,9 +57,9 @@
     }
   }
 
-  .filter--dates {
+.filter--dates {
     margin-left: 0px;
-  }
+  } 
 
 
   .line{
@@ -99,14 +99,14 @@
   }
 }
 
-.filter--event_date_filter{
+/* .filter--event_date_filter{
   .sk-panel__header {
     &:before {
       content: url("../img/calendar.svg");
       margin-right: 26px;
     }
   }
-}
+} */
 
 .filter--searches{
   .sk-panel__header {

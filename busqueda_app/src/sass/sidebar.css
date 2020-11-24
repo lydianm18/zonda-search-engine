@@ -92,11 +92,14 @@
   margin-right: 26px;
 }
 
-.filter--event_date_filter .sk-panel__header:before {
-  content: url("../img/calendar.svg");
-  margin-right: 26px;
-}
-
+/* .filter--event_date_filter{
+  .sk-panel__header {
+    &:before {
+      content: url("../img/calendar.svg");
+      margin-right: 26px;
+    }
+  }
+} */
 .filter--searches .sk-panel__header:before {
   content: url("../img/location.svg");
   margin-right: 26px;
