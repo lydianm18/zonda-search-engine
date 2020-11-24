@@ -1,0 +1,20 @@
+{
+    "1": "New",
+    "2": "Transmitted to pool",
+    "3": "Confirmed by pool",
+    "4": "Transmitted to comm. Carrier",
+    "5": "Confirmed by comm. Carrier",
+    "6": "Scheduled",
+    "7": "Released for execution",
+    "8": "Confirmed by driver",
+    "9": "Arrived at loadingpoint",
+    "10": "Loading",
+    "11": "Loaded",
+    "12": "Shipping",
+    "13": "Arrived at delivery point",
+    "14": "Unloading",
+    "15": "Delivered",
+    "16": "Finished",
+    "17": "Deleted",
+    "18": "Transmitted to rail company"
+}
