@@ -82,7 +82,7 @@ const OrderHitsTable = (props) => {
 
   return (
     <>
-      {(data.length === 0) ? (<div>No hay data</div>) : (<Table columns={columns} dataSource={data} onChange={onChange} size="small"/>)}
+      {(data.length === 0) ? (<div>No hay data</div>) : (<Table columns={columns} dataSource={data} onChange={onChange} size="small" bordered/>)}
     </>
   )  
 }
@@ -92,7 +92,7 @@ class Samples extends SearchkitComponent {
     return (
       <div>
           <ViewSwitcherHits
-            hitsPerPage={10000}
+            hitsPerPage={1000}
             highlightFields={["ORDER_ID"]}
             hitComponents={[
               {key: config.samples.table.key, title: config.samples.table.title, listComponent: OrderHitsTable}
