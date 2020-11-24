@@ -8,7 +8,7 @@ import Popup from "reactjs-popup";
 import config from "../config.json";
 //import EditableTable from "./EditableTable";
 //import { ReactTabulator } from "react-tabulator";
-import { statusMigration, orderCreationSystemMigration } from '../utils/Utils';
+import { statusMigration, orderCreationSystemMigration, notExist } from '../utils/Utils';
 import { Table } from 'antd';
 import 'antd/dist/antd.css'
 
@@ -24,9 +24,9 @@ const OrderHitsTable = (props) => {
       await hits.map(hit => {
         let row = {
           orderNumber: hit._source.ORDER_NUMBER,
-          sequentialNumber: hit._source.ORDER_NUMBER_FROM_SEQ_USAGE,
-          shippingPoint: hit._source.SHIPPIINGPOINT_ID,
-          ldsNumber: hit._source.LDS_DELIVERY_NOTE_NO,
+          sequentialNumber: notExist(hit._source.ORDER_NUMBER_FROM_SEQ_USAGE),
+          shippingPoint: hit._source.SHIPPINGPOINT_ID,
+          ldsNumber: notExist(hit._source.LDS_DELIVERY_NOTE_NO),
           orderStatus: statusMigration(hit._source.ORDER_STATUS_CD),
           orderCreationSystem: orderCreationSystemMigration(hit._source.ORDER_CREATION_TYPE_CD),
           shipTo: hit._source.SHIPTO_SAP_BP_ID,
