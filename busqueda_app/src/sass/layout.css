@@ -3,7 +3,11 @@
   margin-top: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
-  padding: 40px;
+  padding: 24px 80px;
   margin: 0px;
+}
+
+.filter-date {
+  background-color: green;
 }
 /*# sourceMappingURL=layout.css.map */

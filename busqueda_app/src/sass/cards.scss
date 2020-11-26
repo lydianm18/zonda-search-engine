@@ -36,7 +36,7 @@
 
     //TÍTULO
     .card-title{
-        background-color: #0073af;
+        background-color: var(--ocean-blue);
         color: #fff;
         padding: 8px 15px;
         grid-area: header;
@@ -57,7 +57,7 @@
         .order-id{
             font-weight: bold;
             div:nth-child(1){
-                color: #0073af;
+                color: var(--ocean-blue);
             }
 
             div:nth-child(2){
@@ -158,7 +158,7 @@
             }
 
             div:nth-child(2){
-                color: #0073af;
+                color: var(--ocean-blue);
                 font-weight: bold;
                 padding-top: 5px;
             }

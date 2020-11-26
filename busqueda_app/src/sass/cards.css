@@ -37,11 +37,11 @@
       grid-template-columns: 109px 68px 68px;
   -ms-grid-rows: 36px 187px 72px;
       grid-template-rows: 36px 187px 72px;
-      grid-template-areas: "header header header" "sidebar main main" "footer footer footer";
+      grid-template-areas: "header header header" "sidebar main main" "footer footer footer";
 }
 
 .card .card-title {
-  background-color: #0073af;
+  background-color: var(--ocean-blue);
   color: #fff;
   padding: 8px 15px;
   -ms-grid-row: 1;
@@ -74,7 +74,7 @@
 }
 
 .card .left-side .order-id div:nth-child(1) {
-  color: #0073af;
+  color: var(--ocean-blue);
 }
 
 .card .left-side .order-id div:nth-child(2) {
@@ -184,7 +184,7 @@
 }
 
 .card .bottom-side .bottom-text div:nth-child(2) {
-  color: #0073af;
+  color: var(--ocean-blue);
   font-weight: bold;
   padding-top: 5px;
 }
