@@ -1,10 +1,15 @@
 import React from "react";
 import {
   SearchBox,
+  Select,
+  CheckboxFilter,
+  TermQuery,
+  TermsQuery,
+  NumericRefinementListFilter,
+  CheckboxItemList,
   HitsStats,
   SearchkitComponent,
   SelectedFilters,
-  Pagination,
   ResetFilters,
   SearchkitManager,
   SearchkitProvider,
@@ -24,6 +29,11 @@ import {
 import DateRangeFilter from "./DateRangeFilter";
 import Samples from "./Samples";
 import config from "../config.json";
+import {
+  statusMigration,
+  orderCreationSystemMigration,
+  notExist,
+} from "../utils/Utils";
 //import EditableTable from "./EditableTable";
 
 const searchkit = new SearchkitManager(config.endpoint);
@@ -68,10 +78,10 @@ class Main extends SearchkitComponent {
   };
 
   changeCleanDateStatus = () => {
-      this.setState({cleanDate: true})
-  }
+    this.setState({ cleanDate: true });
+  };
 
- /* SelectedFilter = (props) => {
+  /* SelectedFilter = (props) => {
     const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
 
     if (filterId === "event_date_filter") {
@@ -101,9 +111,13 @@ class Main extends SearchkitComponent {
   }; */
 
   turnFalseDateFilter = () => {
-      this.setState({cleanDate: false})
-  }
+    this.setState({ cleanDate: false });
+  };
 
+  prueba = (props) => {
+    console.log(props);
+    return <></>;
+  };
   render() {
     return (
       <SearchkitProvider searchkit={searchkit}>
@@ -123,112 +137,121 @@ class Main extends SearchkitComponent {
                 widht="30"
                 height="60"
               ></img>
-              <div className="sk-panel filter--searches">
-                <div className="sk-panel__header">Saved Searches</div>
-                <div className="sk-panel__content">
-                  <p>
-                    <a
-                      href="/?cities[0]=LILLE&event_date_filter[min]=1585692000000&event_date_filter[max]=1588197600000"
-                      className="saved-search-link"
-                    >
-                      Last Search 1
-                    </a>
-                  </p>
-                  <p>
-                    <a href="/?person=jorge" className="saved-search-link">
-                      Last Search 2
-                    </a>
-                  </p>
-                  <p>
-                    <a
-                      href="/?event_date_filter[min]=1546297200000&event_date_filter[max]=1577746800000&sort=ACTUAL_DELIVERY_DAT_desc"
-                      className="saved-search-link"
-                    >
-                      Last Search 3
-                    </a>
-                  </p>
-                </div>
-              </div>
-              <div className="line"></div>
-             {/*  <RangeFilter
-                id={config.filters.dates.id}
-                title={config.filters.dates.title}
-                field={config.filters.dates.fields}
-                rangeComponent={
-                  <DateRangeFilter cleanDate={this.state.cleanDate} turnFalseDateFilter={this.turnFalseDateFilter} keepDates={this.state.keepDates}/>
-                }
-                min={946684800000}
-                max={new Date().getTime()}
-              /> */}
               <div className="line"></div>
               <RefinementListFilter
-                id={config.filters.cityCheckbox.id}
-                title={config.filters.cityCheckbox.title}
-                field={config.filters.cityCheckbox.fields}
-                operator="OR"
-                size={10}
-              />
-
-              <InputFilter
-                id={config.filters.searchboxCity.id}
-                title={config.filters.searchboxCity.title}
-                placeholder={config.filters.searchboxCity.placeholder}
-                searchOnChange={true}
-                prefixQueryFields={config.filters.searchboxCity.fields}
+                id={config.filters.orderStatus.id}
+                title={config.filters.orderStatus.title}
+                field={config.filters.orderStatus.fields}
+                operator="AND"
+                size={18}
+                showCount={false}
+                listComponent={Select}
+                orderKey="_term"
+                orderDirection="asc"
               />
               <div className="line"></div>
+              <RefinementListFilter
+                id={config.filters.creationSystem.id}
+                title={config.filters.creationSystem.title}
+                field={config.filters.creationSystem.fields}
+                operator="AND"
+                size={11}
+                listComponent={Select}
+                showCount={false}
+                orderKey="_term"
+                orderDirection="asc"
+              />
+              <div className="line"></div>
+              <RefinementListFilter
+                id={config.filters.processType.id}
+                title={config.filters.processType.title}
+                field={config.filters.processType.fields}
+                operator="AND"
+                size={13}
+                showCount={false}
+                listComponent={Select}
+                orderKey="_term"
+                orderDirection="asc"
+              />
+              <div className="line"></div>
+              <RefinementListFilter
+                id={config.filters.deliveryType.id}
+                title={config.filters.deliveryType.title}
+                field={config.filters.deliveryType.fields}
+                operator="AND"
+                size={12}
+                showCount={false}
+                listComponent={Select}
+                orderKey="_term"
+                orderDirection="asc"
+              />
+              <div className="line"></div>
+            {/*  <NumericRefinementListFilter
+                id={config.filters.onHold.id}
+                title={config.filters.onHold.title}
+                options= {[{title:"All"}, {title:"On Hold", from:0, to:1}]}
+                field={config.filters.onHold.fields}
+                listComponent={CheckboxItemList}
+               />  */}
+               <CheckboxFilter
+                id={config.filters.onHold.id}
+                title={config.filters.onHold.title}
+                label="On hold"
+                field={config.filters.onHold.fields}
+               showCount={false} 
+                orderDirection="desc"
+                filter={TermQuery("ON_HOLD_ORDER_AND_LOCKED_FLAG", "1")}
+              />
             </SideBar>
             <LayoutResults className="layout">
               <ActionBar>
-                <ActionBarRow /* className="searchInput" */>
-          
-                    <SearchBox
-                      autofocus={true}
-                      searchOnChange={true}
-                      placeholder={config.searchbox.placeholder}
-                      prefixQueryFields={config.searchbox.queryFields}
-                    />
-                     <InputFilter
-                      id={config.filters.searchboxBusiness.id}
-                      title={config.filters.searchboxBusiness.title}
-                      placeholder={config.filters.searchboxBusiness.placeholder}
-                      searchOnChange={true}
-                      prefixQueryFields={config.filters.searchboxBusiness.fields}
-                     />
-                     <InputFilter
-                      id={config.filters.searchboxTransporter.id}
-                      title={config.filters.searchboxTransporter.title}
-                      placeholder={config.filters.searchboxTransporter.placeholder}
-                      searchOnChange={true}
-                      prefixQueryFields={config.filters.searchboxTransporter.fields}
-                     />
-                     <InputFilter
-                      id={config.filters.searchboxCreatedBy.id}
-                      title={config.filters.searchboxCreatedBy.title}
-                      placeholder={config.filters.searchboxCreatedBy.placeholder}
-                      searchOnChange={true}
-                      prefixQueryFields={config.filters.searchboxCreatedBy.fields}
-                     />
+                <ActionBarRow>
+                  <SearchBox
+                    autofocus={true}
+                    searchOnChange={true}
+                    placeholder={config.searchbox.placeholder}
+                    prefixQueryFields={config.searchbox.queryFields}
+                  />
+                  <InputFilter
+                    id={config.filters.searchboxBusiness.id}
+                    title={config.filters.searchboxBusiness.title}
+                    placeholder={config.filters.searchboxBusiness.placeholder}
+                    searchOnChange={true}
+                    prefixQueryFields={config.filters.searchboxBusiness.fields}
+                  />
+                  <InputFilter
+                    id={config.filters.searchboxTransporter.id}
+                    title={config.filters.searchboxTransporter.title}
+                    placeholder={
+                      config.filters.searchboxTransporter.placeholder
+                    }
+                    searchOnChange={true}
+                    prefixQueryFields={
+                      config.filters.searchboxTransporter.fields
+                    }
+                  />
+                  <InputFilter
+                    id={config.filters.searchboxCreatedBy.id}
+                    title={config.filters.searchboxCreatedBy.title}
+                    placeholder={config.filters.searchboxCreatedBy.placeholder}
+                    searchOnChange={true}
+                    prefixQueryFields={config.filters.searchboxCreatedBy.fields}
+                  />
 
-                    <RangeFilter
-                      id={config.filters.dates.id}
-                      title={config.filters.dates.title}
-                      field={config.filters.dates.fields}
-                      rangeComponent={
-                   <DateRangeFilter cleanDate={this.state.cleanDate} turnFalseDateFilter={this.turnFalseDateFilter}/>
-                      }
-                      min={946684800000}
-                      max={new Date().getTime()}
-                    />
-                  {/* </div> */}
-                   {/* <InputFilter
-                      id={config.filters.searchboxCity.id}
-                      title={config.filters.searchboxCity.title}
-                      placeholder={config.filters.searchboxCity.placeholder}
-                      searchOnChange={true}
-                      prefixQueryFields={config.filters.searchboxCity.fields}
-              /> */}
-                 {/*BOTONES DE GRID-TABLE Y LASTEST-EARLIEST  
+                  <RangeFilter
+                    id={config.filters.dates.id}
+                    title={config.filters.dates.title}
+                    field={config.filters.dates.fields}
+                    rangeComponent={
+                      <DateRangeFilter
+                        cleanDate={this.state.cleanDate}
+                        turnFalseDateFilter={this.turnFalseDateFilter}
+                      />
+                    }
+                    min={946684800000}
+                    max={new Date().getTime()}
+                  />
+                  {/*BOTONES DE GRID-TABLE Y LASTEST-EARLIEST  
                  <div className="actions-2">
                     <ViewSwitcherToggle />
                     <SortingSelector options={config.sortingSelector.options} />
@@ -245,7 +268,7 @@ class Main extends SearchkitComponent {
                 </div>
               </ActionBar>
               <Samples />
-             {/* PAGINACION SEARCHKIT
+              {/* PAGINACION SEARCHKIT
               <div className="pagination">
                 <Pagination showNumbers={true} />
               </div> */}
@@ -253,7 +276,6 @@ class Main extends SearchkitComponent {
           </LayoutBody>
         </Layout>
       </SearchkitProvider>
-      
     );
   }
 }
