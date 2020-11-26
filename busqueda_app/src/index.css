@@ -75,12 +75,14 @@ body {
   font-family: Arial, Helvetica, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
 }
 html, body{
   display: flex;
   flex-direction: column;
   height:100vh;
   margin: 0;
+
 }
 
 code {
@@ -94,7 +96,10 @@ code {
 @import './sass/table.css';
 @import './sass/cards.css';
 @import './sass/cardDetails.css';
+@import './sass/buttons.css';
 
 @import './sass/actions.css';
 @import './sass/pagination.css';
 @import './sass/checkbox.css';
+@import './sass/variables.css';
+

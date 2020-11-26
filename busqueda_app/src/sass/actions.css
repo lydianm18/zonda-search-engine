@@ -58,11 +58,11 @@
   width: 182px;
   min-height: 36px;
   border-radius: 4px;
-  border-right: solid 1px #0073af;
+  border-right: solid 1px var(--ocean-blue);
 }
 
 .sk-action-bar-row .actions-2 .sk-toggle .sk-toggle-option {
-  border: 1px solid #0073af;
+  border: 1px solid var(--ocean-blue);
   font-size: 14px;
   text-align: center;
   display: -webkit-box;
@@ -74,7 +74,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #0073af;
+  color: var(--ocean-blue);
   border-right: none;
   text-decoration: none;
   white-space: nowrap;
@@ -84,18 +84,18 @@
   min-width: 177px;
   min-height: 36px;
   border-radius: 4px;
-  border: solid 1px #0073af;
+  border: solid 1px var(--ocean-blue);
 }
 
 .sk-action-bar-row .actions-2 .sk-select select {
   height: 34px;
   font-weight: normal;
-  color: #0073af;
+  color: var(--ocean-blue);
   border: none;
 }
 
 .sk-action-bar-row .actions-2 .sk-select:after {
-  border: solid #0073af;
+  border: solid var(--ocean-blue);
   border-width: 0 1px 1px 0;
   display: inline-block;
   padding: 3px;
@@ -122,14 +122,14 @@
 
 .download-button-link {
   text-decoration: none;
-  color: #0073af;
+  color: var(--ocean-blue);
   font-size: 14px;
   padding: 10px 22px;
-  border: 1px solid #0073af;
+  border: 1px solid var(--ocean-blue);
 }
 
 .download-button-link:hover {
-  background-color: #0073af;
+  background-color: var(--ocean-blue);
   color: #eee;
 }
 /*# sourceMappingURL=actions.css.map */

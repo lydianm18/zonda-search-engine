@@ -34,6 +34,7 @@ import {
   orderCreationSystemMigration,
   notExist,
 } from "../utils/Utils";
+import InputFilterSection from "./InputFilterSection";
 //import EditableTable from "./EditableTable";
 
 const searchkit = new SearchkitManager(config.endpoint);
@@ -110,9 +111,9 @@ class Main extends SearchkitComponent {
     }
   }; */
 
-  turnFalseDateFilter = () => {
-    this.setState({ cleanDate: false });
-  };
+  // turnFalseDateFilter = () => {
+  //     this.setState({cleanDate: false})
+  // }
 
   prueba = (props) => {
     console.log(props);
@@ -205,58 +206,7 @@ class Main extends SearchkitComponent {
             </SideBar>
             <LayoutResults className="layout">
               <ActionBar>
-                <ActionBarRow>
-                  <SearchBox
-                    autofocus={true}
-                    searchOnChange={true}
-                    placeholder={config.searchbox.placeholder}
-                    prefixQueryFields={config.searchbox.queryFields}
-                  />
-                  <InputFilter
-                    id={config.filters.searchboxBusiness.id}
-                    title={config.filters.searchboxBusiness.title}
-                    placeholder={config.filters.searchboxBusiness.placeholder}
-                    searchOnChange={true}
-                    prefixQueryFields={config.filters.searchboxBusiness.fields}
-                  />
-                  <InputFilter
-                    id={config.filters.searchboxTransporter.id}
-                    title={config.filters.searchboxTransporter.title}
-                    placeholder={
-                      config.filters.searchboxTransporter.placeholder
-                    }
-                    searchOnChange={true}
-                    prefixQueryFields={
-                      config.filters.searchboxTransporter.fields
-                    }
-                  />
-                  <InputFilter
-                    id={config.filters.searchboxCreatedBy.id}
-                    title={config.filters.searchboxCreatedBy.title}
-                    placeholder={config.filters.searchboxCreatedBy.placeholder}
-                    searchOnChange={true}
-                    prefixQueryFields={config.filters.searchboxCreatedBy.fields}
-                  />
-
-                  <RangeFilter
-                    id={config.filters.dates.id}
-                    title={config.filters.dates.title}
-                    field={config.filters.dates.fields}
-                    rangeComponent={
-                      <DateRangeFilter
-                        cleanDate={this.state.cleanDate}
-                        turnFalseDateFilter={this.turnFalseDateFilter}
-                      />
-                    }
-                    min={946684800000}
-                    max={new Date().getTime()}
-                  />
-                  {/*BOTONES DE GRID-TABLE Y LASTEST-EARLIEST  
-                 <div className="actions-2">
-                    <ViewSwitcherToggle />
-                    <SortingSelector options={config.sortingSelector.options} />
-                  </div> */}
-                </ActionBarRow>
+                 <InputFilterSection></InputFilterSection>
                 <ActionBarRow>
                   <SelectedFilters itemComponent={this.SelectedFilter} />
                   <div onClick={this.changeCleanDateStatus}>

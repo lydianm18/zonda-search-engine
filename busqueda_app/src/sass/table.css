@@ -29,6 +29,7 @@
   background-color: #0074b4;
   color: #ffffff;
   padding: 1em 2em;
+  width: 100%;
 }
 
 .table-header {
@@ -96,7 +97,7 @@ td {
     &:nth-child(7),
     &:nth-child(8),
     &:nth-child(9){
-        color: #0073af;
+        color: var(--ocean-blue);
     }
 
     &:nth-child(7)::after,
