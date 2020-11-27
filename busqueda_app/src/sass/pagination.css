@@ -54,4 +54,14 @@
   -webkit-transform: rotate(45deg);
   margin-top: -4px;
 }
+
+.ant-pagination {
+  margin: 16px 0;
+}
+
+.ant-spin-container .ant-table-pagination-right {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 /*# sourceMappingURL=pagination.css.map */

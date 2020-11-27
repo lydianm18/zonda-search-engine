@@ -36,6 +36,9 @@ const GridInputs = styled.div`
   .sk-input-filter__text {
     padding-top:8px;
 }
+.sk-input-filter__text::placeholder {
+    color:  #959595;
+    }
 `;
 
 const InputFilterSection = () => {

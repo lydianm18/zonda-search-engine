@@ -79,7 +79,7 @@ const OrderHitsTable = (props) => {
 class Samples extends SearchkitComponent {
   render(){
     return (
-      <div>
+      <div className="table-container">
           <ViewSwitcherHits
             hitsPerPage={1000}
             highlightFields={["ORDER_ID"]}
