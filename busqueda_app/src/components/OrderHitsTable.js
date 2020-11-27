@@ -3,19 +3,15 @@ import { statusMigration, orderCreationSystemMigration, notExist } from '../util
 import { Table } from 'antd';
 import 'antd/dist/antd.css'
 
-const OrderHitsTable = ({hits, dateFilterOn, dataDateFilter}) => {
+const OrderHitsTable = ({hits, datos}) => {
   const [data, setData] = useState([])
-  console.log(dateFilterOn, dataDateFilter)
 
-  useEffect(() => { 
+  useEffect(() => {    
+    
     const getData = async () => {
-      const arrayData = [];
-
-      if(dateFilterOn === true){
-        console.log('hola')
-      } else {       
+      const arrayData = [];   
         await hits.map(hit => {
-          let row = {
+            let row = {
             orderNumber: hit._source.ORDER_NUMBER,
             sequentialNumber: notExist(hit._source.ORDER_NUMBER_FROM_SEQ_USAGE),
             shippingPoint: hit._source.SHIPPINGPOINT_ID,
@@ -33,15 +29,13 @@ const OrderHitsTable = ({hits, dateFilterOn, dataDateFilter}) => {
             deliveryFrom: hit._source.DELIVERY_FROM_DAT,
             deliveryTo: hit._source.DELIVERY_TO_DAT,
             createdBy: hit._source.CTL_CRE_UID
-          }
-          arrayData.push(row);      
+            }
+            arrayData.push(row);      
         })
-        setData(arrayData)
-      } 
+        setData(arrayData)   
     }
     getData();
-
-  }, [hits, dateFilterOn])
+  }, [hits])
 
   const columns = [
     { title: "Logon Order Number", dataIndex: "orderNumber", key:"orderNumber"},

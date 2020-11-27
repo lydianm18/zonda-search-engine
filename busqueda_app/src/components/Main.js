@@ -36,9 +36,7 @@ import moment from "moment";
 import { dateRange } from "../queries/rangeDateQuery";
 
 
-const searchkit = new SearchkitManager(config.endpoint, {
-  searchOnLoad: true
-});
+const searchkit = new SearchkitManager(config.endpoint);
 
 class Main extends SearchkitComponent {
   state = {
@@ -87,6 +85,8 @@ class Main extends SearchkitComponent {
     this.setState({ cleanDate: true });
   };
 
+
+  //AQUI EMPIEZAN LAS FUNCIONES RELACIONADA CON LAS FECHAS
   handleChangeStart = (event) => {
     //console.log(event);
     this.setState(
@@ -95,8 +95,6 @@ class Main extends SearchkitComponent {
       },
       this.updateSearch
     );
-    //console.log(this.state.startDate);
-    //this.props.turnFalseDateFilter()
   };
 
   handleChangeEnd = (event) => {
@@ -123,61 +121,16 @@ class Main extends SearchkitComponent {
     this.getData(dateFrom, dateTo);
   };
 
+  //FUNCIÓN QUE RECIBE LOS DATOS DE LA QUERY A ELASTIC
   getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
-      console.log(res);
+      //console.log(res);
       const data = res.hits.hits;
       this.setState({ arraydata: data });
       this.setState({ dateFilterOn: true })
 
       console.log(this.state.arraydata)
     });
-
-
-    /*let query = new ImmutableQuery()
-
-    let accessorFrom = new QueryAccessor("deliveryFrom") 
-    let accessorTo = new QueryAccessor("deliveryTo")
-    
-    searchkit.addAccessor(accessorFrom)
-    searchkit.addAccessor(accessorTo)
-
-    accessorFrom.state.setValue(dateFrom)
-    accessorTo.state.setValue(dateTo)
-
-    console.log(accessorFrom.state.setValue(dateFrom))
-
-    searchkit.query.addFilter("deliveryFrom", RangeQuery("DELIVERY_FROM_DAT", {gte: dateFrom, lte: dateTo}))
-    searchkit.query.addFilter("deliveryTo", RangeQuery("DELIVERY_TO_DAT", {gte: dateFrom, lte: dateTo}))
-
-    const query = (BoolMust([RangeQuery("DELIVERY_FROM_DAT", {gte: dateFrom, lte: dateTo}), RangeQuery("DELIVERY_TO_DAT", {gte: dateFrom, lte: dateTo})]))
-
-    const newQuery = {
-      "bool": {
-        "must": [
-          {
-            "range": {
-              "DELIVERY_FROM_DAT": {
-                "gte": `${dateFrom}`,
-                "lte": `${dateTo}`
-              }
-              }
-          },
-          {
-            "range": {
-              "DELIVERY_TO_DAT": {
-                "gte": `${dateFrom}`,
-                "lte": `${dateTo}`
-              }
-              }
-          }
-        ]
-      }
-    }
-    return newQuery
-
-    console.log(searchkit)*/
-    
   };
 
   /*SelectedFilter = (props) => {
@@ -351,15 +304,3 @@ class Main extends SearchkitComponent {
 }
 
 export default Main;
-
-/* DateRangeFilter.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  fromDateField: PropTypes.string.isRequired,
-  toDateField: PropTypes.string.isRequired,
-  calendarComponent: PropTypes.object
-};
-DateRangeFilter.contextTypes = {
-
-}
- */
