@@ -88,26 +88,26 @@ class Main extends SearchkitComponent {
   };
 
   handleChangeStart = (event) => {
-    console.log(event);
+    //console.log(event);
     this.setState(
       {
         startDate: event,
       },
       this.updateSearch
     );
-    console.log(this.state.startDate);
+    //console.log(this.state.startDate);
     //this.props.turnFalseDateFilter()
   };
 
   handleChangeEnd = (event) => {
-    console.log(event);
+    //console.log(event);
     this.setState(
       {
         endDate: event,
       },
       this.updateSearch
     );
-    console.log(this.state.startDate);
+    //console.log(this.state.startDate);
   };
 
   updateSearch = () => {
@@ -131,7 +131,6 @@ class Main extends SearchkitComponent {
       this.setState({ dateFilterOn: true })
 
       console.log(this.state.arraydata)
-      //this.setState({ dateFilterOn: true });
     });
 
 
