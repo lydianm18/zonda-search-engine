@@ -1,0 +1,118 @@
+/* FILTROS SECUNDARIOS DROPDOWN */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dropdown-container label {
+  position: relative;
+  width: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.dropdown-container .content {
+  display: none;
+  max-height: 0px;
+  margin: 0;
+  text-align: left;
+  -webkit-transition: 0.3s linear;
+  transition: 0.3s linear;
+  position: absolute;
+  /* z-index: 999; */
+}
+
+.dropdown-container .content ul {
+  margin-left: 7.7rem;
+}
+
+.dropdown-container .content li {
+  padding: 3px 10px;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 85%;
+}
+
+.dropdown-container #drop_os,
+.dropdown-container #drop_cs,
+.dropdown-container #drop_pt {
+  display: none;
+}
+
+.dropdown-container #drop_os:checked ~ .content,
+.dropdown-container #drop_cs:checked ~ .content,
+.dropdown-container #drop_pt:checked ~ .content {
+  display: block;
+  height: auto;
+  width: 100%;
+  max-height: 1500px;
+  -webkit-transition: max-height 1s ease;
+  transition: max-height 1s ease;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.dropdown-container label:checked ~ .content {
+  height: auto;
+  width: 100%;
+  max-height: 1500px;
+  -webkit-transition: max-height 1s ease;
+  transition: max-height 1s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn_hide,
+.btn_hide_show {
+  height: 40px;
+  width: 40px !important;
+  margin-right: 5rem;
+}
+
+.btn_hide_show {
+  margin-bottom: 54px !important;
+  border-radius: 2rem !important;
+}
+
+.btn_hide {
+  margin-bottom: 1px;
+}
+
+.btn_icon_hide {
+  width: 25px !important;
+  margin-right: 0 !important;
+}
+
+.btn_hide:hover {
+  background: none !important;
+  border: none !important;
+  border-left: none !important;
+  padding-left: none !important;
+}
+
+.arrowDown {
+  display: none;
+}
+
+.arrowUp {
+  display: block;
+}
+
+.dropdown-container #drop_os:checked ~ .arrowDown {
+  display: block;
+}
+
+.dropdown-container #drop_os:checked ~ .arrowUp {
+  display: none;
+}
+/*# sourceMappingURL=filterBase.css.map */
