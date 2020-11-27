@@ -11,6 +11,11 @@
             "title": "Top Cities",
             "id": "cities"
         },
+        "currencyCheckbox": {
+            "fields": "CURRENCY_CD.keyword",
+            "title": "Currency",
+            "id": "currency"
+        },
         "cityList": {
             "fields": ["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID.keyword"],
             "title": "Cities",
@@ -32,6 +37,16 @@
             "fields": "ACTUAL_DELIVERY_DAT",
             "title": "Delivery Dates:",
             "id": "event_date_filter"
+        },
+        "dateFrom": {
+            "fields": "DELIVERY_FROM_DAT",
+            "title": "Delivery Dates:",
+            "id": "event_date_filter_from"
+        },
+        "dateTo": {
+            "fields": "DELIVERY_TO_DAT",
+            "title": "Delivery Dates:",
+            "id": "event_date_filter_to"
         }
     },
     "sortingSelector": {

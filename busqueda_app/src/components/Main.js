@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {
   SearchBox,
   HitsStats,
@@ -18,20 +18,36 @@ import {
   SortingSelector,
   InputFilter,
   ViewSwitcherToggle,
-  RangeFilter,
   RefinementListFilter,
+  ImmutableQuery,
+  RangeQuery,
+  BoolMust,
+  QueryAccessor
 } from "searchkit";
-import DateRangeFilter from "./DateRangeFilter";
+//import DateRangeFilter from "./DateRangeFilter";
+//import DateTest from "./DateTest";
 import Samples from "./Samples";
 import config from "../config.json";
+//import CurrencyCheckbox from "./CurrencyCheckbox";
 //import EditableTable from "./EditableTable";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
+import { dateRange } from "../queries/rangeDateQuery";
 
-const searchkit = new SearchkitManager(config.endpoint);
+
+const searchkit = new SearchkitManager(config.endpoint, {
+  searchOnLoad: true
+});
 
 class Main extends SearchkitComponent {
   state = {
     date: [new Date(), new Date()],
     cleanDate: false,
+    startDate: null,
+    endDate: null,
+    arraydata: [],
+    dateFilterOn: false,
   };
 
   onChange = (date) => this.setState({ date });
@@ -68,13 +84,107 @@ class Main extends SearchkitComponent {
   };
 
   changeCleanDateStatus = () => {
-      this.setState({cleanDate: true})
-  }
+    this.setState({ cleanDate: true });
+  };
+
+  handleChangeStart = (event) => {
+    console.log(event);
+    this.setState(
+      {
+        startDate: event,
+      },
+      this.updateSearch
+    );
+    console.log(this.state.startDate);
+    //this.props.turnFalseDateFilter()
+  };
+
+  handleChangeEnd = (event) => {
+    console.log(event);
+    this.setState(
+      {
+        endDate: event,
+      },
+      this.updateSearch
+    );
+    console.log(this.state.startDate);
+  };
+
+  updateSearch = () => {
+    const { startDate, endDate } = this.state;
+
+    if (!startDate || !endDate) {
+      return;
+    }
+
+    const dateFrom = moment(startDate).format("YYYY-MM-DD");
+    const dateTo = moment(endDate).format("YYYY-MM-DD");
+
+    this.getData(dateFrom, dateTo);
+  };
+
+  getData = (dateFrom, dateTo) => {
+    dateRange(dateFrom, dateTo).then((res) => {
+      console.log(res);
+      const data = res.hits.hits;
+      this.setState({ arraydata: data });
+      this.setState({ dateFilterOn: true })
+
+      console.log(this.state.arraydata)
+      //this.setState({ dateFilterOn: true });
+    });
+
+
+    /*let query = new ImmutableQuery()
+
+    let accessorFrom = new QueryAccessor("deliveryFrom") 
+    let accessorTo = new QueryAccessor("deliveryTo")
+    
+    searchkit.addAccessor(accessorFrom)
+    searchkit.addAccessor(accessorTo)
+
+    accessorFrom.state.setValue(dateFrom)
+    accessorTo.state.setValue(dateTo)
+
+    console.log(accessorFrom.state.setValue(dateFrom))
+
+    searchkit.query.addFilter("deliveryFrom", RangeQuery("DELIVERY_FROM_DAT", {gte: dateFrom, lte: dateTo}))
+    searchkit.query.addFilter("deliveryTo", RangeQuery("DELIVERY_TO_DAT", {gte: dateFrom, lte: dateTo}))
+
+    const query = (BoolMust([RangeQuery("DELIVERY_FROM_DAT", {gte: dateFrom, lte: dateTo}), RangeQuery("DELIVERY_TO_DAT", {gte: dateFrom, lte: dateTo})]))
+
+    const newQuery = {
+      "bool": {
+        "must": [
+          {
+            "range": {
+              "DELIVERY_FROM_DAT": {
+                "gte": `${dateFrom}`,
+                "lte": `${dateTo}`
+              }
+              }
+          },
+          {
+            "range": {
+              "DELIVERY_TO_DAT": {
+                "gte": `${dateFrom}`,
+                "lte": `${dateTo}`
+              }
+              }
+          }
+        ]
+      }
+    }
+    return newQuery
+
+    console.log(searchkit)*/
+    
+  };
 
   /*SelectedFilter = (props) => {
     const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
-
-    if (filterId === "event_date_filter") {
+    console.log(props)
+    if (filterId === config.filters.dateFrom.id) {
 
       let firstDate = labelValue.slice(0, 10);
       let firstDateFormat = new Date(firstDate).toLocaleDateString('en-GB');
@@ -97,12 +207,14 @@ class Main extends SearchkitComponent {
           </div>
         </div>
       );
+    } else {
+      return(<></>)
     }
-  };*/
+  }*/
 
   turnFalseDateFilter = () => {
-      this.setState({cleanDate: false})
-  }
+    this.setState({ cleanDate: false });
+  };
 
   render() {
     return (
@@ -150,16 +262,29 @@ class Main extends SearchkitComponent {
                 </div>
               </div>
               <div className="line"></div>
-              <RangeFilter
-                id={config.filters.dates.id}
-                title={config.filters.dates.title}
-                field={config.filters.dates.fields}
-                rangeComponent={
-                  <DateRangeFilter cleanDate={this.state.cleanDate} turnFalseDateFilter={this.turnFalseDateFilter}/>
-                }
-                min={946684800000}
-                max={new Date().getTime()}
-              />
+                <DatePicker
+                  className="sk-input-filter__text"
+                  placeholderText={config.dateFilter.startDatePlaceholder}
+                  isClearable={true}
+                  filterDate={this.isAfterEndDate}
+                  selectsStart
+                  selected={this.state.startDate}
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  onChange={this.handleChangeStart}
+                />
+
+                <DatePicker
+                  className="sk-input-filter__text"
+                  placeholderText={config.dateFilter.endDatePlaceholder}
+                  isClearable={true}
+                  filterDate={this.isBeforeStartDate}
+                  selectsEnd
+                  selected={this.state.endDate}
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  onChange={this.handleChangeEnd}
+                />
               <div className="line"></div>
               <RefinementListFilter
                 id={config.filters.cityCheckbox.id}
@@ -211,7 +336,10 @@ class Main extends SearchkitComponent {
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
-              <Samples />
+              <Samples
+                dataDateFilter={this.state.arraydata}
+                dateFilterOn={this.state.dateFilterOn}
+              />
               <div className="pagination">
                 <Pagination showNumbers={true} />
               </div>
@@ -219,9 +347,20 @@ class Main extends SearchkitComponent {
           </LayoutBody>
         </Layout>
       </SearchkitProvider>
-      
     );
   }
 }
 
 export default Main;
+
+/* DateRangeFilter.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  fromDateField: PropTypes.string.isRequired,
+  toDateField: PropTypes.string.isRequired,
+  calendarComponent: PropTypes.object
+};
+DateRangeFilter.contextTypes = {
+
+}
+ */

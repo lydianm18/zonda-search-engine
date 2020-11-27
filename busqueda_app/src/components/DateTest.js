@@ -2,53 +2,68 @@ import React, { Component } from 'react'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import config from '../config.json'
+import { dateRange } from '../queries/rangeDateQuery'
 import 'react-datepicker/dist/react-datepicker.css'
 
-class DateRangeFilter extends Component {
+class DateTest extends Component {
   constructor (props) {
     super(props)
     this.state = {
       startDate: null,
-      endDate: null
+      endDate: null,
+      arraydata: []
     }
   }
-
+  
   componentDidUpdate = (prevProps, prevState) => {
+      console.log(this.props)
     if(this.props.cleanDate === true && prevProps.cleanDate != this.props.cleanDate){
       this.setState({startDate: null, endDate: null})
     }
   }
   
   handleChangeStart = (event) => {
+    //console.log(event)
     this.setState({
       startDate: event
     }, this.updateSearch)
-
-    this.props.turnFalseDateFilter()
+    console.log(this.state.startDate)
+    //this.props.turnFalseDateFilter()
   }
 
   handleChangeEnd = (event) => {
-      //console.log(event)
+    //console.log(event)
     this.setState({
       endDate: event 
     }, this.updateSearch)
+    console.log(this.state.startDate)
   }
 
   updateSearch = () => {
     const { startDate, endDate } = this.state
-    const { onFinished } = this.props
 
     if (!startDate || !endDate) {
       return
     }
-    //console.log(startDate);
-    onFinished({
-      min: moment(startDate).format('YYYY-MM-DD'),
-      max: moment(endDate).format('YYYY-MM-DD')
+
+    const dateFrom = moment(startDate).format('YYYY-MM-DD');
+    const dateTo = moment(endDate).format('YYYY-MM-DD')
+
+    this.getData(dateFrom, dateTo)
+  }
+
+  getData = (dateFrom, dateTo) => {
+    dateRange(dateFrom, dateTo).then(res => {
+      console.log(res)
+      const data = res.hits.hits
+      /*this.setState({
+        filterDateSelected: true
+      })*/
+      this.setState({arraydata: data})
     })
   }
 
-  isBeforeStartDate = (date) => {
+  /*isBeforeStartDate = (date) => {
     if (!this.state.startDate) {
       return true
     }
@@ -62,8 +77,7 @@ class DateRangeFilter extends Component {
     }
 
     return date <= this.state.endDate
-  }
-
+  }*/
 
   render () {
     return (
@@ -83,14 +97,8 @@ class DateRangeFilter extends Component {
               startDate={this.state.startDate}
               endDate={this.state.endDate}
               onChange={this.handleChangeStart} />
-            </form>
-          </div>
-        </div>
-        <div className="sk-input-filter">
-          <form>
-            <div className= "sk-input-filter__icon">
-            </div>
-            <DatePicker
+
+              <DatePicker
               className="sk-input-filter__text"
               placeholderText={config.dateFilter.endDatePlaceholder}
               isClearable={true}
@@ -100,11 +108,12 @@ class DateRangeFilter extends Component {
               startDate={this.state.startDate}
               endDate={this.state.endDate}
               onChange={this.handleChangeEnd} />
-          </form>
-        </div>
+            </form>
+          </div>
+        </div>    
       </div>
     )
   }
 }
 
-export default DateRangeFilter
+export default DateTest
