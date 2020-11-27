@@ -43,6 +43,7 @@ class Main extends SearchkitComponent {
   state = {
     date: [new Date(), new Date()],
     cleanDate: false,
+    searcher: true,
   };
 
   onChange = (date) => this.setState({ date });
