@@ -11,6 +11,7 @@ import config from "../config.json";
 import { statusMigration, orderCreationSystemMigration, notExist } from '../utils/Utils';
 import { Table } from 'antd';
 import 'antd/dist/antd.css'
+import moment from "moment";
 
 
 //VISTA DE LOS RESULTADOS EN FORMA DE TABLA
@@ -23,6 +24,7 @@ const OrderHitsTable = (props) => {
       let arrayData = [];
       await hits.map(hit => {
         let row = {
+         /*  onHold: hit._source.ON_HOLD_ORDER_AND_LOCKED_FLAG, */
           orderNumber: hit._source.ORDER_NUMBER,
           sequentialNumber: notExist(hit._source.ORDER_NUMBER_FROM_SEQ_USAGE),
           shippingPoint: hit._source.SHIPPINGPOINT_ID,
@@ -37,8 +39,8 @@ const OrderHitsTable = (props) => {
           executingCarrier: hit._source.EXEC_CARRIER_ID,
           deliveryType: hit._source.DELIVERY_TYPE_CD,
           processType: hit._source.DISTRIBUTION_DEST_CD,
-          deliveryFrom: hit._source.DELIVERY_FROM_DAT/* .split("T")[0] */,
-          deliveryTo: hit._source.DELIVERY_TO_DAT/* .split("T")[0] */,
+          deliveryFrom: moment(hit._source.DELIVERY_FROM_DAT).format("YYYY-MM-DD  hh:mm:ss"),
+          deliveryTo: moment(hit._source.DELIVERY_TO_DAT).format("YYYY-MM-DD  hh:mm:ss"),
           createdBy: hit._source.CTL_CRE_UID
         }
         arrayData.push(row);      
@@ -50,6 +52,7 @@ const OrderHitsTable = (props) => {
   }, [hits])
 
   const columns = [
+    /* { title: "Hold", dataIndex: "onHold", key:"onhold"}, */
     { title: "Logon Order Number", dataIndex: "orderNumber", key:"orderNumber"},
     { title: "Sequential Number", dataIndex: "sequentialNumber", key:"sequentialNumber" },
     { title: "Shipping Point", dataIndex: "shippingPoint", key:"shippingPoint" },
@@ -81,7 +84,7 @@ class Samples extends SearchkitComponent {
     return (
       <div className="table-container">
           <ViewSwitcherHits
-            hitsPerPage={1000}
+            hitsPerPage={10000}
             highlightFields={["ORDER_ID"]}
             hitComponents={[
               {key: config.samples.table.key, title: config.samples.table.title, listComponent: OrderHitsTable}
