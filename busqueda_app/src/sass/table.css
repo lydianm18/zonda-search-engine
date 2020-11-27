@@ -1,6 +1,9 @@
-.table-container {
+.ant-table .ant-table-small .ant-table-bordered {
   overflow: scroll;
-  height: 100%;
+}
+
+.table-container {
+  height: 750px;
 }
 
 .ant-table-wrapper {
@@ -22,7 +25,7 @@
   background-color: #f7f8f9;
 }
 
-.header {
+header {
   background-color: #0074b4;
   color: #ffffff;
   padding: 1em 2em;
@@ -61,33 +64,7 @@
   padding: 4px 25px;
 }
 
-th,
-td {
-  height: 54px;
-  text-align: center;
-  border-left: 1px solid #c6c6c6;
-  border-right: 1px solid #c6c6c6;
-}
-
-th {
-  height: 17px;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: normal;
-  color: #ffffff;
-}
-
-td {
-  width: 87px;
-  height: 27px;
-  font-family: Arial;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1.75;
-  text-align: center;
-  color: #000000;
-  padding: 0;
-  /*  &:nth-child(1){
+/*  &:nth-child(1){
         cursor: pointer;
     }
 
@@ -105,8 +82,6 @@ td {
     &:nth-child(9)::after{
         content: " min";
     } */
-}
-
 .Rectangle-value-1 {
   width: 17px;
   height: 23px;

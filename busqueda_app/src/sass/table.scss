@@ -21,12 +21,11 @@
     background-color: #f7f8f9;
     }
 }
-.header{
+header{
     background-color: #0074b4;
     color: #ffffff;
     padding: 1em 2em;
     width: auto;
-    display: none;
 }
 
 .table-header{
@@ -105,7 +104,7 @@
     &:nth-child(9)::after{
         content: " min";
     } */
-}
+// }
 
 //CLASES DELIVERY TYPE CD
 

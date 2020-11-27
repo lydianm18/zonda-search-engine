@@ -97,7 +97,7 @@ code {
 @import './sass/cards.css';
 @import './sass/cardDetails.css';
 @import './sass/buttons.css';
-
+@import './sass/filterBase.css';
 @import './sass/actions.css';
 @import './sass/pagination.css';
 @import './sass/checkbox.css';
