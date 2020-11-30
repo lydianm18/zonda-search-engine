@@ -45,7 +45,7 @@
 }
 
 .sidebar .sk-panel .sk-panel__content {
-  margin-left: 50px;
+  margin-left: 32px;
 }
 
 .sidebar .sk-panel .sk-panel__content .sk-input-filter {
@@ -67,9 +67,10 @@
 
 .sidebar .line {
   width: 225px;
-  height: 1px;
-  border: solid .5px #D8D8D8;
-  margin: 10px auto 10px auto;
+  border: solid 1px #e7e7e7;
+  margin-left: 3.5rem;
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
 }
 
 .saved-search-link {

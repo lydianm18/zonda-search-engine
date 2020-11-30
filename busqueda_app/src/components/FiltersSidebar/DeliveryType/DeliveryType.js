@@ -8,27 +8,23 @@ import FilterBase from "../FilterBase/FilterBase";
 import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 
 // images
-import ProcessTypeIcon from "../../../img/processTypeIcon";
+import TruckIcon from "../../../img/truck";
 
-const ProcessType = () => {
+const DeliveryType = () => {
   return (
     <div className="dropdown-container">
-      <input type="checkbox" id="drop_pt" />
-      <label htmlFor="drop_pt">
-        <FilterBase value="Process Type">
-          <ProcessTypeIcon
-            width="25px"
-            height="24px"
-            color="var(--greyish-brown)"
-          />
+      <input type="checkbox" id="drop_dt" />
+      <label htmlFor="drop_dt">
+        <FilterBase value="Delivery Type">
+          <TruckIcon width="25px" height="24px" color="var(--greyish-brown)" />
         </FilterBase>
       </label>
       <div className="content">
         <RefinementListFilter
-          id={config.filters.processType.id}
-          field={config.filters.processType.fields}
+          id={config.filters.deliveryType.id}
+          field={config.filters.deliveryType.fields}
           operator="OR"
-          size={13}
+          size={12}
           showCount={false}
           orderKey="_term"
           orderDirection="asc"
@@ -39,4 +35,4 @@ const ProcessType = () => {
   );
 };
 
-export default ProcessType;
+export default DeliveryType;

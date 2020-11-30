@@ -1,7 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import ArrowUp from "../../../img/arrowUp";
-import ArrowDown from "../../../img/arrowDown";
+
+import config from "../../../config.json";
+
+// components
+import FilterBase from "../FilterBase/FilterBase";
+
+import {
+  CheckboxFilter,
+  TermQuery,
+  Select,
+  RefinementListFilter,
+  SearchkitManager,
+} from "searchkit";
+
+// images
+import ProcessTypeIcon from "../../../img/processTypeIcon";
+import OnHoldIcon from "../../../img/onHoldIcon";
 
 // STYLES
 
@@ -56,21 +71,31 @@ const FilterOptionDiv = styled.div`
   }
 `;
 
-const FilterBase = ({ value, children, classNameFilter }) => {
+const OnHold = ({ children, classNameFilter }) => {
   return (
-    <FilterOptionDiv padding="38px" className={classNameFilter}>
-      <IconProps className="btn_hide">{children}</IconProps>
-      <Value>{value}</Value>
+    <div>
+      <FilterOptionDiv padding="38px" className={classNameFilter}>
+        <IconProps className="btn_hide">
+          {" "}
+          <OnHoldIcon
+            width="25px"
+            height="24px"
+            color="var(--greyish-brown)"
+          />
+        </IconProps>
+        <Value>ON HOLD</Value>
+        <CheckboxFilter
+          id={config.filters.onHold.id}
+          field={config.filters.onHold.fields}
+          showCount={false}
+          orderDirection="desc"
+          filter={TermQuery("ON_HOLD_ORDER_AND_LOCKED_FLAG", "1")}
+        />
+      </FilterOptionDiv>
 
-      <ArrowUpFilter className="arrowUp">
-        <ArrowUp color="var(--greyish-brown)" />
-      </ArrowUpFilter>
-
-      <ArrowDownFilter className="arrowDown">
-        <ArrowDown color="var(--greyish-brown)" />
-      </ArrowDownFilter>
-    </FilterOptionDiv>
+      <div className="content"></div>
+    </div>
   );
 };
 
-export default FilterBase;
+export default OnHold;

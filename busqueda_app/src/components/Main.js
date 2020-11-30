@@ -141,68 +141,9 @@ class Main extends SearchkitComponent {
                 widht="30"
                 height="60"
               ></img>
-              {/* <div className="line"></div> */}
-              {/* <RefinementListFilter
-                id={config.filters.orderStatus.id}
-                title={config.filters.orderStatus.title}
-                field={config.filters.orderStatus.fields}
-                operator="AND"
-                size={18}
-                showCount={false}
-                listComponent={Select}
-                orderKey="_term"
-                orderDirection="asc"
-              /> */}
-              {/* <div className="line"></div> */}
-              {/* <RefinementListFilter
-                id={config.filters.creationSystem.id}
-                title={config.filters.creationSystem.title}
-                field={config.filters.creationSystem.fields}
-                operator="AND"
-                size={11}
-                listComponent={Select}
-                showCount={false}
-                orderKey="_term"
-                orderDirection="asc"
-              /> */}
-              {/* <div className="line"></div> */}
-
-{/*               
-              <RefinementListFilter
-                id={config.filters.processType.id}
-                title={config.filters.processType.title}
-                field={config.filters.processType.fields}
-                operator="AND"
-                size={13}
-                showCount={false}
-                listComponent={Select}
-                orderKey="_term"
-                orderDirection="asc"
-              />
-              <div className="line"></div>
-              <RefinementListFilter
-                id={config.filters.deliveryType.id}
-                title={config.filters.deliveryType.title}
-                field={config.filters.deliveryType.fields}
-                operator="AND"
-                size={12}
-                showCount={false}
-                listComponent={Select}
-                orderKey="_term"
-                orderDirection="asc"
-              />
-              <div className="line"></div> */}
-              {/*  <NumericRefinementListFilter
-                id={config.filters.onHold.id}
-                title={config.filters.onHold.title}
-                options= {[{title:"All"}, {title:"On Hold", from:0, to:1}]}
-                field={config.filters.onHold.fields}
-                listComponent={CheckboxItemList}
-               />  */}
-
-
+             
               <FiltersSidebar></FiltersSidebar>
-              <CheckboxFilter
+              {/* <CheckboxFilter
                 id={config.filters.onHold.id}
                 title={config.filters.onHold.title}
                 label="On hold"
@@ -210,7 +151,7 @@ class Main extends SearchkitComponent {
                 showCount={false}
                 orderDirection="desc"
                 filter={TermQuery("ON_HOLD_ORDER_AND_LOCKED_FLAG", "1")}
-              />
+              /> */}
             </SideBar>
             <LayoutResults className="layout">
               <ActionBar>

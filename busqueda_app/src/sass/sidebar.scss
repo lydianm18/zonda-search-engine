@@ -41,7 +41,7 @@
     }
 
     .sk-panel__content {
-      margin-left: 50px;
+      margin-left: 32px;
       .sk-input-filter{
         width: 175px;
         height: 36px;
@@ -64,9 +64,13 @@
 
   .line{
     width: 225px;
-    height: 1px;
-    border: solid .5px #D8D8D8;
-    margin: 10px auto 10px auto;
+    border: solid 1px #e7e7e7;
+    margin-left: 3.5rem;
+    -webkit-transition: all 2s ease;
+    -moz-transition: all 2s ease;
+    -ms-transition: all 2s ease;
+    -o-transition: all 2s ease;
+    transition: all 2s ease;
   }
 }
 

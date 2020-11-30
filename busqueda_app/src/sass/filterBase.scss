@@ -40,7 +40,8 @@
 
 .dropdown-container #drop_os,
 .dropdown-container #drop_cs,
-.dropdown-container #drop_pt
+.dropdown-container #drop_pt,
+.dropdown-container #drop_dt
 {
     display: none;
 }
@@ -48,7 +49,8 @@
 
 .dropdown-container #drop_os:checked~.content,
 .dropdown-container #drop_cs:checked~.content,
-.dropdown-container #drop_pt:checked~.content{
+.dropdown-container #drop_pt:checked~.content,
+.dropdown-container #drop_dt:checked~.content{
     display: block;
     height: auto;
     width: 100%;
@@ -56,20 +58,19 @@
     transition: max-height 1s ease;
     overflow: hidden;
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+
 }
+// .dropdown-container #drop_os:checked~.line,
+// .dropdown-container #drop_cs:checked~.line,
+// .dropdown-container #drop_pt:checked~.line,
+// .dropdown-container #drop_dt:checked~.line{
+//       bottom: 10px;
+// }
 
 
 
 
-.dropdown-container label:checked~.content {
-    height: auto;
-    width: 100%;
-    max-height: 1500px;
-    transition: max-height 1s ease;
-    overflow: hidden;
-    position: relative;
-}
 
 
 .btn_hide,

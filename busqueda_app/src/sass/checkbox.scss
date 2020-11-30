@@ -4,7 +4,7 @@ input[type="checkbox"] + div:before{
 
 input[type="checkbox"]:checked + div.sk-item-list-option__text,
 input[type="checkbox"]:checked + div.sk-item-list-option__text + div.sk-item-list-option__count{
-    color: #0074b4;
+    color: #009FCE;
     font-weight: bold;
 }
 
@@ -22,6 +22,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"] + div {
     cursor: pointer;
+    margin-left: 1.5rem;
  }
  
  input[type="checkbox"] + div:before {
@@ -29,12 +30,13 @@ input[type="checkbox"] + div {
     width: 12px;
     height: 12px;
     border: 1px solid #0074b4;
-    margin-top: 5px;
     cursor: pointer;
     vertical-align: top;
     display: inline-block;
-    margin-right: 7px;
+    margin-right: 39px;
     border-radius: 3px;
+    position: absolute;
+    right: 0;
  }
  
  input[type="checkbox"]:checked + div:before {
@@ -43,6 +45,6 @@ input[type="checkbox"] + div {
  }
 
 .sk-refinement-list__view-more-action{
-    color: #0074b4;
+    color: #009FCE;
     margin-top: 20px;
 }
