@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  SearchkitComponent,
   Hits,
   NoHits
 } from "searchkit";
@@ -24,7 +23,3 @@ const Samples = ({dataDateFilter}) => {
 }
 
 export default Samples
-
-
-
-  

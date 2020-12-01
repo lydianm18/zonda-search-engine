@@ -279,15 +279,6 @@ class Main extends SearchkitComponent {
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
-              {/* <Hits
-                hitsPerPage={10}
-                highlightFields={["ORDER_ID"]}
-                listComponent= {<OrderHitsTable dataDateFilter={this.state.arraydata} dateFilterOn={this.state.dateFilterOn}/>}
-                hitComponents={[
-                  {key: config.samples.table.key, title: config.samples.table.title}]}
-                scrollTo="body"
-              />
-              <NoHits /> */}
               <Samples
                 dataDateFilter={this.state.arraydata}
                 dateFilterOn={this.state.dateFilterOn}
