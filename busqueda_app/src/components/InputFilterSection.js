@@ -5,8 +5,12 @@ import { SearchBox, ActionBarRow, InputFilter, RangeFilter } from "searchkit";
 import config from "../config.json";
 
 // components
-import DateRangeFilter from "./DateRangeFilter";
 import ButtonPrimary from "./GenericComponents/ButtonPrimary";
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { dateRange } from '../queries/rangeDateQuery';
+import moment from 'moment';
 
 const FlexBox = styled.div`
   display: flex;
@@ -51,6 +55,10 @@ const InputFilterSection = () => {
   const [date, setDate] = useState([new Date(), new Date()]);
   const [cleanDate, setcleanDate] = useState(false);
   const [searcher, setSearcher] = useState(true);
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
+  const [arraydata, setArrayData] = useState([])
+  const [dateFilterOn, setDateFilterOn] = useState(false)
 
   const OnSearch = () => {
     setSearcher(false);
@@ -59,6 +67,42 @@ const InputFilterSection = () => {
   const turnFalseDateFilter = () => {
     setcleanDate(false);
   };
+
+  //AQUI EMPIEZAN LAS FUNCIONES RELACIONADA CON LAS FECHAS
+  const handleChangeStart = (event) => {
+    //console.log(event);
+    setStartDate(event) 
+    updateSearch();
+  };
+
+  const handleChangeEnd = (event) => {
+    //console.log(event);
+    setEndDate(event) 
+    updateSearch();
+    //console.log(this.state.startDate);
+  };
+
+  const updateSearch = () => {
+    //const { startDate, endDate } = this.state;
+    if (!startDate || !endDate) {
+      return;
+    }
+    getData(formatDate(startDate), formatDate(endDate));
+  };
+
+  //FUNCIÓN QUE RECIBE LOS DATOS DE LA QUERY A ELASTIC
+  const getData = (dateFrom, dateTo) => {
+    dateRange(dateFrom, dateTo).then((res) => {
+      //console.log(res);
+      setArrayData(res.hits.hits);
+      setDateFilterOn(true)
+      //console.log(this.state.arraydata)
+    });
+  };
+
+  const formatDate = (date) => {
+    return moment(date).format("YYYY-MM-DD")
+  }
 
   return (
     <>
@@ -96,7 +140,29 @@ const InputFilterSection = () => {
               prefixQueryFields={config.filters.searchboxCreatedBy.fields}
               blurAction="search"
             />
-            <RangeFilter
+            <DatePicker
+              className="sk-input-filter__text"
+              placeholderText={config.dateFilter.startDatePlaceholder}
+              isClearable={true}
+              //filterDate={isAfterEndDate}
+              selectsStart
+              selected={startDate}
+              startDate={startDate}
+              endDate={endDate}
+              onChange={handleChangeStart}
+            />
+            <DatePicker
+              className="sk-input-filter__text"
+              placeholderText={config.dateFilter.endDatePlaceholder}
+              isClearable={true}
+              //filterDate={isBeforeStartDate}
+              selectsEnd
+              selected={endDate}
+              startDate={startDate}
+              endDate={endDate}
+              onChange={handleChangeEnd}
+            />
+            {/* <RangeFilter
               id={config.filters.dates.id}
               title={config.filters.dates.title}
               field={config.filters.dates.fields}
@@ -109,7 +175,7 @@ const InputFilterSection = () => {
               }
               min={946684800000}
               max={new Date().getTime()}
-            />
+            /> */}
           </GridInputs>
 
           <ButtonPrimary

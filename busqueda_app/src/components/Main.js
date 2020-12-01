@@ -23,23 +23,20 @@ import {
   SortingSelector,
   InputFilter,
   ViewSwitcherToggle,
-  RangeFilter,
-  RefinementListFilter,
+  RefinementListFilter
 } from "searchkit";
-import DateRangeFilter from "./DateRangeFilter";
 import Samples from "./Samples";
 import TableOrder from "./TableOrder";
 import config from "../config.json";
-import {
-  statusMigration,
-  orderCreationSystemMigration,
-  notExist,
-} from "../utils/Utils";
 import InputFilterSection from "./InputFilterSection";
 
 import Sidebar from "./Sidebar";
 
-//import EditableTable from "./EditableTable";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
+import { dateRange } from "../queries/rangeDateQuery";
+
 
 const searchkit = new SearchkitManager(config.endpoint);
 
@@ -48,6 +45,10 @@ class Main extends SearchkitComponent {
     date: [new Date(), new Date()],
     cleanDate: false,
     searcher: true,
+    startDate: null,
+    endDate: null,
+    arraydata: [],
+    dateFilterOn: false,
   };
 
   onChange = (date) => this.setState({ date });
@@ -87,10 +88,44 @@ class Main extends SearchkitComponent {
     this.setState({ cleanDate: true });
   };
 
+  //AQUI EMPIEZAN LAS FUNCIONES RELACIONADA CON LAS FECHAS
+  handleChangeStart = (event) => {
+    //console.log(event);
+    this.setState({startDate: event}, this.updateSearch);
+  };
+
+  handleChangeEnd = (event) => {
+    //console.log(event);
+    this.setState({endDate: event}, this.updateSearch);
+    //console.log(this.state.startDate);
+  };
+
+  updateSearch = () => {
+    const { startDate, endDate } = this.state;
+    if (!startDate || !endDate) {
+      return;
+    }
+    this.getData(this.formatDate(startDate), this.formatDate(endDate));
+  };
+
+  //FUNCIÓN QUE RECIBE LOS DATOS DE LA QUERY A ELASTIC
+  getData = (dateFrom, dateTo) => {
+    dateRange(dateFrom, dateTo).then((res) => {
+      //console.log(res);
+      this.setState({ arraydata: res.hits.hits });
+      this.setState({ dateFilterOn: true })
+      //console.log(this.state.arraydata)
+    });
+  };
+
+  formatDate = (date) => {
+    return moment(date).format("YYYY-MM-DD")
+  }
+
   /* SelectedFilter = (props) => {
     const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
-
-    if (filterId === "event_date_filter") {
+    console.log(props)
+    if (filterId === config.filters.dateFrom.id) {
 
       let firstDate = labelValue.slice(0, 10);
       let firstDateFormat = new Date(firstDate).toLocaleDateString('en-GB');
@@ -113,6 +148,8 @@ class Main extends SearchkitComponent {
           </div>
         </div>
       );
+    } else {
+      return(<></>)
     }
   }; */
 
@@ -120,10 +157,6 @@ class Main extends SearchkitComponent {
   //     this.setState({cleanDate: false})
   // }
 
-  prueba = (props) => {
-    console.log(props);
-    return <></>;
-  };
   render() {
     return (
       <SearchkitProvider searchkit={searchkit}>
@@ -137,7 +170,6 @@ class Main extends SearchkitComponent {
           </TopBar>
           <LayoutBody>
             <Sidebar></Sidebar>
-
             <LayoutResults className="layout">
               <ActionBar>
                 <InputFilterSection></InputFilterSection>
@@ -151,7 +183,11 @@ class Main extends SearchkitComponent {
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
-              <TableOrder />
+              {/* <TableOrder /> */}
+              <Samples
+                dataDateFilter={this.state.arraydata}
+                dateFilterOn={this.state.dateFilterOn}
+              />
               {/* PAGINACION SEARCHKIT
               <div className="pagination">
                 <Pagination showNumbers={true} />
