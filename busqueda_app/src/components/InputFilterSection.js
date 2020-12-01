@@ -18,7 +18,7 @@ const GridInputs = styled.div`
   column-gap: 10px;
   row-gap: 10px;
   width: auto;
-  
+
   /* flex-wrap: wrap; */
   .sk-search-box,
   .sk-input-filter {
@@ -29,22 +29,32 @@ const GridInputs = styled.div`
     border: solid 1px #c0dee2;
     background-color: #e9f2f4;
 
-    .sk-input-filter__icon, .sk-search-box__icon {
+    .sk-input-filter__icon,
+    .sk-search-box__icon {
       display: none;
     }
   }
+  .sk-input-filter__text::placeholder {
+    color: #959595;
+  }
+
   .sk-input-filter__text {
-    padding-top:8px;
-}
-.sk-input-filter__text::placeholder {
-    color:  #959595;
-    }
+    padding-top: 8px;
+  }
+  .sk-input-filter__text::placeholder {
+    color: #959595;
+  }
 `;
 
 const InputFilterSection = () => {
   // state
   const [date, setDate] = useState([new Date(), new Date()]);
   const [cleanDate, setcleanDate] = useState(false);
+  const [searcher, setSearcher] = useState(true);
+
+  const OnSearch = () => {
+    setSearcher(false);
+  };
 
   const turnFalseDateFilter = () => {
     setcleanDate(false);
@@ -52,35 +62,39 @@ const InputFilterSection = () => {
 
   return (
     <>
-      <ActionBarRow /* className="searchInput" */>
+      <ActionBarRow>
         <FlexBox>
           <GridInputs>
             <SearchBox
               autofocus={true}
-              searchOnChange={true}
+              searchOnChange={false}
               placeholder={config.searchbox.placeholder}
               prefixQueryFields={config.searchbox.queryFields}
+              blurAction="search"
             />
             <InputFilter
               id={config.filters.searchboxBusiness.id}
               title={config.filters.searchboxBusiness.title}
               placeholder={config.filters.searchboxBusiness.placeholder}
-              searchOnChange={true}
+              searchOnChange={false}
               prefixQueryFields={config.filters.searchboxBusiness.fields}
+              blurAction="search"
             />
             <InputFilter
               id={config.filters.searchboxTransporter.id}
               title={config.filters.searchboxTransporter.title}
               placeholder={config.filters.searchboxTransporter.placeholder}
-              searchOnChange={true}
+              searchOnChange={false}
               prefixQueryFields={config.filters.searchboxTransporter.fields}
+              blurAction="search"
             />
             <InputFilter
               id={config.filters.searchboxCreatedBy.id}
               title={config.filters.searchboxCreatedBy.title}
               placeholder={config.filters.searchboxCreatedBy.placeholder}
-              searchOnChange={true}
+              searchOnChange={false}
               prefixQueryFields={config.filters.searchboxCreatedBy.fields}
+              blurAction="search"
             />
             <RangeFilter
               id={config.filters.dates.id}
@@ -98,7 +112,11 @@ const InputFilterSection = () => {
             />
           </GridInputs>
 
-          <ButtonPrimary classProps="button-input-filters" text="Search" />
+          <ButtonPrimary
+            classProps="button-input-filters"
+            text="Search"
+            onClick={OnSearch}
+          />
         </FlexBox>
       </ActionBarRow>
     </>
