@@ -172,6 +172,28 @@ class Main extends SearchkitComponent {
             <Sidebar></Sidebar>
             <LayoutResults className="layout">
               <ActionBar>
+              <DatePicker
+              className="sk-input-filter__text"
+              placeholderText={config.dateFilter.startDatePlaceholder}
+              isClearable={true}
+              filterDate={this.isAfterEndDate}
+              selectsStart
+              selected={this.startDate}
+              startDate={this.startDate}
+              endDate={this.endDate}
+              onChange={this.handleChangeStart}
+            />
+            <DatePicker
+              className="sk-input-filter__text"
+              placeholderText={config.dateFilter.endDatePlaceholder}
+              isClearable={true}
+              filterDate={this.isBeforeStartDate}
+              selectsEnd
+              selected={this.endDate}
+              startDate={this.startDate}
+              endDate={this.endDate}
+              onChange={this.handleChangeEnd}
+            />
                 <InputFilterSection></InputFilterSection>
                 <ActionBarRow>
                   <SelectedFilters itemComponent={this.SelectedFilter} />
@@ -183,15 +205,10 @@ class Main extends SearchkitComponent {
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
-              {/* <TableOrder /> */}
               <Samples
                 dataDateFilter={this.state.arraydata}
                 dateFilterOn={this.state.dateFilterOn}
               />
-              {/* PAGINACION SEARCHKIT
-              <div className="pagination">
-                <Pagination showNumbers={true} />
-              </div> */}
             </LayoutResults>
           </LayoutBody>
         </Layout>

@@ -55,10 +55,10 @@ const InputFilterSection = () => {
   const [date, setDate] = useState([new Date(), new Date()]);
   const [cleanDate, setcleanDate] = useState(false);
   const [searcher, setSearcher] = useState(true);
-  const [startDate, setStartDate] = useState(null)
+  /*const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
   const [arraydata, setArrayData] = useState([])
-  const [dateFilterOn, setDateFilterOn] = useState(false)
+  const [dateFilterOn, setDateFilterOn] = useState(false)*/
 
   const OnSearch = () => {
     setSearcher(false);
@@ -68,7 +68,7 @@ const InputFilterSection = () => {
     setcleanDate(false);
   };
 
-  //AQUI EMPIEZAN LAS FUNCIONES RELACIONADA CON LAS FECHAS
+  /*//AQUI EMPIEZAN LAS FUNCIONES RELACIONADA CON LAS FECHAS
   const handleChangeStart = (event) => {
     //console.log(event);
     setStartDate(event) 
@@ -102,7 +102,7 @@ const InputFilterSection = () => {
 
   const formatDate = (date) => {
     return moment(date).format("YYYY-MM-DD")
-  }
+  }*/
 
   return (
     <>
@@ -140,7 +140,7 @@ const InputFilterSection = () => {
               prefixQueryFields={config.filters.searchboxCreatedBy.fields}
               blurAction="search"
             />
-            <DatePicker
+            {/* <DatePicker
               className="sk-input-filter__text"
               placeholderText={config.dateFilter.startDatePlaceholder}
               isClearable={true}
@@ -161,7 +161,7 @@ const InputFilterSection = () => {
               startDate={startDate}
               endDate={endDate}
               onChange={handleChangeEnd}
-            />
+            /> */}
             {/* <RangeFilter
               id={config.filters.dates.id}
               title={config.filters.dates.title}

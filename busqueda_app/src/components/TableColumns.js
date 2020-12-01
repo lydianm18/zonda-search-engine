@@ -1,5 +1,3 @@
-import React from 'react'
-
 const TableColumns = () => {
     const columns = [
         { title: "Logon Order Number", dataIndex: "orderNumber", key:"orderNumber"},
