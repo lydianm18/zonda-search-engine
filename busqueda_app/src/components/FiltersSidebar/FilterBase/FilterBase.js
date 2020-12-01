@@ -56,11 +56,11 @@ const FilterOptionDiv = styled.div`
   }
 `;
 
-const FilterBase = ({ value, children, classNameFilter }) => {
+const FilterBase = ({ value, children, classNameFilter, showing }) => {
   return (
     <FilterOptionDiv padding="38px" className={classNameFilter}>
       <IconProps className="btn_hide">{children}</IconProps>
-      <Value>{value}</Value>
+      <Value className="value__sidebar">{value}</Value>
 
       <ArrowUpFilter className="arrowUp">
         <ArrowUp color="var(--greyish-brown)" />

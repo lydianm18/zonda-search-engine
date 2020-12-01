@@ -1,15 +1,15 @@
 import React from "react";
 
-import OrderStatus from "./OrderStatus/OrderStatus"
-import CreationSystem from "./CreationSystem/CreationSystem"
-import ProcessType from "./ProcessType/ProcessType"
-import DeliveryType from "./DeliveryType/DeliveryType"
+import OrderStatus from "./OrderStatus/OrderStatus";
+import CreationSystem from "./CreationSystem/CreationSystem";
+import ProcessType from "./ProcessType/ProcessType";
+import DeliveryType from "./DeliveryType/DeliveryType";
 import OnHold from "./OnHold/OnHold";
 
-const FilterSidebar = () => {
+const FilterSidebar = ({ showing }) => {
   return (
     <div>
-      <OrderStatus></OrderStatus>
+      <OrderStatus showing={showing}></OrderStatus>
       {/* <div className="line"></div> */}
       <CreationSystem></CreationSystem>
       {/* <div className="line"></div> */}

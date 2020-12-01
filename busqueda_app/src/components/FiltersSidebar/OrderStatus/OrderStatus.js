@@ -13,7 +13,7 @@ import Status from "../../../img/status";
 
 const searchkit = new SearchkitManager(config.endpoint);
 
-const FilterExample = () => {
+const OrderSatus = ({ showing }) => {
   return (
     <div className="dropdown-container">
       <input type="checkbox" id="drop_os" />
@@ -33,9 +33,9 @@ const FilterExample = () => {
           orderDirection="asc"
         />
       </div>
-      <div className="line"></div>
+      {showing ? <div className="line"></div> : null}
     </div>
   );
 };
 
-export default FilterExample;
+export default OrderSatus;

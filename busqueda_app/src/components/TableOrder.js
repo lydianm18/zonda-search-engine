@@ -111,7 +111,7 @@ const OrderHitsTable = (props) => {
   );
 };
 
-class Samples extends SearchkitComponent {
+class TableOrder extends SearchkitComponent {
   render() {
     return (
       <div className="table-container">
@@ -133,4 +133,4 @@ class Samples extends SearchkitComponent {
   }
 }
 
-export default Samples;
+export default TableOrder;

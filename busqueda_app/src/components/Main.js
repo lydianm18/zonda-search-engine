@@ -28,6 +28,7 @@ import {
 } from "searchkit";
 import DateRangeFilter from "./DateRangeFilter";
 import Samples from "./Samples";
+import TableOrder from "./TableOrder";
 import config from "../config.json";
 import {
   statusMigration,
@@ -36,7 +37,7 @@ import {
 } from "../utils/Utils";
 import InputFilterSection from "./InputFilterSection";
 
-import FiltersSidebar from "./FiltersSidebar/FiltersSidebar"
+import Sidebar from "./Sidebar";
 
 //import EditableTable from "./EditableTable";
 
@@ -134,25 +135,8 @@ class Main extends SearchkitComponent {
             </div>
           </TopBar>
           <LayoutBody>
-            <SideBar className="sidebar">
-              <img
-                className="logo"
-                src="lh_logo.png"
-                widht="30"
-                height="60"
-              ></img>
-             
-              <FiltersSidebar></FiltersSidebar>
-              {/* <CheckboxFilter
-                id={config.filters.onHold.id}
-                title={config.filters.onHold.title}
-                label="On hold"
-                field={config.filters.onHold.fields}
-                showCount={false}
-                orderDirection="desc"
-                filter={TermQuery("ON_HOLD_ORDER_AND_LOCKED_FLAG", "1")}
-              /> */}
-            </SideBar>
+            <Sidebar></Sidebar>
+
             <LayoutResults className="layout">
               <ActionBar>
                 <InputFilterSection></InputFilterSection>
@@ -166,7 +150,7 @@ class Main extends SearchkitComponent {
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
-              <Samples />
+              <TableOrder />
               {/* PAGINACION SEARCHKIT
               <div className="pagination">
                 <Pagination showNumbers={true} />
