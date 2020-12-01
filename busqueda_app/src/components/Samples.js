@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   SearchkitComponent,
-  ViewSwitcherHits,
+  Hits,
   NoHits
 } from "searchkit";
 import OrderHitsTable from './OrderHitsTable';
@@ -9,7 +9,7 @@ import config from "../config.json";
 
 class Samples extends SearchkitComponent {
 
-  state = {
+  /*state = {
     datos: []
   }
 
@@ -19,16 +19,18 @@ class Samples extends SearchkitComponent {
       console.log('distinto')
       this.setState({datos: this.props.dataDateFilter})
     }
-  }
+  }*/
 
   render(){
+    console.log('SAMPLES', this.props.dataDateFilter)
     return (
       <div>
-          <ViewSwitcherHits
+          <Hits
             hitsPerPage={1000}
             highlightFields={["ORDER_ID"]}
+            listComponent= {<OrderHitsTable dataDateFilter={this.props.dataDateFilter}/>}
             hitComponents={[
-              {key: config.samples.table.key, title: config.samples.table.title, listComponent: <OrderHitsTable dataDateFilter={this.state.datos}/>}]}
+              {key: config.samples.table.key, title: config.samples.table.title}]}
             scrollTo="body"
           />
           <NoHits />

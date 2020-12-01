@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import {
   SearchBox,
   HitsStats,
@@ -18,18 +18,10 @@ import {
   SortingSelector,
   InputFilter,
   ViewSwitcherToggle,
-  RefinementListFilter,
-  ImmutableQuery,
-  RangeQuery,
-  BoolMust,
-  QueryAccessor
+  RefinementListFilter
 } from "searchkit";
-//import DateRangeFilter from "./DateRangeFilter";
-//import DateTest from "./DateTest";
 import Samples from "./Samples";
 import config from "../config.json";
-//import CurrencyCheckbox from "./CurrencyCheckbox";
-//import EditableTable from "./EditableTable";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
@@ -124,9 +116,8 @@ class Main extends SearchkitComponent {
   //FUNCIÓN QUE RECIBE LOS DATOS DE LA QUERY A ELASTIC
   getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
-      //console.log(res);
-      const data = res.hits.hits;
-      this.setState({ arraydata: data });
+      console.log(res);
+      this.setState({ arraydata: res.hits.hits });
       this.setState({ dateFilterOn: true })
 
       console.log(this.state.arraydata)
@@ -288,6 +279,15 @@ class Main extends SearchkitComponent {
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
+              {/* <Hits
+                hitsPerPage={10}
+                highlightFields={["ORDER_ID"]}
+                listComponent= {<OrderHitsTable dataDateFilter={this.state.arraydata} dateFilterOn={this.state.dateFilterOn}/>}
+                hitComponents={[
+                  {key: config.samples.table.key, title: config.samples.table.title}]}
+                scrollTo="body"
+              />
+              <NoHits /> */}
               <Samples
                 dataDateFilter={this.state.arraydata}
                 dateFilterOn={this.state.dateFilterOn}

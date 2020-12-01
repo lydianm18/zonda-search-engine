@@ -1,18 +1,30 @@
 import React, {useState, useEffect} from 'react'
-import { statusMigration, orderCreationSystemMigration, notExist } from '../utils/Utils';
+import { notExist, statusMigration, orderCreationSystemMigration } from '../utils/Utils';
 import TableColumns from './TableColumns';
 import { Table } from 'antd';
+
 import 'antd/dist/antd.css'
 
 const OrderHitsTable = ({hits, dataDateFilter}) => {
   const [data, setData] = useState([])
 
   useEffect(() => {    
-    console.log(dataDateFilter.length)
     const getData = async () => {
-      const arrayData = [];   
-        await hits.map(hit => {
-            let row = {
+      if(dataDateFilter && dataDateFilter.length > 0){      
+        const datesData = await fillDataTable(dataDateFilter)
+        setData(datesData)
+      } else {
+        const restData = await fillDataTable(hits)
+        setData(restData)
+      } 
+    }
+    getData()  
+  }, [hits, dataDateFilter])
+
+  const fillDataTable = async (data) => {
+    const arrayData = []
+    await data.map(hit => {
+        let row = {
             orderNumber: hit._source.ORDER_NUMBER,
             sequentialNumber: notExist(hit._source.ORDER_NUMBER_FROM_SEQ_USAGE),
             shippingPoint: hit._source.SHIPPINGPOINT_ID,
@@ -30,13 +42,11 @@ const OrderHitsTable = ({hits, dataDateFilter}) => {
             deliveryFrom: hit._source.DELIVERY_FROM_DAT,
             deliveryTo: hit._source.DELIVERY_TO_DAT,
             createdBy: hit._source.CTL_CRE_UID
-            }
-            arrayData.push(row);      
-        })
-        setData(arrayData)   
-    }
-    getData();
-  }, [hits, dataDateFilter])
+        }
+        arrayData.push(row);      
+    })
+    return arrayData
+}
 
   return (
     <Table columns={TableColumns()} dataSource={data} size="small" bordered/>
