@@ -14,8 +14,7 @@ class Samples extends SearchkitComponent {
   }
 
   componentDidUpdate(prevProps) {
-    //console.log(this.props, prevProps)
-    
+    //console.log(this.props, prevProps) 
     if(prevProps.dateFilterOn !== this.props.dateFilterOn){
       console.log('distinto')
       this.setState({datos: this.props.dataDateFilter})

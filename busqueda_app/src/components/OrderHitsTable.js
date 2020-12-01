@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { statusMigration, orderCreationSystemMigration, notExist } from '../utils/Utils';
+import TableColumns from './TableColumns';
 import { Table } from 'antd';
 import 'antd/dist/antd.css'
 
-const OrderHitsTable = ({hits, datos}) => {
+const OrderHitsTable = ({hits, dataDateFilter}) => {
   const [data, setData] = useState([])
 
   useEffect(() => {    
-    
+    console.log(dataDateFilter.length)
     const getData = async () => {
       const arrayData = [];   
         await hits.map(hit => {
@@ -35,32 +36,10 @@ const OrderHitsTable = ({hits, datos}) => {
         setData(arrayData)   
     }
     getData();
-  }, [hits])
-
-  const columns = [
-    { title: "Logon Order Number", dataIndex: "orderNumber", key:"orderNumber"},
-    { title: "Sequential Number", dataIndex: "sequentialNumber", key:"sequentialNumber" },
-    { title: "Shipping Point", dataIndex: "shippingPoint", key:"shippingPoint" },
-    { title: "LDS Number", dataIndex: "ldsNumber", key:"ldsNumber" },
-    { title: "Order Status", dataIndex: "orderStatus", key:"orderStatus" },
-    { title: "Order Creation System", dataIndex: "orderCreationSystem", key:"orderCreationSystem" },
-    { title: "Ship-to (Destination)", dataIndex: "shipTo", key:"shipTo" },
-    { title: "Sold-to (Customer)", dataIndex: "soldTo", key:"soldTo" },
-    { title: "Bill-to (Address invoice)", dataIndex: "billTo", key:"billTo" },
-    { title: "Payer (credit check)", dataIndex: "payer", key:"payer" },
-    { title: "Commercial Carrier", dataIndex: "commercialCarrier", key:"commercialCarrier" },
-    { title: "Executing Carrier", dataIndex: "executingCarrier", key:"executingCarrier" },
-    { title: "Delivery Type", dataIndex: "deliveryType", key:"deliveryType" },
-    { title: "Process Type", dataIndex: "processType", key:"processType" },
-    { title: "Delivery From", dataIndex: "deliveryFrom", key:"deliveryFrom"},
-    { title: "Delivery To", dataIndex: "deliveryTo", key:"deliveryTo"},
-    { title: "Created By", dataIndex: "createdBy", key:"createdBy" }
-  ]
+  }, [hits, dataDateFilter])
 
   return (
-    <>
-      {(data.length === 0) ? (<div>No hay data</div>) : (<Table columns={columns} dataSource={data} size="small" bordered/>)}
-    </>
+    <Table columns={TableColumns()} dataSource={data} size="small" bordered/>
   )  
 }
 
