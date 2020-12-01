@@ -77,52 +77,39 @@ class Main extends SearchkitComponent {
     this.setState({ cleanDate: true });
   };
 
-
   //AQUI EMPIEZAN LAS FUNCIONES RELACIONADA CON LAS FECHAS
   handleChangeStart = (event) => {
     //console.log(event);
-    this.setState(
-      {
-        startDate: event,
-      },
-      this.updateSearch
-    );
+    this.setState({startDate: event}, this.updateSearch);
   };
 
   handleChangeEnd = (event) => {
     //console.log(event);
-    this.setState(
-      {
-        endDate: event,
-      },
-      this.updateSearch
-    );
+    this.setState({endDate: event}, this.updateSearch);
     //console.log(this.state.startDate);
   };
 
   updateSearch = () => {
     const { startDate, endDate } = this.state;
-
     if (!startDate || !endDate) {
       return;
     }
-
-    const dateFrom = moment(startDate).format("YYYY-MM-DD");
-    const dateTo = moment(endDate).format("YYYY-MM-DD");
-
-    this.getData(dateFrom, dateTo);
+    this.getData(this.formatDate(startDate), this.formatDate(endDate));
   };
 
   //FUNCIÓN QUE RECIBE LOS DATOS DE LA QUERY A ELASTIC
   getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
-      console.log(res);
+      //console.log(res);
       this.setState({ arraydata: res.hits.hits });
       this.setState({ dateFilterOn: true })
-
-      console.log(this.state.arraydata)
+      //console.log(this.state.arraydata)
     });
   };
+
+  formatDate = (date) => {
+    return moment(date).format("YYYY-MM-DD")
+  }
 
   /*SelectedFilter = (props) => {
     const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
