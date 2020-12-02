@@ -1,12 +1,7 @@
 import React from "react";
+
+//Librería de Searchkit
 import {
-  SearchBox,
-  Select,
-  CheckboxFilter,
-  TermQuery,
-  TermsQuery,
-  NumericRefinementListFilter,
-  CheckboxItemList,
   HitsStats,
   SearchkitComponent,
   SelectedFilters,
@@ -16,27 +11,24 @@ import {
   Layout,
   TopBar,
   LayoutBody,
-  SideBar,
   LayoutResults,
   ActionBar,
-  ActionBarRow,
-  SortingSelector,
-  InputFilter,
-  ViewSwitcherToggle,
-  RefinementListFilter
+  ActionBarRow
 } from "searchkit";
-import Samples from "./Samples";
-import TableOrder from "./TableOrder";
-import config from "../config.json";
-import InputFilterSection from "./InputFilterSection";
 
+//Componentes manuales
+import Samples from "./Samples";
+import InputFilterSection from "./InputFilterSection";
 import Sidebar from "./Sidebar";
 
+//Configuración del json para filtros y endpoint
+import config from "../config.json";
+
+//Imports para las fechas
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { dateRange } from "../queries/rangeDateQuery";
-
 
 const searchkit = new SearchkitManager(config.endpoint);
 
@@ -88,7 +80,7 @@ class Main extends SearchkitComponent {
     this.setState({ cleanDate: true });
   };
 
-  //AQUI EMPIEZAN LAS FUNCIONES RELACIONADA CON LAS FECHAS
+  //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
   handleChangeStart = (event) => {
     //console.log(event);
     this.setState({startDate: event}, this.updateSearch);
