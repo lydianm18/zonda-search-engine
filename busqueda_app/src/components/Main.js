@@ -26,7 +26,7 @@ import config from "../config.json";
 
 //Imports para las fechas
 import DatePicker from "react-datepicker";
-//import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { dateRange } from "../queries/rangeDateQuery";
 
@@ -97,10 +97,13 @@ class Main extends SearchkitComponent {
     if (!startDate || !endDate) {
       return;
     }
-    await this.getData(this.formatDate(startDate), this.formatDate(endDate));
-    if (startDate && endDate) {
-      this.datePill(this.formatDate(startDate), this.formatDate(endDate));
-    }
+    const formatedStartDate = this.formatDate(startDate);
+    const formatedEndDate = this.formatDate(endDate);
+
+    this.getData(formatedStartDate, formatedEndDate);
+    /*if (formatedStartDate && formatedEndDate) {
+      this.datePill(formatedStartDate, formatedEndDate);
+    }*/
   };
 
   //FUNCIÓN QUE RECIBE LOS DATOS DE LA QUERY A ELASTIC
@@ -117,13 +120,20 @@ class Main extends SearchkitComponent {
     return moment(date).format("YYYY-MM-DD");
   };
 
-  datePill = (startDate, endDate) => {
+  /*datePill = (startDate, endDate) => {
     console.log(startDate, endDate);
+    const stringStartDate = JSON.stringify(startDate);
+    const stringEndDate = JSON.stringify(endDate);
     if (this.state.dateFilterOn) {
-      return <div>Delivery dates: {startDate - endDate}</div>;
+      console.log(stringStartDate, stringEndDate);
+      return (
+        <div>
+          Delivery dates: {stringStartDate} - {stringEndDate}
+        </div>
+      );
     }
     return <></>;
-  };
+  };*/
 
   /* SelectedFilter = (props) => {
     const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
@@ -175,34 +185,46 @@ class Main extends SearchkitComponent {
             <Sidebar></Sidebar>
             <LayoutResults className="layout">
               <ActionBar>
-                <DatePicker
-                  className="sk-input-filter__text"
-                  placeholderText={config.dateFilter.startDatePlaceholder}
-                  isClearable={true}
-                  filterDate={this.isAfterEndDate}
-                  selectsStart
-                  selected={this.state.startDate}
-                  startDate={this.startDate}
-                  endDate={this.endDate}
-                  onChange={this.handleChangeStart}
-                />
-                <DatePicker
-                  className="sk-input-filter__text"
-                  placeholderText={config.dateFilter.endDatePlaceholder}
-                  isClearable={true}
-                  filterDate={this.isBeforeStartDate}
-                  selectsEnd
-                  selected={this.state.endDate}
-                  startDate={this.startDate}
-                  endDate={this.endDate}
-                  onChange={this.handleChangeEnd}
-                />
-                <InputFilterSection></InputFilterSection>
+                <div>
+                  <DatePicker
+                    className="sk-input-filter__text"
+                    placeholderText={config.dateFilter.startDatePlaceholder}
+                    isClearable={true}
+                    filterDate={this.isAfterEndDate}
+                    selectsStart
+                    selected={this.state.startDate}
+                    startDate={this.state.startDate}
+                    endDate={this.state.endDate}
+                    onChange={this.handleChangeStart}
+                    onInputClick={() => console.log("hola")}
+                  />
+                  <DatePicker
+                    className="sk-input-filter__text"
+                    placeholderText={config.dateFilter.endDatePlaceholder}
+                    isClearable={true}
+                    filterDate={this.isBeforeStartDate}
+                    selectsEnd
+                    selected={this.state.endDate}
+                    startDate={this.state.startDate}
+                    endDate={this.state.endDate}
+                    onChange={this.handleChangeEnd}
+                  />
+                  <div onClick={() => this.setState({ arraydata: null })}>
+                    X
+                  </div>
+                </div>
+
+                <InputFilterSection
+                  dataDateFilter={this.state.arraydata}
+                  dateFilterOn={this.state.dateFilterOn}
+                ></InputFilterSection>
                 <ActionBarRow>
                   <SelectedFilters itemComponent={this.SelectedFilter} />
-                  <this.datePill />
+                  {/*  <this.datePill /> */}
                   <div onClick={this.changeCleanDateStatus}>
-                    <ResetFilters />
+                    <ResetFilters
+                      onClick={() => this.setState({ arraydata: null })}
+                    />
                   </div>
                 </ActionBarRow>
                 <div className="hitStats-download-container">
