@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Librería de Searchkit
 import {
@@ -25,10 +25,14 @@ import Sidebar from "./Sidebar";
 import config from "../config.json";
 
 //Imports para las fechas
-import DatePicker from "react-datepicker";
+//import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { dateRange } from "../queries/rangeDateQuery";
+
+import { DatePicker } from "antd";
+
+const { RangePicker } = DatePicker;
 
 const searchkit = new SearchkitManager(config.endpoint);
 
@@ -40,7 +44,10 @@ class Main extends SearchkitComponent {
     startDate: null,
     endDate: null,
     arraydata: [],
-    dateFilterOn: false,
+    showDate: false,
+    dates: [],
+    hackValue: null,
+    value: null,
   };
 
   onChange = (date) => this.setState({ date });
@@ -77,19 +84,19 @@ class Main extends SearchkitComponent {
   };
 
   changeCleanDateStatus = () => {
-    this.setState({ cleanDate: true });
+    this.setState({ arraydata: null });
   };
 
   //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
-  handleChangeStart = (event) => {
-    //console.log(event);
-    this.setState({ startDate: event }, this.updateSearch);
+  /*handleChangeStart = (event) => {
+    console.log(event);
+    this.setState({ startDate: event, showDate: true }, this.updateSearch);
   };
 
   handleChangeEnd = (event) => {
-    //console.log(event);
-    this.setState({ endDate: event }, this.updateSearch);
-    //console.log(this.state.startDate);
+    console.log(event);
+    this.setState({ endDate: event, showDate: true }, this.updateSearch);
+    console.log(this.state.startDate);
   };
 
   updateSearch = async () => {
@@ -101,18 +108,18 @@ class Main extends SearchkitComponent {
     const formatedEndDate = this.formatDate(endDate);
 
     this.getData(formatedStartDate, formatedEndDate);
-    /*if (formatedStartDate && formatedEndDate) {
+    if (formatedStartDate && formatedEndDate) {
       this.datePill(formatedStartDate, formatedEndDate);
-    }*/
-  };
+    }
+  };*/
 
   //FUNCIÓN QUE RECIBE LOS DATOS DE LA QUERY A ELASTIC
   getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
-      //console.log(res);
+      console.log(res);
       this.setState({ arraydata: res.hits.hits });
       this.setState({ dateFilterOn: true });
-      //console.log(this.state.arraydata)
+      console.log(this.state.arraydata);
     });
   };
 
@@ -134,6 +141,27 @@ class Main extends SearchkitComponent {
     }
     return <></>;
   };*/
+
+  /*onOpenChange = (open) => {
+    if (open) {
+      this.setState({ hackValue: [], dates: [] });
+    } else {
+      this.setState({ hackValue: undefined });
+    }
+  };*/
+
+  onChangeAntd = (val) => {
+    this.setState({ value: val });
+    //console.log(this.state.value);
+    const formatedStartDate = this.formatDate(val[0]._d);
+    const formatedEndDate = this.formatDate(val[1]._d);
+    this.setState({
+      startDate: formatedStartDate,
+      endDate: formatedEndDate,
+    });
+    console.log(formatedStartDate, formatedEndDate);
+    this.getData(formatedStartDate, formatedStartDate);
+  };
 
   /* SelectedFilter = (props) => {
     const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
@@ -185,42 +213,13 @@ class Main extends SearchkitComponent {
             <Sidebar></Sidebar>
             <LayoutResults className="layout">
               <ActionBar>
-                <div>
-                  <DatePicker
-                    className="sk-input-filter__text"
-                    placeholderText={config.dateFilter.startDatePlaceholder}
-                    isClearable={true}
-                    filterDate={this.isAfterEndDate}
-                    selectsStart
-                    selected={this.state.startDate}
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
-                    onChange={this.handleChangeStart}
-                    onInputClick={() => console.log("hola")}
-                  />
-                  <DatePicker
-                    className="sk-input-filter__text"
-                    placeholderText={config.dateFilter.endDatePlaceholder}
-                    isClearable={true}
-                    filterDate={this.isBeforeStartDate}
-                    selectsEnd
-                    selected={this.state.endDate}
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
-                    onChange={this.handleChangeEnd}
-                  />
-                  <div onClick={() => this.setState({ arraydata: null })}>
-                    X
-                  </div>
-                </div>
-
-                <InputFilterSection
-                  dataDateFilter={this.state.arraydata}
-                  dateFilterOn={this.state.dateFilterOn}
-                ></InputFilterSection>
+                <RangePicker
+                  value={this.state.value}
+                  onChange={this.onChangeAntd}
+                />
+                <InputFilterSection></InputFilterSection>
                 <ActionBarRow>
                   <SelectedFilters itemComponent={this.SelectedFilter} />
-                  {/*  <this.datePill /> */}
                   <div onClick={this.changeCleanDateStatus}>
                     <ResetFilters
                       onClick={() => this.setState({ arraydata: null })}
@@ -231,10 +230,7 @@ class Main extends SearchkitComponent {
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
-              <Samples
-                dataDateFilter={this.state.arraydata}
-                dateFilterOn={this.state.dateFilterOn}
-              />
+              <Samples dataDateFilter={this.state.arraydata} />
             </LayoutResults>
           </LayoutBody>
         </Layout>
