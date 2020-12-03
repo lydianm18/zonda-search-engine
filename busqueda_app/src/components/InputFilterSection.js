@@ -52,7 +52,7 @@ const GridInputs = styled.div`
 
 const InputFilterSection = () => {
   // state
-  const [date, setDate] = useState([new Date(), new Date()]);
+  /*const [date, setDate] = useState([new Date(), new Date()]);
   const [cleanDate, setcleanDate] = useState(false);
   const [searcher, setSearcher] = useState(true);
 
@@ -62,7 +62,7 @@ const InputFilterSection = () => {
 
   const turnFalseDateFilter = () => {
     setcleanDate(false);
-  };
+  };*/
 
   return (
     <>
@@ -71,7 +71,7 @@ const InputFilterSection = () => {
           <GridInputs>
             <SearchBox
               autofocus={true}
-              searchOnChange={false}
+              searchOnChange={true}
               placeholder={config.searchbox.placeholder}
               prefixQueryFields={config.searchbox.queryFields}
               blurAction="search"
@@ -80,7 +80,7 @@ const InputFilterSection = () => {
               id={config.filters.searchboxBusiness.id}
               title={config.filters.searchboxBusiness.title}
               placeholder={config.filters.searchboxBusiness.placeholder}
-              searchOnChange={false}
+              searchOnChange={true}
               prefixQueryFields={config.filters.searchboxBusiness.fields}
               blurAction="search"
             />
@@ -88,7 +88,7 @@ const InputFilterSection = () => {
               id={config.filters.searchboxTransporter.id}
               title={config.filters.searchboxTransporter.title}
               placeholder={config.filters.searchboxTransporter.placeholder}
-              searchOnChange={false}
+              searchOnChange={true}
               prefixQueryFields={config.filters.searchboxTransporter.fields}
               blurAction="search"
             />
@@ -96,17 +96,17 @@ const InputFilterSection = () => {
               id={config.filters.searchboxCreatedBy.id}
               title={config.filters.searchboxCreatedBy.title}
               placeholder={config.filters.searchboxCreatedBy.placeholder}
-              searchOnChange={false}
+              searchOnChange={true}
               prefixQueryFields={config.filters.searchboxCreatedBy.fields}
               blurAction="search"
             />
           </GridInputs>
 
-          <ButtonPrimary
+          {/* <ButtonPrimary
             classProps="button-input-filters"
             text="Search"
             onClick={OnSearch}
-          />
+          /> */}
         </FlexBox>
       </ActionBarRow>
     </>

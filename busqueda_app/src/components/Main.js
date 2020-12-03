@@ -20,17 +20,15 @@ import {
 import Samples from "./Samples";
 import InputFilterSection from "./InputFilterSection";
 import Sidebar from "./Sidebar";
+import NoResults from "./NoResults";
 
 //Configuración del json para filtros y endpoint
 import config from "../config.json";
 
 //Imports para las fechas
-//import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { DatePicker } from "antd";
 import moment from "moment";
 import { dateRange } from "../queries/rangeDateQuery";
-
-import { DatePicker } from "antd";
 
 const { RangePicker } = DatePicker;
 
@@ -38,18 +36,13 @@ const searchkit = new SearchkitManager(config.endpoint);
 
 class Main extends SearchkitComponent {
   state = {
-    date: [new Date(), new Date()],
     cleanDate: false,
     startDate: null,
     endDate: null,
     arraydata: [],
-    showDate: false,
-    dates: [],
-    hackValue: null,
     value: null,
+    noResults: false,
   };
-
-  onChange = (date) => this.setState({ date });
 
   DownloadButton(props) {
     const result = props.hits;
@@ -87,35 +80,16 @@ class Main extends SearchkitComponent {
   };
 
   //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
-  /*handleChangeStart = (event) => {
-    console.log(event);
-    this.setState({ startDate: event, showDate: true }, this.updateSearch);
-  };
-
-  handleChangeEnd = (event) => {
-    console.log(event);
-    this.setState({ endDate: event, showDate: true }, this.updateSearch);
-    console.log(this.state.startDate);
-  };
-
-  updateSearch = async () => {
-    const { startDate, endDate } = this.state;
-    if (!startDate || !endDate) {
-      return;
-    }
-    const formatedStartDate = this.formatDate(startDate);
-    const formatedEndDate = this.formatDate(endDate);
-
-    this.getData(formatedStartDate, formatedEndDate);
-    if (formatedStartDate && formatedEndDate) {
-      this.datePill(formatedStartDate, formatedEndDate);
-    }
-  };*/
 
   //FUNCIÓN QUE RECIBE LOS DATOS DE LA QUERY A ELASTIC
   getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
-      console.log(res);
+      if (res.hits.hits.length < 1) {
+        this.setState({
+          value: null,
+          noResults: true,
+        });
+      }
       this.setState({ arraydata: res.hits.hits });
       this.setState({ dateFilterOn: true });
       console.log(this.state.arraydata);
@@ -127,9 +101,9 @@ class Main extends SearchkitComponent {
   };
 
   onChangeAntd = (val) => {
-    this.setState({ value: val });
+    this.setState({ value: val, noResults: false });
     if (val === null) {
-      this.setState({ startDate: null, endDate: null });
+      //this.setState({ startDate: null, endDate: null });
       this.changeCleanDateStatus();
       return;
     } else {
@@ -143,41 +117,6 @@ class Main extends SearchkitComponent {
       this.getData(formatedStartDate, formatedStartDate);
     }
   };
-
-  /* SelectedFilter = (props) => {
-    const {filterId, labelValue, labelKey, bemBlocks, removeFilter} = props;
-    console.log(props)
-    if (filterId === config.filters.dateFrom.id) {
-
-      let firstDate = labelValue.slice(0, 10);
-      let firstDateFormat = new Date(firstDate).toLocaleDateString('en-GB');
-
-      let secondDate = labelValue.slice(-10);
-      let secondDateFormat = new Date(secondDate).toLocaleDateString('en-GB');
-
-      return (
-        <div className={bemBlocks.option()}>
-          <div className={bemBlocks.option("name")}>
-            {labelKey} {firstDateFormat} - {secondDateFormat}
-          </div>
-          <div
-            className={bemBlocks.option("remove-action")}
-            onClick={() => {
-                removeFilter()
-                this.changeCleanDateStatus()
-            }}>
-            x
-          </div>
-        </div>
-      );
-    } else {
-      return(<></>)
-    }
-  }; */
-
-  // turnFalseDateFilter = () => {
-  //     this.setState({cleanDate: false})
-  // }
 
   render() {
     return (
@@ -200,18 +139,23 @@ class Main extends SearchkitComponent {
                 />
                 <InputFilterSection></InputFilterSection>
                 <ActionBarRow>
-                  <SelectedFilters itemComponent={this.SelectedFilter} />
+                  <SelectedFilters />
                   <div onClick={this.changeCleanDateStatus}>
-                    <ResetFilters
-                      onClick={() => this.setState({ arraydata: null })}
-                    />
+                    <ResetFilters onClick={this.changeCleanDateStatus} />
                   </div>
                 </ActionBarRow>
                 <div className="hitStats-download-container">
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
-              <Samples dataDateFilter={this.state.arraydata} />
+              {this.state.noResults ? (
+                <NoResults
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                />
+              ) : (
+                <Samples dataDateFilter={this.state.arraydata} />
+              )}
             </LayoutResults>
           </LayoutBody>
         </Layout>
