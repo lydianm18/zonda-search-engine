@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 //Librería de Searchkit
 import {
@@ -40,7 +40,6 @@ class Main extends SearchkitComponent {
   state = {
     date: [new Date(), new Date()],
     cleanDate: false,
-    searcher: true,
     startDate: null,
     endDate: null,
     arraydata: [],
@@ -127,40 +126,22 @@ class Main extends SearchkitComponent {
     return moment(date).format("YYYY-MM-DD");
   };
 
-  /*datePill = (startDate, endDate) => {
-    console.log(startDate, endDate);
-    const stringStartDate = JSON.stringify(startDate);
-    const stringEndDate = JSON.stringify(endDate);
-    if (this.state.dateFilterOn) {
-      console.log(stringStartDate, stringEndDate);
-      return (
-        <div>
-          Delivery dates: {stringStartDate} - {stringEndDate}
-        </div>
-      );
-    }
-    return <></>;
-  };*/
-
-  /*onOpenChange = (open) => {
-    if (open) {
-      this.setState({ hackValue: [], dates: [] });
-    } else {
-      this.setState({ hackValue: undefined });
-    }
-  };*/
-
   onChangeAntd = (val) => {
     this.setState({ value: val });
-    //console.log(this.state.value);
-    const formatedStartDate = this.formatDate(val[0]._d);
-    const formatedEndDate = this.formatDate(val[1]._d);
-    this.setState({
-      startDate: formatedStartDate,
-      endDate: formatedEndDate,
-    });
-    console.log(formatedStartDate, formatedEndDate);
-    this.getData(formatedStartDate, formatedStartDate);
+    if (val === null) {
+      this.setState({ startDate: null, endDate: null });
+      this.changeCleanDateStatus();
+      return;
+    } else {
+      const formatedStartDate = this.formatDate(val[0]._d);
+      const formatedEndDate = this.formatDate(val[1]._d);
+      this.setState({
+        startDate: formatedStartDate,
+        endDate: formatedEndDate,
+      });
+      console.log(formatedStartDate, formatedEndDate);
+      this.getData(formatedStartDate, formatedStartDate);
+    }
   };
 
   /* SelectedFilter = (props) => {
